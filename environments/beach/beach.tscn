@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=28 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://environments/player/scenes/player.tscn" id="1_ybgaf"]
 [ext_resource type="Script" uid="uid://i5jcj7ukvoen" path="res://addons/terrabrush/TerraBrush.cs" id="2_txoyx"]
@@ -6,26 +6,55 @@
 [ext_resource type="Shader" uid="uid://c3iwi0dduco0m" path="res://environments/shaders/water.gdshader" id="3_yl5gr"]
 [ext_resource type="Script" uid="uid://k2tvfxm6feg5" path="res://addons/terrabrush/Scripts/EditorResources/WaterResource.cs" id="4_nuute"]
 [ext_resource type="Texture2D" uid="uid://ihx6jkek0gjr" path="res://environments/beach/World/Heightmap_0_0.res" id="5_hhivy"]
+[ext_resource type="Script" uid="uid://dgf8vwa2n8r11" path="res://addons/terrabrush/Scripts/EditorResources/FoliageDefinitionResource.cs" id="5_ri83c"]
 [ext_resource type="Texture2D" uid="uid://cq31fx5rkd18i" path="res://environments/beach/World/Water_0_0.res" id="6_3qf2r"]
+[ext_resource type="Script" uid="uid://d33x21vao7tj2" path="res://addons/terrabrush/Scripts/EditorResources/FoliageResource.cs" id="6_vmgc7"]
 [ext_resource type="Texture2D" uid="uid://vn4tgvrrxwuy" path="res://environments/beach/World/Splatmap_0_0_0.res" id="7_3qf2r"]
 [ext_resource type="Script" uid="uid://d2qebwt0ednya" path="res://addons/terrabrush/Scripts/EditorResources/ZoneResource.cs" id="7_4hkxj"]
 [ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="8_57d7k"]
+[ext_resource type="Texture2D" uid="uid://cwk5ycta2si3v" path="res://environments/beach/World/Foliage_0_0_0.res" id="10_vmgc7"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_sovbs"]
+[sub_resource type="Resource" id="Resource_57d7k"]
+script = ExtResource("5_ri83c")
+Strategy = 1
+MeshScale = Vector3(1, 1, 1)
+WindStrength = 0.1
+VisualInstanceLayers = 1
+LODLevels = 3
+LODRowsPerLevel = 50
+LODInitialCellWidth = 1.0
+Albedo = Color(1, 1, 1, 1)
+AlbedoTextures = null
+NearestTextureFilter = false
+UseGroundColor = false
+CastShadow = false
+UseBrushScale = true
+RandomPlacementRange = 3.0
+ApplyOnTextureIndexes = PackedInt32Array()
+MaximumRenderDistance = 50
+EditorMaximumRenderDistance = 50
+metadata/_custom_type_script = "uid://dgf8vwa2n8r11"
+
+[sub_resource type="Resource" id="Resource_ief57"]
+script = ExtResource("6_vmgc7")
+Definition = SubResource("Resource_57d7k")
+metadata/_custom_type_script = "uid://d33x21vao7tj2"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhivy"]
 render_priority = 0
 shader = ExtResource("3_yl5gr")
-shader_parameter/WATER_COL = Color(0.00909459, 0.211937, 0.522961, 1)
-shader_parameter/WATER2_COL = Color(0.8689, 0.711036, 0.522465, 1)
-shader_parameter/FOAM_COL = Color(0.930286, 0.871394, 0.954713, 1)
+shader_parameter/WATER_COL = Color(0.0229434, 0.31975, 0.754473, 1)
+shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
+shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
 shader_parameter/distortion_speed = 1.0
-shader_parameter/tile = Vector2(2, 2)
+shader_parameter/tile = Vector2(5, 5)
 shader_parameter/wave_speed = 1.0
 shader_parameter/wave_amplitude = 0.25
 shader_parameter/wave_frequency = 0.5
 shader_parameter/time_offset = 0.0
-shader_parameter/water_size = Vector2(64, 64)
+shader_parameter/water_size = Vector2(128, 128)
 shader_parameter/water_transparency = 0.8
-shader_parameter/water_depth_factor = 0.1
+shader_parameter/water_depth_factor = 0.3
 shader_parameter/foam_width = 0.5
 shader_parameter/foam_edge_softness = 0.05
 shader_parameter/foam_smoothness = 0.03
@@ -39,13 +68,14 @@ noise = SubResource("FastNoiseLite_ri83c")
 
 [sub_resource type="Resource" id="Resource_6w15t"]
 script = ExtResource("4_nuute")
-WaterFactor = 1.0
+WaterFactor = 2.0
 WaterInnerOffset = 0.2
-WaterColor = Color(0.345098, 0.537255, 1, 1)
-WaterFresnelColor = Color(1, 1, 1, 1)
+WaterColor = Color(0.0714995, 0.253224, 0.999934, 1)
+WaterFresnelColor = Color(0.877616, 0.877616, 0.877616, 1)
 WaterMetallic = 0.0
 WaterRoughness = 0.0
 WaterNormalMap = SubResource("NoiseTexture2D_vmgc7")
+WaterNormalMap2 = SubResource("NoiseTexture2D_vmgc7")
 WaterTimeScale = 0.1
 WaterStrength = 0.4
 WaterWave = SubResource("NoiseTexture2D_vmgc7")
@@ -60,7 +90,7 @@ WaterNear = 0.5
 WaterFar = 100.0
 WaterEdgeColor = Color(1, 1, 1, 1)
 VisualInstanceLayers = 1
-CustomShader = SubResource("ShaderMaterial_sovbs")
+CustomShader = SubResource("ShaderMaterial_hhivy")
 metadata/_custom_type_script = "uid://k2tvfxm6feg5"
 
 [sub_resource type="Resource" id="Resource_hhivy"]
@@ -68,8 +98,8 @@ script = ExtResource("7_4hkxj")
 ZonePosition = Vector2i(0, 0)
 HeightMapTexture = ExtResource("5_hhivy")
 SplatmapsTexture = [ExtResource("7_3qf2r")]
-FoliagesTexture = null
-ObjectsTexture = null
+FoliagesTexture = [ExtResource("10_vmgc7")]
+ObjectsTexture = []
 WaterTexture = ExtResource("6_3qf2r")
 
 [sub_resource type="Resource" id="Resource_3qf2r"]
@@ -128,6 +158,8 @@ script = ExtResource("2_txoyx")
 ZonesSize = 512
 DataPath = "res://environments/beach/World"
 TextureSets = ExtResource("3_hhivy")
+Foliages = [SubResource("Resource_ief57")]
+Objects = []
 WaterDefinition = SubResource("Resource_6w15t")
 TerrainZones = SubResource("Resource_3qf2r")
 metadata/_custom_type_script = "uid://i5jcj7ukvoen"

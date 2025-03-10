@@ -1,0 +1,39 @@
+[gd_resource type="Resource" script_class="TextureSetsResource" load_steps=9 format=3 uid="uid://bettqf2d8bj7m"]
+
+[ext_resource type="Script" uid="uid://c2l8t4xcdxwvu" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetResource.cs" id="1_05bio"]
+[ext_resource type="Script" uid="uid://043vjblb04jf" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetsResource.cs" id="1_iwrpv"]
+
+[sub_resource type="Gradient" id="Gradient_05bio"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.73531, 0.73531, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ya6ru"]
+gradient = SubResource("Gradient_05bio")
+
+[sub_resource type="Resource" id="Resource_pwgjr"]
+script = ExtResource("1_05bio")
+Name = "Sand"
+AlbedoTexture = SubResource("GradientTexture2D_ya6ru")
+TextureDetail = -1
+Triplanar = false
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[sub_resource type="Gradient" id="Gradient_ya6ru"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.462291, 0.462291, 0.462291, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kmjx2"]
+gradient = SubResource("Gradient_ya6ru")
+
+[sub_resource type="Resource" id="Resource_ysq7s"]
+script = ExtResource("1_05bio")
+Name = ""
+AlbedoTexture = SubResource("GradientTexture2D_kmjx2")
+TextureDetail = -1
+Triplanar = false
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[resource]
+script = ExtResource("1_iwrpv")
+TextureSets = [SubResource("Resource_pwgjr"), SubResource("Resource_ysq7s")]
+metadata/_custom_type_script = "uid://043vjblb04jf"

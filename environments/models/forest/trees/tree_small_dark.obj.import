@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://debf4qler18ic"
+path="res://.godot/imported/tree_small_dark.obj-f28812613cdff39ec20c8acbca8f095c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/tree_small_dark.obj-f28812613cdff39ec20c8acbca8f095c.mesh"]
+
+source_file="res://environments/models/forest/trees/tree_small_dark.obj"
+dest_files=["res://.godot/imported/tree_small_dark.obj-f28812613cdff39ec20c8acbca8f095c.mesh", "res://.godot/imported/tree_small_dark.obj-f28812613cdff39ec20c8acbca8f095c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

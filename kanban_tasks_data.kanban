@@ -35,7 +35,12 @@
 				"ca1742d0-06ee-4ff8-b1b1-e79efb764bab",
 				"c5b0c059-d885-4810-90ed-2c70a680f17d",
 				"9a227a99-eb1d-4af5-8b7c-cbe715b1bff6",
-				"5df13465-8bdf-4f5b-b300-b497291a2030"
+				"5df13465-8bdf-4f5b-b300-b497291a2030",
+				"c0c94c1d-3b2c-449e-a211-cd34bfe0724b",
+				"b0a184d8-c50e-48c1-bfd4-f335f57083dc",
+				"18cf47ff-0215-46ab-b530-aa2a9b1ff17e",
+				"e1a35606-c70c-480f-ba81-35f6ce687793",
+				"7454432a-d63f-4730-b701-95070ef5d645"
 			]
 		},
 		{
@@ -58,7 +63,7 @@
 		{
 			"uuid": "1e8ee206-c767-4536-b880-f10bf4892ebf",
 			"title": "Fishing",
-			"description": "Create concept for fishing mechanics and minigame.\n",
+			"description": "Create concept for fishing mechanics and minigame.\nLittle guy fish battling.\nYou need to catch/buy the bait\nJust pokemon (or any game) to upgrade you fishing power.\n\nMinigame ideas:\n- Fighting game\n- Turn based \n- Clash royal\n- Stardew fishing game\n- My idea of final fantasy combat\n- Rythm game\n- Boring",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
 			"steps": []
 		},
@@ -88,6 +93,41 @@
 			"title": "Exploration",
 			"description": "What should the core gameplay loop of the exploration be? More puzzles, more survival? What are some interesting environments to explore within the setting.",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "c0c94c1d-3b2c-449e-a211-cd34bfe0724b",
+			"title": "Bar keeping",
+			"description": "Taken in by goober bar keep.\nSlower atmosphere?\nRythm minigame?\nCooking mama?\nCook serve delisious?",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "b0a184d8-c50e-48c1-bfd4-f335f57083dc",
+			"title": "Science Goober",
+			"description": "Jungle reasercher gives off radio signals to help find him.\nOnce he joins you unlock better crafting.",
+			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
+			"steps": []
+		},
+		{
+			"uuid": "18cf47ff-0215-46ab-b530-aa2a9b1ff17e",
+			"title": "Super food",
+			"description": "Some food you can turn into enhancing meal which advance your story, recovering some memories and giving stat increase (or something).\n3 dishes per ingredient with different specialisation?\nThe main thing to get\nLinks all the mechanics together (fishing, crafting, exploration, etc).",
+			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
+			"steps": []
+		},
+		{
+			"uuid": "e1a35606-c70c-480f-ba81-35f6ce687793",
+			"title": "Farmer Goober",
+			"description": "",
+			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
+			"steps": []
+		},
+		{
+			"uuid": "7454432a-d63f-4730-b701-95070ef5d645",
+			"title": "Salty Seadog Pete",
+			"description": "Fish man, not a dog.",
+			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
 			"steps": []
 		}
 	],
