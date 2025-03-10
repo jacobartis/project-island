@@ -1,0 +1,63 @@
+[gd_scene load_steps=13 format=3 uid="uid://semv70jqg34e"]
+
+[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
+[ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="2_u4f3g"]
+[ext_resource type="Shader" path="res://environments/shaders/water.gdshader" id="3_yl5gr"]
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f4ava"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ribgx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ocno4"]
+noise = SubResource("FastNoiseLite_ribgx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hkfi6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xh1ab"]
+noise = SubResource("FastNoiseLite_hkfi6")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_gdas6"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_su0pt"]
+noise = SubResource("FastNoiseLite_gdas6")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_smrik"]
+render_priority = 0
+shader = ExtResource("3_yl5gr")
+shader_parameter/albedo = Color(0.325441, 0.325441, 0.325441, 1)
+shader_parameter/scroll_speed1 = Vector2(0.05, 0)
+shader_parameter/scroll_speed2 = Vector2(-0.03, 0)
+shader_parameter/blend_factor = 0.5
+shader_parameter/scale1 = Vector2(1, 1)
+shader_parameter/scale2 = Vector2(1, 1)
+shader_parameter/wave_strength = 1.0
+shader_parameter/wave_scale = 0.02
+shader_parameter/pixelation_level = 64
+shader_parameter/FoamSize = 0.5
+shader_parameter/WaterOpacity = 1.0
+shader_parameter/FoamGlowIntensity = 0.5
+shader_parameter/water_texture1 = SubResource("NoiseTexture2D_xh1ab")
+shader_parameter/water_texture2 = SubResource("NoiseTexture2D_su0pt")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_ocno4")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_xk8tw"]
+material = SubResource("ShaderMaterial_smrik")
+size = Vector2(200, 200)
+subdivide_width = 1000
+subdivide_depth = 1000
+
+[node name="World" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("1_ybgaf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="Environment" type="CSGCombiner3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_f4ava")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+material_override = ExtResource("2_u4f3g")
+mesh = SubResource("PlaneMesh_xk8tw")
