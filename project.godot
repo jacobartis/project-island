@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Project Island"
-run/main_scene="res://environments/world.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+run/main_scene="res://environments/beach/beach.tscn"
+config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="Project Island"
 
 [editor]
 
@@ -22,7 +26,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg")
+enabled=PackedStringArray("res://addons/kanban_tasks/plugin.cfg", "res://addons/terrabrush/plugin.cfg")
 
 [input]
 

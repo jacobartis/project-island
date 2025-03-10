@@ -1,63 +1,154 @@
-[gd_scene load_steps=13 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=23 format=3 uid="uid://semv70jqg34e"]
 
-[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
-[ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="2_u4f3g"]
-[ext_resource type="Shader" path="res://environments/shaders/water.gdshader" id="3_yl5gr"]
+[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://environments/player/scenes/player.tscn" id="1_ybgaf"]
+[ext_resource type="Script" uid="uid://i5jcj7ukvoen" path="res://addons/terrabrush/TerraBrush.cs" id="2_txoyx"]
+[ext_resource type="Resource" uid="uid://bettqf2d8bj7m" path="res://environments/textures/texture_set.tres" id="3_hhivy"]
+[ext_resource type="Shader" uid="uid://c3iwi0dduco0m" path="res://environments/shaders/water.gdshader" id="3_yl5gr"]
+[ext_resource type="Script" uid="uid://k2tvfxm6feg5" path="res://addons/terrabrush/Scripts/EditorResources/WaterResource.cs" id="4_nuute"]
+[ext_resource type="Texture2D" uid="uid://ihx6jkek0gjr" path="res://environments/beach/World/Heightmap_0_0.res" id="5_hhivy"]
+[ext_resource type="Texture2D" uid="uid://cq31fx5rkd18i" path="res://environments/beach/World/Water_0_0.res" id="6_3qf2r"]
+[ext_resource type="Texture2D" uid="uid://vn4tgvrrxwuy" path="res://environments/beach/World/Splatmap_0_0_0.res" id="7_3qf2r"]
+[ext_resource type="Script" uid="uid://d2qebwt0ednya" path="res://addons/terrabrush/Scripts/EditorResources/ZoneResource.cs" id="7_4hkxj"]
+[ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="8_57d7k"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sovbs"]
+render_priority = 0
+shader = ExtResource("3_yl5gr")
+shader_parameter/WATER_COL = Color(0.00909459, 0.211937, 0.522961, 1)
+shader_parameter/WATER2_COL = Color(0.8689, 0.711036, 0.522465, 1)
+shader_parameter/FOAM_COL = Color(0.930286, 0.871394, 0.954713, 1)
+shader_parameter/distortion_speed = 1.0
+shader_parameter/tile = Vector2(2, 2)
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_amplitude = 0.25
+shader_parameter/wave_frequency = 0.5
+shader_parameter/time_offset = 0.0
+shader_parameter/water_size = Vector2(64, 64)
+shader_parameter/water_transparency = 0.8
+shader_parameter/water_depth_factor = 0.1
+shader_parameter/foam_width = 0.5
+shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.1
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ri83c"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vmgc7"]
+noise = SubResource("FastNoiseLite_ri83c")
+
+[sub_resource type="Resource" id="Resource_6w15t"]
+script = ExtResource("4_nuute")
+WaterFactor = 1.0
+WaterInnerOffset = 0.2
+WaterColor = Color(0.345098, 0.537255, 1, 1)
+WaterFresnelColor = Color(1, 1, 1, 1)
+WaterMetallic = 0.0
+WaterRoughness = 0.0
+WaterNormalMap = SubResource("NoiseTexture2D_vmgc7")
+WaterTimeScale = 0.1
+WaterStrength = 0.4
+WaterWave = SubResource("NoiseTexture2D_vmgc7")
+WaterNoiseScale = 10.0
+WaterHeightScale = 0.15
+WaterColorDeep = Color(1, 1, 1, 1)
+WaterColorShallow = Color(1, 1, 1, 1)
+WaterBeersLaw = 2.0
+WaterDepthOffset = -0.75
+WaterEdgeScale = 0.1
+WaterNear = 0.5
+WaterFar = 100.0
+WaterEdgeColor = Color(1, 1, 1, 1)
+VisualInstanceLayers = 1
+CustomShader = SubResource("ShaderMaterial_sovbs")
+metadata/_custom_type_script = "uid://k2tvfxm6feg5"
+
+[sub_resource type="Resource" id="Resource_hhivy"]
+script = ExtResource("7_4hkxj")
+ZonePosition = Vector2i(0, 0)
+HeightMapTexture = ExtResource("5_hhivy")
+SplatmapsTexture = [ExtResource("7_3qf2r")]
+FoliagesTexture = null
+ObjectsTexture = null
+WaterTexture = ExtResource("6_3qf2r")
+
+[sub_resource type="Resource" id="Resource_3qf2r"]
+script = ExtResource("8_57d7k")
+Zones = [SubResource("Resource_hhivy")]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f4ava"]
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ribgx"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_ocno4"]
-noise = SubResource("FastNoiseLite_ribgx")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_hkfi6"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_xh1ab"]
-noise = SubResource("FastNoiseLite_hkfi6")
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_gdas6"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_su0pt"]
-noise = SubResource("FastNoiseLite_gdas6")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smrik"]
 render_priority = 0
 shader = ExtResource("3_yl5gr")
-shader_parameter/albedo = Color(0.325441, 0.325441, 0.325441, 1)
-shader_parameter/scroll_speed1 = Vector2(0.05, 0)
-shader_parameter/scroll_speed2 = Vector2(-0.03, 0)
-shader_parameter/blend_factor = 0.5
-shader_parameter/scale1 = Vector2(1, 1)
-shader_parameter/scale2 = Vector2(1, 1)
-shader_parameter/wave_strength = 1.0
-shader_parameter/wave_scale = 0.02
-shader_parameter/pixelation_level = 64
-shader_parameter/FoamSize = 0.5
-shader_parameter/WaterOpacity = 1.0
-shader_parameter/FoamGlowIntensity = 0.5
-shader_parameter/water_texture1 = SubResource("NoiseTexture2D_xh1ab")
-shader_parameter/water_texture2 = SubResource("NoiseTexture2D_su0pt")
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_ocno4")
+shader_parameter/WATER_COL = Color(0.00854927, 0.205342, 0.5087, 1)
+shader_parameter/WATER2_COL = Color(0.948115, 0.868779, 0.583123, 1)
+shader_parameter/FOAM_COL = Color(0.96891, 0.892931, 0.975747, 1)
+shader_parameter/distortion_speed = 1.5
+shader_parameter/tile = Vector2(1000, 1000)
+shader_parameter/wave_speed = 1.0
+shader_parameter/wave_amplitude = 0.5
+shader_parameter/wave_frequency = 0.05
+shader_parameter/time_offset = 0.0
+shader_parameter/water_size = Vector2(128, 128)
+shader_parameter/water_transparency = 0.8
+shader_parameter/water_depth_factor = 0.5
+shader_parameter/foam_width = 0.5
+shader_parameter/foam_edge_softness = 0.05
+shader_parameter/foam_smoothness = 0.03
+shader_parameter/foam_distortion_speed = 0.5
+shader_parameter/foam_distortion_amount = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xk8tw"]
 material = SubResource("ShaderMaterial_smrik")
-size = Vector2(200, 200)
-subdivide_width = 1000
-subdivide_depth = 1000
+size = Vector2(1000, 1000)
+subdivide_width = 100
+subdivide_depth = 100
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6wd3"]
+sky_top_color = Color(0.405852, 0.358927, 0.852183, 1)
+sky_horizon_color = Color(0.957461, 0.527158, 0.141781, 1)
+
+[sub_resource type="Sky" id="Sky_3436y"]
+sky_material = SubResource("ProceduralSkyMaterial_o6wd3")
+
+[sub_resource type="Environment" id="Environment_gm3d4"]
+background_mode = 2
+sky = SubResource("Sky_3436y")
+ambient_light_source = 3
 
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ybgaf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0745, 6.90519, 101.464)
 
-[node name="Environment" type="CSGCombiner3D" parent="."]
+[node name="TerraBrush" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
+script = ExtResource("2_txoyx")
+ZonesSize = 512
+DataPath = "res://environments/beach/World"
+TextureSets = ExtResource("3_hhivy")
+WaterDefinition = SubResource("Resource_6w15t")
+TerrainZones = SubResource("Resource_3qf2r")
+metadata/_custom_type_script = "uid://i5jcj7ukvoen"
+metadata/_edit_lock_ = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49.6661)
+visible = false
+metadata/_edit_group_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_f4ava")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-material_override = ExtResource("2_u4f3g")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 423.519)
 mesh = SubResource("PlaneMesh_xk8tw")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_gm3d4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.636401, 0.771358, 0, -0.771358, 0.636401, 0, 0, 0)
+light_color = Color(0.997725, 0.951909, 0.861173, 1)
+shadow_enabled = true

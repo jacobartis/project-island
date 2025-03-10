@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dgrfbnsgfwiem"
+path="res://.godot/imported/mushroom_tan.obj-7dab674a1199d4a40a0e6a851f5754ee.mesh"
+
+[deps]
+
+files=["res://.godot/imported/mushroom_tan.obj-7dab674a1199d4a40a0e6a851f5754ee.mesh"]
+
+source_file="res://environments/models/forest/plants/mushroom_tan.obj"
+dest_files=["res://.godot/imported/mushroom_tan.obj-7dab674a1199d4a40a0e6a851f5754ee.mesh", "res://.godot/imported/mushroom_tan.obj-7dab674a1199d4a40a0e6a851f5754ee.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
