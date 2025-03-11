@@ -1,14 +1,24 @@
-~ start
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-if State.test_state == "true":
-	- New option
-	 Nathan: You picked the new option
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+~ white
+if State.test_state == "":
+	Goober: What's up fucker, this is some dialogue!
+	~ question
+	Goober: Can you speek to my green friend over there for me.
+	- Sure
+		Goober: Thanks bro.
+	- Nah
+		Goober: Nah, thats not how this works.
+		=> question
+	set State.test_state = "set"
+elif State.test_state == "set":
+	Goober: Hey motherfucker, I asked you to speak to my friend. Thanks in advance.
+elif State.test_state == "spoken":
+	Goober: Hah, thanks. I owe that guy some money so dont feel like talking to that freak.
+=> END
+
+~ green
+if State.test_state == "":
+	Green: How's it going man, nice to see some fresh faces.
+elif State.test_state == "set":
+	Green: Goober sent you? I hate that guy, gave him £50 like 3 months ago and he still hasn't paid me
+	set State.test_state = "spoken"
 => END

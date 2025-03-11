@@ -1,11 +1,14 @@
-[gd_scene load_steps=8 format=3 uid="uid://gyv32knfwkg1"]
+[gd_scene load_steps=9 format=3 uid="uid://do35c715ctgi7"]
 
-[ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="1_bqp73"]
-[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="2_64gnh"]
-[ext_resource type="Script" uid="uid://cmui4yend4mi4" path="res://utils/scripts/dialogue_entry.gd" id="3_xhbx5"]
-[ext_resource type="Resource" uid="uid://cgiumhxuypsbt" path="res://npcs/test_man/dialog/hello.dialogue" id="4_7qbme"]
+[ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="1_ktw8p"]
+[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="2_ujdb2"]
+[ext_resource type="Script" uid="uid://cmui4yend4mi4" path="res://utils/scripts/dialogue_entry.gd" id="3_dryfm"]
+[ext_resource type="Resource" uid="uid://cgiumhxuypsbt" path="res://npcs/test_man/dialog/hello.dialogue" id="4_i5l75"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqp73"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ktw8p"]
+albedo_color = Color(0.419608, 1, 0.243137, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ttjmo"]
 
@@ -17,17 +20,18 @@ albedo_color = Color(0.317647, 1, 1, 1)
 grow = true
 grow_amount = 0.01
 
-[node name="Node3D" type="CharacterBody3D"]
+[node name="Green" type="CharacterBody3D"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_bqp73")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = ExtResource("1_bqp73")
+material_override = SubResource("StandardMaterial3D_ktw8p")
+mesh = ExtResource("1_ktw8p")
 
 [node name="Interactable" type="Area3D" parent="."]
-script = ExtResource("2_64gnh")
+script = ExtResource("2_ujdb2")
 metadata/_custom_type_script = "uid://onyg7lf3hcvc"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
@@ -39,13 +43,13 @@ visible = false
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Highlight"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = SubResource("StandardMaterial3D_64gnh")
-mesh = ExtResource("1_bqp73")
+mesh = ExtResource("1_ktw8p")
 skeleton = NodePath("../..")
 
 [node name="DialogueEntry" type="Node" parent="."]
-script = ExtResource("3_xhbx5")
-dialogue_resource = ExtResource("4_7qbme")
-dialogue_start = "white"
+script = ExtResource("3_dryfm")
+dialogue_resource = ExtResource("4_i5l75")
+dialogue_start = "green"
 
 [connection signal="hide_highlight" from="Interactable" to="Highlight" method="hide"]
 [connection signal="interacted" from="Interactable" to="DialogueEntry" method="start_dialogue"]

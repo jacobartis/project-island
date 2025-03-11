@@ -1,6 +1,4 @@
 extends Node
-#THIS WILL BE UGLY.
-#Used by dialogue manager to access the state.
 
 signal start_dialogue()
 signal end_dialogue()
@@ -19,5 +17,6 @@ func d_end(_d):
 	end_dialogue.emit()
 
 
-
-var test_state:String = "true"
+#THIS WILL BE UGLY.
+#Used by dialogue manager to access the state.
+var test_state:String = ""

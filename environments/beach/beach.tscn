@@ -1,5 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=30 format=3 uid="uid://semv70jqg34e"]
 
+[ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
 [ext_resource type="Script" uid="uid://i5jcj7ukvoen" path="res://addons/terrabrush/TerraBrush.cs" id="2_txoyx"]
 [ext_resource type="Resource" uid="uid://bettqf2d8bj7m" path="res://environments/textures/texture_set.tres" id="3_hhivy"]
@@ -149,6 +150,9 @@ sky = SubResource("Sky_3436y")
 ambient_light_source = 3
 
 [node name="World" type="Node3D"]
+
+[node name="Green" parent="." instance=ExtResource("1_ri83c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.9574, 2.87185, 95.1051)
 
 [node name="Player" parent="." instance=ExtResource("1_ybgaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0745, 5.00528, 101.464)
