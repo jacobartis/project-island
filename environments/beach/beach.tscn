@@ -1,6 +1,6 @@
-[gd_scene load_steps=28 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=29 format=3 uid="uid://semv70jqg34e"]
 
-[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://environments/player/scenes/player.tscn" id="1_ybgaf"]
+[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
 [ext_resource type="Script" uid="uid://i5jcj7ukvoen" path="res://addons/terrabrush/TerraBrush.cs" id="2_txoyx"]
 [ext_resource type="Resource" uid="uid://bettqf2d8bj7m" path="res://environments/textures/texture_set.tres" id="3_hhivy"]
 [ext_resource type="Shader" uid="uid://c3iwi0dduco0m" path="res://environments/shaders/water.gdshader" id="3_yl5gr"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://d2qebwt0ednya" path="res://addons/terrabrush/Scripts/EditorResources/ZoneResource.cs" id="7_4hkxj"]
 [ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="8_57d7k"]
 [ext_resource type="Texture2D" uid="uid://cwk5ycta2si3v" path="res://environments/beach/World/Foliage_0_0_0.res" id="10_vmgc7"]
+[ext_resource type="PackedScene" uid="uid://gyv32knfwkg1" path="res://npcs/test_man/test_man.tscn" id="14_sovbs"]
 
 [sub_resource type="Resource" id="Resource_57d7k"]
 script = ExtResource("5_ri83c")
@@ -24,7 +25,7 @@ LODLevels = 3
 LODRowsPerLevel = 50
 LODInitialCellWidth = 1.0
 Albedo = Color(1, 1, 1, 1)
-AlbedoTextures = null
+AlbedoTextures = []
 NearestTextureFilter = false
 UseGroundColor = false
 CastShadow = false
@@ -150,7 +151,7 @@ ambient_light_source = 3
 [node name="World" type="Node3D"]
 
 [node name="Player" parent="." instance=ExtResource("1_ybgaf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0745, 6.90519, 101.464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0745, 5.00528, 101.464)
 
 [node name="TerraBrush" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
@@ -184,3 +185,6 @@ environment = SubResource("Environment_gm3d4")
 transform = Transform3D(1, 0, 0, 0, 0.636401, 0.771358, 0, -0.771358, 0.636401, 0, 0, 0)
 light_color = Color(0.997725, 0.951909, 0.861173, 1)
 shadow_enabled = true
+
+[node name="Node3D" parent="." instance=ExtResource("14_sovbs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.4394, 3.1344, 100.028)

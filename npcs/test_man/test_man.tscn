@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://gyv32knfwkg1"]
+
+[ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="1_bqp73"]
+[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="2_64gnh"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqp73"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ttjmo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64gnh"]
+cull_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.317647, 1, 1, 1)
+grow = true
+grow_amount = 0.01
+
+[node name="Node3D" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bqp73")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+mesh = ExtResource("1_bqp73")
+
+[node name="Interactable" type="Area3D" parent="."]
+script = ExtResource("2_64gnh")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("CapsuleShape3D_ttjmo")
+
+[node name="Highlight" type="Node3D" parent="."]
+visible = false
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Highlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_64gnh")
+mesh = ExtResource("1_bqp73")
+skeleton = NodePath("../..")
+
+[connection signal="hide_highlight" from="Interactable" to="Highlight" method="hide"]
+[connection signal="show_highlight" from="Interactable" to="Highlight" method="show"]
