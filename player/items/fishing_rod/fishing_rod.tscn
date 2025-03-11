@@ -1,8 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://c44g1lknhnnv5"]
+[gd_scene load_steps=15 format=3 uid="uid://c44g1lknhnnv5"]
 
 [ext_resource type="Script" uid="uid://dqxlkq4almea" path="res://player/items/fishing_rod/fishing_rod.gd" id="1_vjqo0"]
 [ext_resource type="Script" uid="uid://dxsfdc1aiiody" path="res://player/items/fishing_rod/bobber.gd" id="2_7bpsm"]
 [ext_resource type="Script" uid="uid://bbeivmjkwbowe" path="res://player/items/fishing_rod/cable.gd" id="2_pcaxv"]
+[ext_resource type="AudioStream" uid="uid://dd5b6gdlh3w26" path="res://player/items/fishing_rod/CastA.mp3" id="4_i7ygp"]
+[ext_resource type="AudioStream" uid="uid://c6bqs72mj6ypw" path="res://player/items/fishing_rod/water-drop-85731.mp3" id="4_yi01o"]
+[ext_resource type="AudioStream" uid="uid://dgmmmbqlo5cu0" path="res://player/items/fishing_rod/CastB.mp3" id="5_yi01o"]
+[ext_resource type="AudioStream" uid="uid://b42623htpp12x" path="res://player/items/fishing_rod/CastC.mp3" id="6_8ydu5"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vjqo0"]
 top_radius = 0.05
@@ -18,6 +22,18 @@ height = 1.0
 [sub_resource type="CylinderMesh" id="CylinderMesh_pcaxv"]
 top_radius = 0.01
 bottom_radius = 0.01
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ydu5"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("4_yi01o")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nlp1d"]
+random_pitch = 1.1
+streams_count = 3
+stream_0/stream = ExtResource("4_i7ygp")
+stream_1/stream = ExtResource("5_yi01o")
+stream_2/stream = ExtResource("6_8ydu5")
 
 [node name="FishingRod" type="Node3D"]
 script = ExtResource("1_vjqo0")
@@ -62,8 +78,24 @@ skeleton = NodePath("../..")
 [node name="CastDelay" type="Timer" parent="."]
 one_shot = true
 
+[node name="Nibble" type="Timer" parent="."]
+one_shot = true
+
+[node name="NibbleSFX" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_8ydu5")
+
+[node name="CastSFX" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_nlp1d")
+bus = &"SFX"
+
 [connection signal="cast" from="." to="CastHolder/Bobber" method="show"]
 [connection signal="cast" from="." to="CableHolder" method="show"]
+[connection signal="cast" from="." to="CastSFX" method="play"]
 [connection signal="pull_back" from="." to="CastHolder/Bobber" method="hide"]
 [connection signal="pull_back" from="." to="CableHolder" method="hide"]
+[connection signal="pull_back" from="." to="Nibble" method="stop"]
+[connection signal="pull_back" from="." to="CastSFX" method="play"]
 [connection signal="timeout" from="CastDelay" to="." method="_on_cast_delay_timeout"]
+[connection signal="timeout" from="Nibble" to="." method="_on_nibble_timeout"]
+[connection signal="timeout" from="Nibble" to="CastHolder/Bobber" method="pull"]
+[connection signal="timeout" from="Nibble" to="NibbleSFX" method="play"]

@@ -4,17 +4,14 @@ extends RigidBody3D
 
 @export var float_force:= 1
 
-
-func _process(delta):
-	var water = water_bodies()
-	if !water: return
+func pull():
+	apply_impulse(Vector3.DOWN*10)
 
 func _physics_process(delta):
 	if !water_bodies(): return
 	var wat = water_bodies()[0]
 	var depth = wat.global_position.y - global_position.y
 	var force = Vector3.DOWN*float_force*get_gravity()*depth*.9-get_gravity()
-	print(force)
 	apply_central_force(force)
 
 func _integrate_forces(state):

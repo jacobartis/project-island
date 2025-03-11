@@ -4,22 +4,36 @@ signal cast()
 signal pull_back()
 
 @onready var bobber = $CastHolder/Bobber
-
 var casted: bool = false
 var can_cast: bool = true
 
-var hold_delay: float = 0
+@export_category("Charge")
 @export var max_charge: float = 100
 @export var charge_speed: float = 50
+var hold_delay: float = 0
 var charge: float = 0
 var raw: float = 0
+
+@export_category("Fish")
+@export var nibble_delay:float = 5
+@export var nibble_window:float = 1
+var nibble_avalible: float = 0
 
 func _process(delta):
 	
 	if !casted and can_cast:
 		handle_charge(delta)
-	if casted and Input.is_action_just_pressed("use"):
+	if casted and Input.is_action_just_pressed("use") and nibble_avalible != 0:
+		start_catch()
+	elif casted and Input.is_action_just_pressed("use"):
 		return_cast()
+	
+	if casted:
+		nibble_avalible = max(nibble_avalible-delta,0)
+		if !bobber.water_bodies():
+			$Nibble.stop()
+		elif $Nibble.is_stopped():
+			$Nibble.start(randf_range(nibble_delay,nibble_delay*1.25))
 
 func handle_charge(delta):
 	hold_delay = max(hold_delay-delta,0)
@@ -46,6 +60,10 @@ func throw_cast(power):
 	var v_pow = global_basis.y*pow_dist.y*power
 	bobber.apply_impulse(h_pow+v_pow)
 
+func start_catch():
+	print("FISH!")
+	return_cast()
+
 func return_cast():
 	casted = false
 	can_cast = false
@@ -58,3 +76,8 @@ func return_cast():
 
 func _on_cast_delay_timeout():
 	can_cast = true
+
+func _on_nibble_timeout():
+	nibble_avalible = nibble_window
+	if bobber.water_bodies():
+		$Nibble.start(randf_range(nibble_delay,nibble_delay*1.25))
