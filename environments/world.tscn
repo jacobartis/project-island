@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dqeyfa5gmf62d"]
 
-[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://environments/player/scenes/player.tscn" id="1_a7g8s"]
+[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_a7g8s"]
 [ext_resource type="Material" uid="uid://bx6qeabdhq2s" path="res://addons/kenney_prototype_tools/materials/dark/material_01.tres" id="2_x3k5h"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f4ava"]
