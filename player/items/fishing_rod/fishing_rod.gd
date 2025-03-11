@@ -3,7 +3,7 @@ extends Node3D
 signal cast()
 signal pull_back()
 
-@onready var bobber = $CastHolder/Cast
+@onready var bobber = $CastHolder/Bobber
 
 var casted: bool = false
 var can_cast: bool = true

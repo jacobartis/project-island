@@ -11,7 +11,7 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ta1aj"]
 size = Vector3(1, 2, 1)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("mesh")]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("mesh") groups=["player"]]
 script = ExtResource("1_blui3")
 mesh = NodePath("MeshInstance3D")
 

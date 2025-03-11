@@ -9,12 +9,17 @@ const JUMP_VELOCITY = 4.5
 var last_move_dir := Vector3.BACK
 var rot_speed: float = 10
 
+var in_water:bool = false
+var water_height:float = 0
+
 func _ready():
 	Mouse.lock()
 
 func _physics_process(delta):
 	# Add the gravity.
-	if not is_on_floor():
+	if in_water:
+		velocity += get_gravity() * delta* (water_height-global_position.y)*0.1
+	elif not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump.

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=32 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="8_57d7k"]
 [ext_resource type="Texture2D" uid="uid://cwk5ycta2si3v" path="res://environments/beach/World/Foliage_0_0_0.res" id="10_vmgc7"]
 [ext_resource type="PackedScene" uid="uid://gyv32knfwkg1" path="res://npcs/test_man/test_man.tscn" id="14_sovbs"]
+[ext_resource type="Script" uid="uid://cnsu8rkv4vclo" path="res://environments/beach/water.gd" id="16_vmgc7"]
 
 [sub_resource type="Resource" id="Resource_57d7k"]
 script = ExtResource("5_ri83c")
@@ -149,6 +150,8 @@ background_mode = 2
 sky = SubResource("Sky_3436y")
 ambient_light_source = 3
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ri83c"]
+
 [node name="World" type="Node3D"]
 
 [node name="Green" parent="." instance=ExtResource("1_ri83c")]
@@ -194,3 +197,18 @@ shadow_enabled = true
 
 [node name="Node3D" parent="." instance=ExtResource("14_sovbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.4394, 3.1344, 100.028)
+
+[node name="Water" type="Area3D" parent="." groups=["fishable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 87)
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+linear_damp = 100.0
+script = ExtResource("16_vmgc7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
+shape = SubResource("WorldBoundaryShape3D_ri83c")
+debug_color = Color(0.890196, 0.309804, 0.290196, 0.760784)
+
+[connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
+[connection signal="body_exited" from="Water" to="Water" method="_on_body_exited"]
