@@ -18,7 +18,8 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-State="*res://utils/scripts/state.gd"
+State="*res://utils/preloads/state.gd"
+Mouse="*res://utils/preloads/mouse.gd"
 
 [dialogue_manager]
 

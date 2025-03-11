@@ -9,18 +9,23 @@ const JUMP_VELOCITY = 4.5
 var last_move_dir := Vector3.BACK
 var rot_speed: float = 10
 
+func _ready():
+	Mouse.lock()
+
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !State.in_dialogue:
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var raw_input = Input.get_vector("left", "right", "forward", "backward")
+	if State.in_dialogue:
+		raw_input = Vector2.ZERO
 	var forward = cam.global_basis.z
 	var right = cam.global_basis.x
 	var direction = forward*raw_input.y + right*raw_input.x
