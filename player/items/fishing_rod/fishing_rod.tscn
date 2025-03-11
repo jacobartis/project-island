@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://c44g1lknhnnv5"]
+
+[ext_resource type="Script" uid="uid://dqxlkq4almea" path="res://player/items/fishing_rod/fishing_rod.gd" id="1_vjqo0"]
+[ext_resource type="Script" uid="uid://bbeivmjkwbowe" path="res://player/items/fishing_rod/cable.gd" id="2_pcaxv"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vjqo0"]
+top_radius = 0.05
+bottom_radius = 0.05
+height = 1.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_vjqo0"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_vjqo0"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pcaxv"]
+top_radius = 0.01
+bottom_radius = 0.01
+
+[node name="FishingRod" type="Node3D"]
+script = ExtResource("1_vjqo0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.314995, -0.32117)
+mesh = SubResource("CylinderMesh_vjqo0")
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.634769, -0.662817)
+
+[node name="CastHolder" type="Node" parent="."]
+
+[node name="Cast" type="RigidBody3D" parent="CastHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499478, -0.808851)
+collision_layer = 2
+collision_mask = 2
+freeze = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CastHolder/Cast"]
+mesh = SubResource("SphereMesh_vjqo0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CastHolder/Cast"]
+shape = SubResource("SphereShape3D_vjqo0")
+
+[node name="CableHolder" type="Node3D" parent="." node_paths=PackedStringArray("source", "bobber")]
+script = ExtResource("2_pcaxv")
+source = NodePath("../Head")
+bobber = NodePath("../CastHolder/Cast")
+
+[node name="cable" type="MeshInstance3D" parent="CableHolder"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_pcaxv")
+skeleton = NodePath("../..")
+
+[node name="CastDelay" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="cast" from="." to="CastHolder/Cast" method="show"]
+[connection signal="cast" from="." to="CableHolder" method="show"]
+[connection signal="pull_back" from="." to="CastHolder/Cast" method="hide"]
+[connection signal="pull_back" from="." to="CableHolder" method="hide"]
+[connection signal="timeout" from="CastDelay" to="." method="_on_cast_delay_timeout"]

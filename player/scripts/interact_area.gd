@@ -13,7 +13,6 @@ func set_closest(new:Interactable):
 	closest = new
 
 func _input(event):
-	print(State.in_dialogue)
 	if event.is_action("interact") and closest and !State.in_dialogue:
 		closest.interacted.emit()
 

@@ -162,16 +162,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
 script = ExtResource("2_txoyx")
 ZonesSize = 512
 DataPath = "res://environments/beach/World"
+CollisionLayers = 3
+CollisionMask = 3
 TextureSets = ExtResource("3_hhivy")
 Foliages = [SubResource("Resource_ief57")]
 Objects = []
 WaterDefinition = SubResource("Resource_6w15t")
 TerrainZones = SubResource("Resource_3qf2r")
 metadata/_custom_type_script = "uid://i5jcj7ukvoen"
-metadata/_edit_lock_ = true
+metadata/_edit_lock_ = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 49.6661)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 visible = false
 metadata/_edit_group_ = true
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://47y3qjxgnxm8"]
+[gd_scene load_steps=8 format=3 uid="uid://47y3qjxgnxm8"]
 
 [ext_resource type="Script" uid="uid://c5qhyasn0pg4" path="res://player/scripts/player.gd" id="1_blui3"]
 [ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="2_1pmg0"]
 [ext_resource type="Script" uid="uid://cqpej174tg5v3" path="res://player/scenes/3rdPCam.gd" id="2_ochrj"]
 [ext_resource type="Script" uid="uid://cx8x55y5dw6fu" path="res://player/scripts/interact_area.gd" id="4_7b0y7"]
+[ext_resource type="PackedScene" uid="uid://c44g1lknhnnv5" path="res://player/items/fishing_rod/fishing_rod.tscn" id="5_87uja"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7m2wk"]
 
@@ -28,6 +29,9 @@ script = ExtResource("4_7b0y7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/InteractArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 shape = SubResource("BoxShape3D_ta1aj")
+
+[node name="FishingRod" parent="MeshInstance3D" instance=ExtResource("5_87uja")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.268537, 0.869322, -0.0616621)
 
 [node name="3rdPCam" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 script = ExtResource("2_ochrj")
