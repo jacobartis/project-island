@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://gyv32knfwkg1"]
+[gd_scene load_steps=8 format=3 uid="uid://gyv32knfwkg1"]
 
 [ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="1_bqp73"]
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="2_64gnh"]
+[ext_resource type="Script" uid="uid://cmui4yend4mi4" path="res://utils/scripts/dialogue_entry.gd" id="3_xhbx5"]
+[ext_resource type="Resource" uid="uid://cgiumhxuypsbt" path="res://npcs/test_man/dialog/hello.dialogue" id="4_7qbme"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqp73"]
 
@@ -40,5 +42,10 @@ material_override = SubResource("StandardMaterial3D_64gnh")
 mesh = ExtResource("1_bqp73")
 skeleton = NodePath("../..")
 
+[node name="DialogueEntry" type="Node" parent="."]
+script = ExtResource("3_xhbx5")
+dialogue_resource = ExtResource("4_7qbme")
+
 [connection signal="hide_highlight" from="Interactable" to="Highlight" method="hide"]
+[connection signal="interacted" from="Interactable" to="DialogueEntry" method="start_dialogue"]
 [connection signal="show_highlight" from="Interactable" to="Highlight" method="show"]

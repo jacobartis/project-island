@@ -12,6 +12,10 @@ func set_closest(new:Interactable):
 		new.highlight = true
 	closest = new
 
+func _input(event):
+	if event.is_action("interact") and closest:
+		closest.interacted.emit()
+
 func _process(delta):
 	check_closest()
 
@@ -26,7 +30,6 @@ func sort_dist(a,b):
 	return global_position.distance_to(a.global_position)>global_position.distance_to(b.global_position)
 
 func _on_area_entered(area):
-	print(area)
 	if not area is Interactable: return
 	objects.append(area)
 
