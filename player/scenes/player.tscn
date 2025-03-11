@@ -4,7 +4,7 @@
 [ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="2_1pmg0"]
 [ext_resource type="Script" uid="uid://cqpej174tg5v3" path="res://player/scenes/3rdPCam.gd" id="2_ochrj"]
 [ext_resource type="Script" uid="uid://cx8x55y5dw6fu" path="res://player/scripts/interact_area.gd" id="4_7b0y7"]
-[ext_resource type="PackedScene" uid="uid://c44g1lknhnnv5" path="res://player/items/fishing_rod/fishing_rod.tscn" id="5_87uja"]
+[ext_resource type="Script" uid="uid://cdwsrmyu6n8g3" path="res://player/hats/hat.gd" id="4_87uja"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7m2wk"]
 
@@ -30,8 +30,16 @@ script = ExtResource("4_7b0y7")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
 shape = SubResource("BoxShape3D_ta1aj")
 
-[node name="FishingRod" parent="MeshInstance3D" instance=ExtResource("5_87uja")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.268537, 0.869322, -0.0616621)
+[node name="Hand" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.262478, 0.840992, -0.069225)
+
+[node name="Head" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0234033, 1.80977, -0.0331453)
+script = ExtResource("4_87uja")
+
+[node name="Base" type="Marker3D" parent="MeshInstance3D/Head"]
+
+[node name="Top" type="Marker3D" parent="MeshInstance3D/Head"]
 
 [node name="3rdPCam" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
 script = ExtResource("2_ochrj")

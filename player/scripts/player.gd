@@ -2,6 +2,8 @@ extends CharacterBody3D
 
 @onready var cam = $"3rdPCam/SpringArm3D/Cam"
 @export var mesh: MeshInstance3D
+@onready var hand = $MeshInstance3D/Hand
+@onready var head = $MeshInstance3D/Head
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -47,3 +49,10 @@ func _physics_process(delta):
 		last_move_dir = direction
 	var target_angle = Vector3.BACK.signed_angle_to(last_move_dir,Vector3.UP)
 	mesh.global_rotation.y = lerp_angle(mesh.rotation.y,target_angle,rot_speed*delta)
+
+func give_item(scene):
+	hand.add_child(scene)
+	scene.global_transform = hand.global_transform
+
+func give_hat(hat:Hat):
+	head.top_hat().attach_hat(hat)

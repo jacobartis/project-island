@@ -1,11 +1,10 @@
-[gd_scene load_steps=32 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=27 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
 [ext_resource type="Script" uid="uid://i5jcj7ukvoen" path="res://addons/terrabrush/TerraBrush.cs" id="2_txoyx"]
 [ext_resource type="Resource" uid="uid://bettqf2d8bj7m" path="res://environments/textures/texture_set.tres" id="3_hhivy"]
 [ext_resource type="Shader" uid="uid://c3iwi0dduco0m" path="res://environments/shaders/water.gdshader" id="3_yl5gr"]
-[ext_resource type="Script" uid="uid://k2tvfxm6feg5" path="res://addons/terrabrush/Scripts/EditorResources/WaterResource.cs" id="4_nuute"]
 [ext_resource type="Texture2D" uid="uid://ihx6jkek0gjr" path="res://environments/beach/World/Heightmap_0_0.res" id="5_hhivy"]
 [ext_resource type="Script" uid="uid://dgf8vwa2n8r11" path="res://addons/terrabrush/Scripts/EditorResources/FoliageDefinitionResource.cs" id="5_ri83c"]
 [ext_resource type="Texture2D" uid="uid://cq31fx5rkd18i" path="res://environments/beach/World/Water_0_0.res" id="6_3qf2r"]
@@ -16,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://cwk5ycta2si3v" path="res://environments/beach/World/Foliage_0_0_0.res" id="10_vmgc7"]
 [ext_resource type="PackedScene" uid="uid://gyv32knfwkg1" path="res://npcs/test_man/test_man.tscn" id="14_sovbs"]
 [ext_resource type="Script" uid="uid://cnsu8rkv4vclo" path="res://environments/beach/water.gd" id="16_vmgc7"]
+[ext_resource type="PackedScene" uid="uid://6eb3gsxdms3f" path="res://npcs/fishing_man/fishing_man.tscn" id="17_6w15t"]
 
 [sub_resource type="Resource" id="Resource_57d7k"]
 script = ExtResource("5_ri83c")
@@ -43,59 +43,6 @@ script = ExtResource("6_vmgc7")
 Definition = SubResource("Resource_57d7k")
 metadata/_custom_type_script = "uid://d33x21vao7tj2"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhivy"]
-render_priority = 0
-shader = ExtResource("3_yl5gr")
-shader_parameter/WATER_COL = Color(0.0229434, 0.31975, 0.754473, 1)
-shader_parameter/WATER2_COL = Color(0.04, 0.35, 0.78, 1)
-shader_parameter/FOAM_COL = Color(0.8125, 0.9609, 0.9648, 1)
-shader_parameter/distortion_speed = 1.0
-shader_parameter/tile = Vector2(5, 5)
-shader_parameter/wave_speed = 1.0
-shader_parameter/wave_amplitude = 0.25
-shader_parameter/wave_frequency = 0.5
-shader_parameter/time_offset = 0.0
-shader_parameter/water_size = Vector2(128, 128)
-shader_parameter/water_transparency = 0.8
-shader_parameter/water_depth_factor = 0.3
-shader_parameter/foam_width = 0.5
-shader_parameter/foam_edge_softness = 0.05
-shader_parameter/foam_smoothness = 0.03
-shader_parameter/foam_distortion_speed = 0.5
-shader_parameter/foam_distortion_amount = 0.1
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ri83c"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vmgc7"]
-noise = SubResource("FastNoiseLite_ri83c")
-
-[sub_resource type="Resource" id="Resource_6w15t"]
-script = ExtResource("4_nuute")
-WaterFactor = 2.0
-WaterInnerOffset = 0.2
-WaterColor = Color(0.0714995, 0.253224, 0.999934, 1)
-WaterFresnelColor = Color(0.877616, 0.877616, 0.877616, 1)
-WaterMetallic = 0.0
-WaterRoughness = 0.0
-WaterNormalMap = SubResource("NoiseTexture2D_vmgc7")
-WaterNormalMap2 = SubResource("NoiseTexture2D_vmgc7")
-WaterTimeScale = 0.1
-WaterStrength = 0.4
-WaterWave = SubResource("NoiseTexture2D_vmgc7")
-WaterNoiseScale = 10.0
-WaterHeightScale = 0.15
-WaterColorDeep = Color(1, 1, 1, 1)
-WaterColorShallow = Color(1, 1, 1, 1)
-WaterBeersLaw = 2.0
-WaterDepthOffset = -0.75
-WaterEdgeScale = 0.1
-WaterNear = 0.5
-WaterFar = 100.0
-WaterEdgeColor = Color(1, 1, 1, 1)
-VisualInstanceLayers = 1
-CustomShader = SubResource("ShaderMaterial_hhivy")
-metadata/_custom_type_script = "uid://k2tvfxm6feg5"
-
 [sub_resource type="Resource" id="Resource_hhivy"]
 script = ExtResource("7_4hkxj")
 ZonePosition = Vector2i(0, 0)
@@ -109,24 +56,22 @@ WaterTexture = ExtResource("6_3qf2r")
 script = ExtResource("8_57d7k")
 Zones = [SubResource("Resource_hhivy")]
 
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_f4ava"]
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_smrik"]
 render_priority = 0
 shader = ExtResource("3_yl5gr")
 shader_parameter/WATER_COL = Color(0.00854927, 0.205342, 0.5087, 1)
 shader_parameter/WATER2_COL = Color(0.948115, 0.868779, 0.583123, 1)
 shader_parameter/FOAM_COL = Color(0.96891, 0.892931, 0.975747, 1)
-shader_parameter/distortion_speed = 1.5
+shader_parameter/distortion_speed = 0.5
 shader_parameter/tile = Vector2(1000, 1000)
 shader_parameter/wave_speed = 1.0
-shader_parameter/wave_amplitude = 0.5
-shader_parameter/wave_frequency = 0.05
+shader_parameter/wave_amplitude = 1.0
+shader_parameter/wave_frequency = 1.5
 shader_parameter/time_offset = 0.0
 shader_parameter/water_size = Vector2(128, 128)
-shader_parameter/water_transparency = 0.8
+shader_parameter/water_transparency = 0.9
 shader_parameter/water_depth_factor = 0.5
-shader_parameter/foam_width = 0.5
+shader_parameter/foam_width = 1.0
 shader_parameter/foam_edge_softness = 0.05
 shader_parameter/foam_smoothness = 0.03
 shader_parameter/foam_distortion_speed = 0.5
@@ -137,6 +82,8 @@ material = SubResource("ShaderMaterial_smrik")
 size = Vector2(1000, 1000)
 subdivide_width = 100
 subdivide_depth = 100
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ri83c"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_o6wd3"]
 sky_top_color = Color(0.405852, 0.358927, 0.852183, 1)
@@ -149,8 +96,6 @@ sky_material = SubResource("ProceduralSkyMaterial_o6wd3")
 background_mode = 2
 sky = SubResource("Sky_3436y")
 ambient_light_source = 3
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ri83c"]
 
 [node name="World" type="Node3D"]
 
@@ -170,22 +115,25 @@ CollisionMask = 3
 TextureSets = ExtResource("3_hhivy")
 Foliages = [SubResource("Resource_ief57")]
 Objects = []
-WaterDefinition = SubResource("Resource_6w15t")
 TerrainZones = SubResource("Resource_3qf2r")
 metadata/_custom_type_script = "uid://i5jcj7ukvoen"
 metadata/_edit_lock_ = false
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
-visible = false
-metadata/_edit_group_ = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_f4ava")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+[node name="Water" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 423.519)
 mesh = SubResource("PlaneMesh_xk8tw")
+skeleton = NodePath("")
+
+[node name="WaterPhysics" type="Area3D" parent="Water" groups=["fishable"]]
+gravity_space_override = 3
+gravity_point_center = Vector3(0, 1, 0)
+gravity_direction = Vector3(0, 1, 0)
+linear_damp = 100.0
+script = ExtResource("16_vmgc7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Water/WaterPhysics"]
+shape = SubResource("WorldBoundaryShape3D_ri83c")
+debug_color = Color(0.890196, 0.309804, 0.290196, 0.760784)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_gm3d4")
@@ -198,17 +146,8 @@ shadow_enabled = true
 [node name="Node3D" parent="." instance=ExtResource("14_sovbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.4394, 3.1344, 100.028)
 
-[node name="Water" type="Area3D" parent="." groups=["fishable"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 87)
-gravity_space_override = 3
-gravity_point_center = Vector3(0, 1, 0)
-gravity_direction = Vector3(0, 1, 0)
-linear_damp = 100.0
-script = ExtResource("16_vmgc7")
+[node name="Green2" parent="." instance=ExtResource("17_6w15t")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.0437, 2.16728, 94.4847)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Water"]
-shape = SubResource("WorldBoundaryShape3D_ri83c")
-debug_color = Color(0.890196, 0.309804, 0.290196, 0.760784)
-
-[connection signal="body_entered" from="Water" to="Water" method="_on_body_entered"]
-[connection signal="body_exited" from="Water" to="Water" method="_on_body_exited"]
+[connection signal="body_entered" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_entered"]
+[connection signal="body_exited" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_exited"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://dg82aurxgp5qj"
+path="res://.godot/imported/fishing_man.dialogue-aa6703a4694066f2abed86426d985764.tres"
+
+[deps]
+
+source_file="res://npcs/fishing_man/dialog/fishing_man.dialogue"
+dest_files=["res://.godot/imported/fishing_man.dialogue-aa6703a4694066f2abed86426d985764.tres"]
+
+[params]
+
+defaults=true

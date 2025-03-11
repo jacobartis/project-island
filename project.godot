@@ -74,4 +74,4 @@ use={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://npcs/test_man/dialog/hello.dialogue")
+locale/translations_pot_files=PackedStringArray("res://npcs/test_man/dialog/hello.dialogue", "res://npcs/fishing_man/dialog/fishing_man.dialogue")

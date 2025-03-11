@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c44g1lknhnnv5"]
+[gd_scene load_steps=24 format=3 uid="uid://c44g1lknhnnv5"]
 
 [ext_resource type="Script" uid="uid://dqxlkq4almea" path="res://player/items/fishing_rod/fishing_rod.gd" id="1_vjqo0"]
 [ext_resource type="Script" uid="uid://dxsfdc1aiiody" path="res://player/items/fishing_rod/bobber.gd" id="2_7bpsm"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://c6bqs72mj6ypw" path="res://player/items/fishing_rod/water-drop-85731.mp3" id="4_yi01o"]
 [ext_resource type="AudioStream" uid="uid://dgmmmbqlo5cu0" path="res://player/items/fishing_rod/CastB.mp3" id="5_yi01o"]
 [ext_resource type="AudioStream" uid="uid://b42623htpp12x" path="res://player/items/fishing_rod/CastC.mp3" id="6_8ydu5"]
+[ext_resource type="AudioStream" uid="uid://pldm5lnd5hff" path="res://player/items/fishing_rod/ding-101492.mp3" id="8_8ydu5"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vjqo0"]
 top_radius = 0.05
@@ -14,10 +15,14 @@ bottom_radius = 0.05
 height = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_vjqo0"]
+radius = 0.1
+height = 0.2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_vjqo0"]
+radius = 0.1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7bpsm"]
+radius = 0.1
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_pcaxv"]
 top_radius = 0.01
@@ -35,20 +40,98 @@ stream_0/stream = ExtResource("4_i7ygp")
 stream_1/stream = ExtResource("5_yi01o")
 stream_2/stream = ExtResource("6_8ydu5")
 
-[node name="FishingRod" type="Node3D"]
-script = ExtResource("1_vjqo0")
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_1epnr"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("8_8ydu5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yi01o"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8ydu5"]
+animation = &"full_charge"
+
+[sub_resource type="AnimationNodeBlendSpace1D" id="AnimationNodeBlendSpace1D_nlp1d"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_yi01o")
+blend_point_0/pos = 0.0
+blend_point_1/node = SubResource("AnimationNodeAnimation_8ydu5")
+blend_point_1/pos = 1.0
+
+[sub_resource type="Animation" id="Animation_1epnr"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RodHolder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_cl1dq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RodHolder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6fvp8"]
+resource_name = "full_charge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RodHolder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.309, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tef6g"]
+_data = {
+&"RESET": SubResource("Animation_cl1dq"),
+&"full_charge": SubResource("Animation_6fvp8"),
+&"idle": SubResource("Animation_1epnr")
+}
+
+[node name="FishingRod" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("1_vjqo0")
+max_charge = 20.0
+charge_speed = 15.0
+nibble_window = 2.0
+
+[node name="RodHolder" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RodHolder"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.314995, -0.32117)
 mesh = SubResource("CylinderMesh_vjqo0")
+skeleton = NodePath("../..")
 
-[node name="Head" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.634769, -0.662817)
+[node name="Head" type="Node3D" parent="RodHolder"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.98023e-08, 0, -2.98023e-08, 1, 0, 0.634769, -0.662817)
 
 [node name="CastHolder" type="Node" parent="."]
 
 [node name="Bobber" type="RigidBody3D" parent="CastHolder"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499478, -0.808851)
+visible = false
 collision_layer = 2
 collision_mask = 2
 freeze = true
@@ -66,8 +149,9 @@ shape = SubResource("SphereShape3D_vjqo0")
 shape = SubResource("SphereShape3D_7bpsm")
 
 [node name="CableHolder" type="Node3D" parent="." node_paths=PackedStringArray("source", "bobber")]
+visible = false
 script = ExtResource("2_pcaxv")
-source = NodePath("../Head")
+source = NodePath("../RodHolder/Head")
 bobber = NodePath("../CastHolder/Bobber")
 
 [node name="cable" type="MeshInstance3D" parent="CableHolder"]
@@ -83,14 +167,31 @@ one_shot = true
 
 [node name="NibbleSFX" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_8ydu5")
+bus = &"SFX"
 
 [node name="CastSFX" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_nlp1d")
 bus = &"SFX"
 
+[node name="Ding" type="AudioStreamPlayer3D" parent="."]
+stream = SubResource("AudioStreamRandomizer_1epnr")
+bus = &"SFX"
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeBlendSpace1D_nlp1d")
+anim_player = NodePath("../AnimationPlayer")
+parameters/blend_position = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tef6g")
+}
+
 [connection signal="cast" from="." to="CastHolder/Bobber" method="show"]
 [connection signal="cast" from="." to="CableHolder" method="show"]
 [connection signal="cast" from="." to="CastSFX" method="play"]
+[connection signal="catch" from="." to="." method="_on_catch"]
+[connection signal="catch" from="." to="Ding" method="play"]
 [connection signal="pull_back" from="." to="CastHolder/Bobber" method="hide"]
 [connection signal="pull_back" from="." to="CableHolder" method="hide"]
 [connection signal="pull_back" from="." to="Nibble" method="stop"]

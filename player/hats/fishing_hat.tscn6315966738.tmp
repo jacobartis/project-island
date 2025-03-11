@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://desk0y6tu7r3s"]
+
+[ext_resource type="ArrayMesh" uid="uid://cd0tjx1p2chw0" path="res://npcs/fishing_man/models/fishing_hat.obj" id="1_a5j4e"]
+[ext_resource type="Script" uid="uid://cdwsrmyu6n8g3" path="res://player/hats/hat.gd" id="1_xrwp1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_okfwm"]
+albedo_color = Color(0.433966, 0.947227, 0.924426, 1)
+
+[node name="Hat" type="Node3D"]
+script = ExtResource("1_xrwp1")
+
+[node name="Hat" type="MeshInstance3D" parent="." groups=["player_hat"]]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_okfwm")
+mesh = ExtResource("1_a5j4e")
+skeleton = NodePath("../../..")
+
+[node name="Base" type="Marker3D" parent="."]
+
+[node name="Top" type="Marker3D" parent="."]

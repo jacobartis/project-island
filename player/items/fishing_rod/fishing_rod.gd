@@ -2,14 +2,16 @@ extends Node3D
 
 signal cast()
 signal pull_back()
+signal catch()
+@onready var anim_t = $AnimationTree
 
 @onready var bobber = $CastHolder/Bobber
 var casted: bool = false
 var can_cast: bool = true
 
 @export_category("Charge")
-@export var max_charge: float = 100
-@export var charge_speed: float = 50
+@export var max_charge: float = 10
+@export var charge_speed: float = 5
 var hold_delay: float = 0
 var charge: float = 0
 var raw: float = 0
@@ -23,6 +25,10 @@ func _process(delta):
 	
 	if !casted and can_cast:
 		handle_charge(delta)
+	
+	if State.in_dialogue:
+		return
+	
 	if casted and Input.is_action_just_pressed("use") and nibble_avalible != 0:
 		start_catch()
 	elif casted and Input.is_action_just_pressed("use"):
@@ -32,7 +38,7 @@ func _process(delta):
 		nibble_avalible = max(nibble_avalible-delta,0)
 		if !bobber.water_bodies():
 			$Nibble.stop()
-		elif $Nibble.is_stopped():
+		elif $Nibble.is_stopped() and bobber.water_bodies():
 			$Nibble.start(randf_range(nibble_delay,nibble_delay*1.25))
 
 func handle_charge(delta):
@@ -47,6 +53,7 @@ func handle_charge(delta):
 		throw_cast(charge)
 		raw = 0
 		charge = 0
+	anim_t.set("parameters/blend_position",charge/max_charge)
 
 func throw_cast(power):
 	cast.emit()
@@ -62,6 +69,7 @@ func throw_cast(power):
 
 func start_catch():
 	print("FISH!")
+	catch.emit()
 	return_cast()
 
 func return_cast():
@@ -81,3 +89,7 @@ func _on_nibble_timeout():
 	nibble_avalible = nibble_window
 	if bobber.water_bodies():
 		$Nibble.start(randf_range(nibble_delay,nibble_delay*1.25))
+
+#TEMP TODO
+func _on_catch():
+	State.fish = "Caught"

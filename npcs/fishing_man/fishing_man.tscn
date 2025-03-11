@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://6eb3gsxdms3f"]
+
+[ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="1_5b8fl"]
+[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="2_8o0wa"]
+[ext_resource type="ArrayMesh" uid="uid://cd0tjx1p2chw0" path="res://npcs/fishing_man/models/fishing_hat.obj" id="2_pg8f8"]
+[ext_resource type="Script" uid="uid://cmui4yend4mi4" path="res://utils/scripts/dialogue_entry.gd" id="3_oxdw8"]
+[ext_resource type="Resource" uid="uid://dg82aurxgp5qj" path="res://npcs/fishing_man/dialog/fishing_man.dialogue" id="5_pg8f8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqp73"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vaodp"]
+albedo_color = Color(0.433966, 0.947227, 0.924426, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ttjmo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_64gnh"]
+cull_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.317647, 1, 1, 1)
+grow = true
+grow_amount = 0.02
+
+[node name="FishingMan" type="CharacterBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_bqp73")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_vaodp")
+mesh = ExtResource("1_5b8fl")
+
+[node name="Hat" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.19715, 0, -0.0336463, 0, 0.2, 0, 0.0336463, 0, -0.19715, 0.0236854, 0.771941, -0.027887)
+material_override = SubResource("StandardMaterial3D_vaodp")
+mesh = ExtResource("2_pg8f8")
+
+[node name="Interactable" type="Area3D" parent="."]
+script = ExtResource("2_8o0wa")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("CapsuleShape3D_ttjmo")
+
+[node name="Highlight" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Highlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+material_override = SubResource("StandardMaterial3D_64gnh")
+mesh = ExtResource("1_5b8fl")
+skeleton = NodePath("../..")
+
+[node name="DialogueEntry" type="Node" parent="."]
+script = ExtResource("3_oxdw8")
+dialogue_resource = ExtResource("5_pg8f8")
+
+[connection signal="hide_highlight" from="Interactable" to="Highlight" method="hide"]
+[connection signal="interacted" from="Interactable" to="DialogueEntry" method="start_dialogue"]
+[connection signal="show_highlight" from="Interactable" to="Highlight" method="show"]
