@@ -1,13 +1,13 @@
 [gd_scene load_steps=24 format=3 uid="uid://c44g1lknhnnv5"]
 
-[ext_resource type="Script" uid="uid://dqxlkq4almea" path="res://player/items/fishing_rod/fishing_rod.gd" id="1_vjqo0"]
-[ext_resource type="Script" uid="uid://dxsfdc1aiiody" path="res://player/items/fishing_rod/bobber.gd" id="2_7bpsm"]
-[ext_resource type="Script" uid="uid://bbeivmjkwbowe" path="res://player/items/fishing_rod/cable.gd" id="2_pcaxv"]
-[ext_resource type="AudioStream" uid="uid://dd5b6gdlh3w26" path="res://player/items/fishing_rod/CastA.mp3" id="4_i7ygp"]
-[ext_resource type="AudioStream" uid="uid://c6bqs72mj6ypw" path="res://player/items/fishing_rod/water-drop-85731.mp3" id="4_yi01o"]
-[ext_resource type="AudioStream" uid="uid://dgmmmbqlo5cu0" path="res://player/items/fishing_rod/CastB.mp3" id="5_yi01o"]
-[ext_resource type="AudioStream" uid="uid://b42623htpp12x" path="res://player/items/fishing_rod/CastC.mp3" id="6_8ydu5"]
-[ext_resource type="AudioStream" uid="uid://pldm5lnd5hff" path="res://player/items/fishing_rod/ding-101492.mp3" id="8_8ydu5"]
+[ext_resource type="Script" uid="uid://dqxlkq4almea" path="res://items/fishing_rod/fishing_rod.gd" id="1_vjqo0"]
+[ext_resource type="Script" uid="uid://dxsfdc1aiiody" path="res://items/fishing_rod/bobber.gd" id="2_7bpsm"]
+[ext_resource type="Script" uid="uid://bbeivmjkwbowe" path="res://items/fishing_rod/cable.gd" id="2_pcaxv"]
+[ext_resource type="AudioStream" uid="uid://dd5b6gdlh3w26" path="res://items/fishing_rod/CastA.mp3" id="4_i7ygp"]
+[ext_resource type="AudioStream" uid="uid://c6bqs72mj6ypw" path="res://items/fishing_rod/water-drop-85731.mp3" id="4_yi01o"]
+[ext_resource type="AudioStream" uid="uid://dgmmmbqlo5cu0" path="res://items/fishing_rod/CastB.mp3" id="5_yi01o"]
+[ext_resource type="AudioStream" uid="uid://b42623htpp12x" path="res://items/fishing_rod/CastC.mp3" id="6_8ydu5"]
+[ext_resource type="AudioStream" uid="uid://pldm5lnd5hff" path="res://items/fishing_rod/ding-101492.mp3" id="8_8ydu5"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_vjqo0"]
 top_radius = 0.05
@@ -57,21 +57,6 @@ blend_point_0/pos = 0.0
 blend_point_1/node = SubResource("AnimationNodeAnimation_8ydu5")
 blend_point_1/pos = 1.0
 
-[sub_resource type="Animation" id="Animation_1epnr"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("RodHolder:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
-}
-
 [sub_resource type="Animation" id="Animation_cl1dq"]
 length = 0.001
 tracks/0/type = "value"
@@ -102,6 +87,21 @@ tracks/0/keys = {
 "values": [Vector3(1.309, 0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_1epnr"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RodHolder:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_tef6g"]
 _data = {
 &"RESET": SubResource("Animation_cl1dq"),
@@ -110,14 +110,12 @@ _data = {
 }
 
 [node name="FishingRod" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("1_vjqo0")
 max_charge = 20.0
 charge_speed = 15.0
 nibble_window = 2.0
 
 [node name="RodHolder" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RodHolder"]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0.314995, -0.32117)

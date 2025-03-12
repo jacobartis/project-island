@@ -23,7 +23,7 @@ var nibble_avalible: float = 0
 
 func _process(delta):
 	
-	if !casted and can_cast:
+	if !casted and can_cast and !State.in_dialogue:
 		handle_charge(delta)
 	
 	if State.in_dialogue:
@@ -31,8 +31,10 @@ func _process(delta):
 	
 	if casted and Input.is_action_just_pressed("use") and nibble_avalible != 0:
 		start_catch()
+		nibble_avalible = 0
 	elif casted and Input.is_action_just_pressed("use"):
 		return_cast()
+		nibble_avalible = 0 
 	
 	if casted:
 		nibble_avalible = max(nibble_avalible-delta,0)
