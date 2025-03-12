@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c54r6db7t37wd"]
+
+[ext_resource type="Script" uid="uid://b4v1dfx12ar7q" path="res://items/scripts/item_resource.gd" id="1_5tlnn"]
+[ext_resource type="Texture2D" uid="uid://hpc8xchy6v4p" path="res://icon.svg" id="1_eft1h"]
+[ext_resource type="PackedScene" uid="uid://c44g1lknhnnv5" path="res://items/fishing_rod/fishing_rod.tscn" id="2_nhfvb"]
+
+[resource]
+script = ExtResource("1_5tlnn")
+item_name = "Fishing Rod"
+description = "A rod typicaly used to catch fish"
+icon = ExtResource("1_eft1h")
+scene = ExtResource("2_nhfvb")
+metadata/_custom_type_script = "uid://b4v1dfx12ar7q"
