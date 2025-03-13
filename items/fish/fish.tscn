@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://bjgtwcx3muhrg"]
+
+[ext_resource type="Script" uid="uid://dqkyxgcprq2ih" path="res://items/scripts/pickup.gd" id="1_20t80"]
+[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="1_u0876"]
+[ext_resource type="ArrayMesh" uid="uid://ctfxfp3avdby6" path="res://items/fish/fish.obj" id="2_20t80"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0hp6m"]
+size = Vector3(0.5271, 0.210693, 1.28882)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_20t80"]
+size = Vector3(0.402344, 0.0998535, 1)
+
+[node name="Fish" type="RigidBody3D"]
+
+[node name="Pickup" type="Node" parent="."]
+script = ExtResource("1_20t80")
+metadata/_custom_type_script = "uid://dqkyxgcprq2ih"
+
+[node name="Interactable" type="Area3D" parent="."]
+script = ExtResource("1_u0876")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_0hp6m")
+
+[node name="Fish" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+mesh = ExtResource("2_20t80")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_20t80")
+
+[connection signal="picked_up" from="Pickup" to="." method="queue_free"]
+[connection signal="interacted" from="Interactable" to="Pickup" method="pickup"]
