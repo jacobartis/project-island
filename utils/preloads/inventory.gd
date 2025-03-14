@@ -1,0 +1,66 @@
+extends Node
+
+
+var inventory: Dictionary ={
+	0:null,
+	1:null,
+	2:null,
+	3:null,
+	4:null
+}
+
+func find_item(id):
+	for x in inventory.keys():
+		if not inventory[x]:
+			continue
+		if inventory[x].id == id:
+			return x
+	return -1
+
+func find_empty():
+	for x in inventory.keys():
+		if not inventory[x]:
+			return x
+	return -1
+
+func get_item(slot):
+	return inventory[slot]
+
+
+func can_add_item(item:InventoryItem):
+	var invent_pos = Inventory.find_item(item.id)
+	if invent_pos != -1:
+		if InventoryItem.can_stack(Inventory.get_item(invent_pos),item):
+			return true
+	invent_pos = Inventory.find_empty()
+	if invent_pos == -1:
+		return false
+	else:
+		return true
+
+func add_to_best(item:InventoryItem):
+	var invent_pos = Inventory.find_item(item.id)
+	if invent_pos != -1:
+		if InventoryItem.can_stack(Inventory.get_item(invent_pos),item):
+			return add_item(item,invent_pos)
+	invent_pos = Inventory.find_empty()
+	if invent_pos == -1:
+		return 
+	else:
+		Inventory.add_item(item,invent_pos)
+		return add_item(item,invent_pos)
+
+func add_item(item:InventoryItem,slot:int):
+	if inventory[slot]:
+		if InventoryItem.can_stack(inventory[slot],item):
+			inventory[slot].stack += item.stack
+		return
+	inventory[slot] = item
+	print_status()
+
+func print_status():
+	for x in inventory.keys():
+		if inventory[x]:
+			print("{x}: {n}, {s}".format({"x":x,"n":inventory[x].get_item_info().item_name,"s":inventory[x].stack}))
+		else:
+			print("{x}: Empty".format({"x":x}))
