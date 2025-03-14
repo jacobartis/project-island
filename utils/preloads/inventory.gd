@@ -1,5 +1,6 @@
 extends Node
 
+signal inventory_update()
 
 var inventory: Dictionary ={
 	0:null,
@@ -63,6 +64,7 @@ func add_item(item:InventoryItem,slot:int):
 			inventory[slot].stack += item.stack
 		return
 	inventory[slot] = item
+	inventory_update.emit()
 	print_status()
 
 func remove_item_quant(id,quant):
@@ -76,6 +78,7 @@ func remove_item_quant(id,quant):
 			if inventory[x].stack == 0:
 				inventory[x] = null
 			quant -= sub
+	inventory_update.emit()
 	print_status()
 
 func print_status():
