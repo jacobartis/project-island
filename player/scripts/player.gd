@@ -1,6 +1,5 @@
 extends CharacterBody3D
 
-@onready var cam = $"3rdPCam/SpringArm3D/Cam"
 @export var mesh: MeshInstance3D
 @onready var hand = $MeshInstance3D/Hand
 @onready var head = $MeshInstance3D/Head
@@ -17,6 +16,7 @@ var water_height:float = 0
 func _ready():
 	Mouse.lock()
 	Inventory.slot_updated.connect(check_slot)
+	equip(current)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -24,16 +24,15 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta* (water_height-global_position.y)*0.1
 	elif not is_on_floor():
 		velocity += get_gravity() * delta
-
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and State.can_act():
 		velocity.y = JUMP_VELOCITY
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var raw_input = Input.get_vector("left", "right", "forward", "backward")
 	if not State.can_act():
 		raw_input = Vector2.ZERO
+	var cam = get_viewport().get_camera_3d()
 	var forward = cam.global_basis.z
 	var right = cam.global_basis.x
 	var direction = forward*raw_input.y + right*raw_input.x
@@ -49,7 +48,7 @@ func _physics_process(delta):
 	if direction.length()>.2:
 		last_move_dir = direction
 	var target_angle = Vector3.BACK.signed_angle_to(last_move_dir,Vector3.UP)
-	mesh.global_rotation.y = lerp_angle(mesh.rotation.y,target_angle,rot_speed*delta)
+	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y,target_angle,rot_speed*delta)
 
 #Very temp
 var current = 0
@@ -75,3 +74,4 @@ func equip(slot):
 
 func give_hat(hat:Hat):
 	head.top_hat().attach_hat(hat)
+	hat.owner = self
