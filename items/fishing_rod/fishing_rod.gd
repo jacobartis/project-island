@@ -3,9 +3,13 @@ extends Node3D
 signal cast()
 signal pull_back()
 signal catch()
-@onready var anim_t = $AnimationTree
 
+#TEMP
+const FISH = preload("res://items/fish/fish.tscn")
+
+@onready var anim_t = $AnimationTree
 @onready var bobber = $CastHolder/Bobber
+
 var casted: bool = false
 var can_cast: bool = true
 
@@ -50,7 +54,6 @@ func handle_charge(delta):
 	if hold_delay>0:
 		raw = raw+delta*charge_speed
 		charge = pingpong(raw,max_charge)
-		print(charge)
 	elif hold_delay == 0 and raw!=0:
 		throw_cast(charge)
 		raw = 0
@@ -95,3 +98,6 @@ func _on_nibble_timeout():
 #TEMP TODO
 func _on_catch():
 	State.fish = "Caught"
+	var fish = FISH.instantiate()
+	get_tree().get_current_scene().add_child(fish)
+	fish.global_position = global_position
