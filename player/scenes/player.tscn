@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://47y3qjxgnxm8"]
+[gd_scene load_steps=9 format=3 uid="uid://47y3qjxgnxm8"]
 
 [ext_resource type="Script" uid="uid://c5qhyasn0pg4" path="res://player/scripts/player.gd" id="1_blui3"]
 [ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="2_1pmg0"]
 [ext_resource type="Script" uid="uid://cqpej174tg5v3" path="res://player/scenes/3rdPCam.gd" id="2_ochrj"]
 [ext_resource type="Script" uid="uid://cx8x55y5dw6fu" path="res://player/scripts/interact_area.gd" id="4_7b0y7"]
 [ext_resource type="Script" uid="uid://cdwsrmyu6n8g3" path="res://player/hats/hat.gd" id="4_87uja"]
+[ext_resource type="Script" uid="uid://der4k3dxokh0e" path="res://player/scenes/hand.gd" id="4_tn8gd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7m2wk"]
 
@@ -32,6 +33,7 @@ shape = SubResource("BoxShape3D_ta1aj")
 
 [node name="Hand" type="Node3D" parent="MeshInstance3D"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.262478, 0.840992, -0.069225)
+script = ExtResource("4_tn8gd")
 
 [node name="Head" type="Node3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0234033, 1.80977, -0.0331453)
