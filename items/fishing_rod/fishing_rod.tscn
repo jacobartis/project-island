@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=3 uid="uid://c44g1lknhnnv5"]
+[gd_scene load_steps=25 format=3 uid="uid://c44g1lknhnnv5"]
 
 [ext_resource type="Script" uid="uid://dqxlkq4almea" path="res://items/fishing_rod/fishing_rod.gd" id="1_vjqo0"]
 [ext_resource type="Script" uid="uid://dxsfdc1aiiody" path="res://items/fishing_rod/bobber.gd" id="2_7bpsm"]
 [ext_resource type="Script" uid="uid://bbeivmjkwbowe" path="res://items/fishing_rod/cable.gd" id="2_pcaxv"]
+[ext_resource type="Script" uid="uid://b7kfcld3fhm3h" path="res://items/fishing_rod/fish_camera.gd" id="3_fdiw0"]
 [ext_resource type="AudioStream" uid="uid://dd5b6gdlh3w26" path="res://items/fishing_rod/CastA.mp3" id="4_i7ygp"]
 [ext_resource type="AudioStream" uid="uid://c6bqs72mj6ypw" path="res://items/fishing_rod/water-drop-85731.mp3" id="4_yi01o"]
 [ext_resource type="AudioStream" uid="uid://dgmmmbqlo5cu0" path="res://items/fishing_rod/CastB.mp3" id="5_yi01o"]
@@ -24,14 +25,14 @@ radius = 0.1
 [sub_resource type="SphereShape3D" id="SphereShape3D_7bpsm"]
 radius = 0.1
 
-[sub_resource type="CylinderMesh" id="CylinderMesh_pcaxv"]
-top_radius = 0.01
-bottom_radius = 0.01
-
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_8ydu5"]
 random_pitch = 1.1
 streams_count = 1
 stream_0/stream = ExtResource("4_yi01o")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_pcaxv"]
+top_radius = 0.01
+bottom_radius = 0.01
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_nlp1d"]
 random_pitch = 1.1
@@ -146,6 +147,23 @@ shape = SubResource("SphereShape3D_vjqo0")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CastHolder/Bobber/WaterDetector"]
 shape = SubResource("SphereShape3D_7bpsm")
 
+[node name="Node" type="Node" parent="CastHolder/Bobber"]
+
+[node name="Node3D" type="Node3D" parent="CastHolder/Bobber/Node" node_paths=PackedStringArray("bobber")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.499478, -0.808851)
+script = ExtResource("3_fdiw0")
+bobber = NodePath("../..")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CastHolder/Bobber/Node/Node3D"]
+spring_length = 3.0
+
+[node name="FishCamera" type="Camera3D" parent="CastHolder/Bobber/Node/Node3D/SpringArm3D"]
+
+[node name="NibbleSFX" type="AudioStreamPlayer3D" parent="CastHolder/Bobber/Node/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.499478, 0.808851)
+stream = SubResource("AudioStreamRandomizer_8ydu5")
+bus = &"SFX"
+
 [node name="CableHolder" type="Node3D" parent="." node_paths=PackedStringArray("source", "bobber")]
 visible = false
 script = ExtResource("2_pcaxv")
@@ -162,10 +180,6 @@ one_shot = true
 
 [node name="Nibble" type="Timer" parent="."]
 one_shot = true
-
-[node name="NibbleSFX" type="AudioStreamPlayer3D" parent="."]
-stream = SubResource("AudioStreamRandomizer_8ydu5")
-bus = &"SFX"
 
 [node name="CastSFX" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_nlp1d")
@@ -188,13 +202,15 @@ libraries = {
 [connection signal="cast" from="." to="CastHolder/Bobber" method="show"]
 [connection signal="cast" from="." to="CableHolder" method="show"]
 [connection signal="cast" from="." to="CastSFX" method="play"]
+[connection signal="cast" from="." to="CastHolder/Bobber/Node/Node3D" method="_on_fishing_rod_cast"]
 [connection signal="catch" from="." to="." method="_on_catch"]
 [connection signal="catch" from="." to="Ding" method="play"]
 [connection signal="pull_back" from="." to="CastHolder/Bobber" method="hide"]
 [connection signal="pull_back" from="." to="CableHolder" method="hide"]
 [connection signal="pull_back" from="." to="Nibble" method="stop"]
 [connection signal="pull_back" from="." to="CastSFX" method="play"]
+[connection signal="pull_back" from="." to="CastHolder/Bobber/Node/Node3D" method="_on_fishing_rod_pull_back"]
 [connection signal="timeout" from="CastDelay" to="." method="_on_cast_delay_timeout"]
 [connection signal="timeout" from="Nibble" to="." method="_on_nibble_timeout"]
 [connection signal="timeout" from="Nibble" to="CastHolder/Bobber" method="pull"]
-[connection signal="timeout" from="Nibble" to="NibbleSFX" method="play"]
+[connection signal="timeout" from="Nibble" to="CastHolder/Bobber/Node/Node3D/NibbleSFX" method="play"]
