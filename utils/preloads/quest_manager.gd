@@ -34,7 +34,6 @@ func check_complete(quest_id):
 
 #Used to manage quests
 func start_quest(quest_id):
-	print(quest_id)
 	if not is_quest(quest_id): return
 	if is_active(quest_id) or is_complete(quest_id): return
 	active_quests.append(quest_id)
