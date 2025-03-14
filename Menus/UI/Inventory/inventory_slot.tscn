@@ -1,0 +1,114 @@
+[gd_scene load_steps=7 format=3 uid="uid://fgm5j2w72t2d"]
+
+[ext_resource type="Script" uid="uid://c41j2vlpoj3tp" path="res://Menus/UI/Inventory/inventory_slot.gd" id="1_v6put"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6put"]
+
+[sub_resource type="Gradient" id="Gradient_ksv0e"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.485766, 0.413756, 0.864696, 0.211765)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ysucr"]
+gradient = SubResource("Gradient_ksv0e")
+
+[sub_resource type="Gradient" id="Gradient_v6put"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.805198, 0.313075, 0.285649, 0.211765)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ksv0e"]
+gradient = SubResource("Gradient_v6put")
+
+[node name="InventorySlot" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 1
+script = ExtResource("1_v6put")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+color = Color(0.151276, 0.151276, 0.151276, 1)
+
+[node name="Stack" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -171.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_v6put")
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Pickup" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+flat = true
+
+[node name="Highlighted" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_ysucr")
+
+[node name="Selected" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_ksv0e")
+
+[node name="Control" type="AspectRatioContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 174.0
+offset_top = 60.0
+offset_right = -174.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Icon" type="TextureRect" parent="Control"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GhostIcon" type="TextureRect" parent="Control"]
+modulate = Color(1, 1, 1, 0.368627)
+layout_mode = 2
+mouse_filter = 2
+
+[connection signal="highlighted" from="." to="Highlighted" method="show"]
+[connection signal="selected" from="." to="Selected" method="show"]
+[connection signal="unhighlighted" from="." to="Highlighted" method="hide"]
+[connection signal="unselected" from="." to="Selected" method="hide"]
+[connection signal="button_down" from="Pickup" to="." method="_on_pickup_pressed"]
