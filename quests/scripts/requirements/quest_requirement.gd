@@ -6,3 +6,6 @@ func is_complete():
 
 func get_status()-> String:
 	return "Override please"
+
+func get_completed() -> String:
+	return "This is finished"

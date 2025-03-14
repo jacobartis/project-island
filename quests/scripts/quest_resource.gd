@@ -12,6 +12,12 @@ func get_status():
 		status.append({"Status":x.get_status(),"Complete":x.is_complete()})
 	return status
 
+func get_completed_text():
+	var status = []
+	for x in requirements.values():
+		status.append(x.get_completed())
+	return status
+
 func is_complete():
 	return requirements.values().all(func (x): return x.is_complete())
 
