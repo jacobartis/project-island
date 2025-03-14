@@ -66,7 +66,9 @@
 				"db6753f6-9c39-47a9-8157-f35d96da0946",
 				"7e7f4da7-1f4b-4c1e-82e1-7aa178e880f2",
 				"aeb31edc-6b19-44e7-9380-bcf04924d6d0",
-				"b1e1990c-a484-4bba-984f-680737ab0c62"
+				"b1e1990c-a484-4bba-984f-680737ab0c62",
+				"99a8ed66-1678-4939-bad5-c6ab7704c72f",
+				"9ea2934e-5038-429d-8d8e-47265e7642b0"
 			]
 		}
 	],
@@ -207,6 +209,20 @@
 		{
 			"uuid": "b1e1990c-a484-4bba-984f-680737ab0c62",
 			"title": "Basic inventory UI",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "99a8ed66-1678-4939-bad5-c6ab7704c72f",
+			"title": "FISH CAMERA FISH CAMERA",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "9ea2934e-5038-429d-8d8e-47265e7642b0",
+			"title": "Scene transitions",
 			"description": "",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
 			"steps": []
