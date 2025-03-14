@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d0q362nl3443n"
+path="res://.godot/imported/washer.obj-06b0b438ff4c57f54405ec0fde6c69cb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/washer.obj-06b0b438ff4c57f54405ec0fde6c69cb.mesh"]
+
+source_file="res://environments/models/buildings/decorations/washer.obj"
+dest_files=["res://.godot/imported/washer.obj-06b0b438ff4c57f54405ec0fde6c69cb.mesh", "res://.godot/imported/washer.obj-06b0b438ff4c57f54405ec0fde6c69cb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

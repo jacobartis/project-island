@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cwpg1mg0e0t2x"
+path="res://.godot/imported/doorway.obj-8b75cdfe51f2320c382cffe68c9b2253.mesh"
+
+[deps]
+
+files=["res://.godot/imported/doorway.obj-8b75cdfe51f2320c382cffe68c9b2253.mesh"]
+
+source_file="res://environments/models/buildings/decorations/doorway.obj"
+dest_files=["res://.godot/imported/doorway.obj-8b75cdfe51f2320c382cffe68c9b2253.mesh", "res://.godot/imported/doorway.obj-8b75cdfe51f2320c382cffe68c9b2253.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

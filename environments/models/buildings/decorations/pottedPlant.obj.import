@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://vy2haeyugaye"
+path="res://.godot/imported/pottedPlant.obj-0897fd0e40c6c47c0ee62224a6f8f27d.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pottedPlant.obj-0897fd0e40c6c47c0ee62224a6f8f27d.mesh"]
+
+source_file="res://environments/models/buildings/decorations/pottedPlant.obj"
+dest_files=["res://.godot/imported/pottedPlant.obj-0897fd0e40c6c47c0ee62224a6f8f27d.mesh", "res://.godot/imported/pottedPlant.obj-0897fd0e40c6c47c0ee62224a6f8f27d.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

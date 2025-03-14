@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dilq4i30bvb1o"
+path="res://.godot/imported/kitchenStove.obj-66ab781e1d26d473935ecadd62a92972.mesh"
+
+[deps]
+
+files=["res://.godot/imported/kitchenStove.obj-66ab781e1d26d473935ecadd62a92972.mesh"]
+
+source_file="res://environments/models/buildings/decorations/kitchenStove.obj"
+dest_files=["res://.godot/imported/kitchenStove.obj-66ab781e1d26d473935ecadd62a92972.mesh", "res://.godot/imported/kitchenStove.obj-66ab781e1d26d473935ecadd62a92972.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

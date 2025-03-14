@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3g50jcxlcu2h"
+path="res://.godot/imported/kitchenBarEnd.obj-9db07c7e10b5695cc7a6ceec07d74566.mesh"
+
+[deps]
+
+files=["res://.godot/imported/kitchenBarEnd.obj-9db07c7e10b5695cc7a6ceec07d74566.mesh"]
+
+source_file="res://environments/models/buildings/decorations/kitchenBarEnd.obj"
+dest_files=["res://.godot/imported/kitchenBarEnd.obj-9db07c7e10b5695cc7a6ceec07d74566.mesh", "res://.godot/imported/kitchenBarEnd.obj-9db07c7e10b5695cc7a6ceec07d74566.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
