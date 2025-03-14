@@ -23,6 +23,8 @@ Mouse="*res://utils/preloads/mouse.gd"
 QuestManager="*res://utils/preloads/quest_manager.gd"
 ItemDict="*res://utils/preloads/item_dict.gd"
 Inventory="*res://utils/preloads/inventory.gd"
+UI="*res://Menus/UI/ui_preload.tscn"
+SceneHandler="*res://utils/preloads/scene_handler.gd"
 
 [dialogue_manager]
 
