@@ -23,9 +23,17 @@ func find_empty():
 			return x
 	return -1
 
+func item_count(id):
+	var count = 0
+	for x in inventory.keys():
+		if not inventory[x]:
+			continue
+		if inventory[x].id == id:
+			count += inventory[x].stack
+	return count
+
 func get_item(slot):
 	return inventory[slot]
-
 
 func can_add_item(item:InventoryItem):
 	var invent_pos = Inventory.find_item(item.id)
@@ -47,7 +55,6 @@ func add_to_best(item:InventoryItem):
 	if invent_pos == -1:
 		return 
 	else:
-		Inventory.add_item(item,invent_pos)
 		return add_item(item,invent_pos)
 
 func add_item(item:InventoryItem,slot:int):
@@ -56,6 +63,19 @@ func add_item(item:InventoryItem,slot:int):
 			inventory[slot].stack += item.stack
 		return
 	inventory[slot] = item
+	print_status()
+
+func remove_item_quant(id,quant):
+	for x in inventory.keys():
+		if not inventory[x]:
+			continue
+		if inventory[x].id == id:
+			var sub = min(inventory[x].stack,quant)
+			print(inventory[x].stack," ",quant)
+			inventory[x].stack -= sub
+			if inventory[x].stack == 0:
+				inventory[x] = null
+			quant -= sub
 	print_status()
 
 func print_status():
