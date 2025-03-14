@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://co4n32yk5flfg"
+path="res://.godot/imported/steamer.obj-f1a1b6c6f1d475beb473bb5b8e5b74ac.mesh"
+
+[deps]
+
+files=["res://.godot/imported/steamer.obj-f1a1b6c6f1d475beb473bb5b8e5b74ac.mesh"]
+
+source_file="res://environments/models/food/steamer.obj"
+dest_files=["res://.godot/imported/steamer.obj-f1a1b6c6f1d475beb473bb5b8e5b74ac.mesh", "res://.godot/imported/steamer.obj-f1a1b6c6f1d475beb473bb5b8e5b74ac.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

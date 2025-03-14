@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bjda8lx2k2fdx"
+path="res://.godot/imported/can.obj-23cc92c049b091c2ce890e1b2d4f4a7c.mesh"
+
+[deps]
+
+files=["res://.godot/imported/can.obj-23cc92c049b091c2ce890e1b2d4f4a7c.mesh"]
+
+source_file="res://environments/models/food/can.obj"
+dest_files=["res://.godot/imported/can.obj-23cc92c049b091c2ce890e1b2d4f4a7c.mesh", "res://.godot/imported/can.obj-23cc92c049b091c2ce890e1b2d4f4a7c.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

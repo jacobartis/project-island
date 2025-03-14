@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://2p2k5b6f5pru"
+path="res://.godot/imported/cake-slicer.obj-49ac9b31b0a2437c0e0d87bc0aab2bec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cake-slicer.obj-49ac9b31b0a2437c0e0d87bc0aab2bec.mesh"]
+
+source_file="res://environments/models/food/cake-slicer.obj"
+dest_files=["res://.godot/imported/cake-slicer.obj-49ac9b31b0a2437c0e0d87bc0aab2bec.mesh", "res://.godot/imported/cake-slicer.obj-49ac9b31b0a2437c0e0d87bc0aab2bec.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

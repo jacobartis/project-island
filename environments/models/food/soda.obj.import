@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://d3xsygdwy0knd"
+path="res://.godot/imported/soda.obj-6a190d37f64f5673e27ffe18b167dead.mesh"
+
+[deps]
+
+files=["res://.godot/imported/soda.obj-6a190d37f64f5673e27ffe18b167dead.mesh"]
+
+source_file="res://environments/models/food/soda.obj"
+dest_files=["res://.godot/imported/soda.obj-6a190d37f64f5673e27ffe18b167dead.mesh", "res://.godot/imported/soda.obj-6a190d37f64f5673e27ffe18b167dead.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

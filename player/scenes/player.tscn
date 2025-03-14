@@ -43,7 +43,8 @@ script = ExtResource("4_87uja")
 
 [node name="Top" type="Marker3D" parent="MeshInstance3D/Head"]
 
-[node name="3rdPCam" type="Node3D" parent="." node_paths=PackedStringArray("cam")]
+[node name="3rdPCam" type="Node3D" parent="." node_paths=PackedStringArray("cam") groups=["player_cam"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.712766, 0)
 script = ExtResource("2_ochrj")
 cam = NodePath("SpringArm3D/Cam")
 

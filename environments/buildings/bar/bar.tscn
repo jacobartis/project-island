@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://o3qnly1rjefv"]
+
+[ext_resource type="ArrayMesh" uid="uid://bf0oe7q2455bx" path="res://environments/models/buildings/tiles/floor.obj" id="1_7twnd"]
+
+[node name="Bar" type="Node3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.55462, 0, -1.07625)
+mesh = ExtResource("1_7twnd")

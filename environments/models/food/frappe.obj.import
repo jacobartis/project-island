@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://o0m7oj6oxl6u"
+path="res://.godot/imported/frappe.obj-1a6d8b8758a7e427a82117bf46d232de.mesh"
+
+[deps]
+
+files=["res://.godot/imported/frappe.obj-1a6d8b8758a7e427a82117bf46d232de.mesh"]
+
+source_file="res://environments/models/food/frappe.obj"
+dest_files=["res://.godot/imported/frappe.obj-1a6d8b8758a7e427a82117bf46d232de.mesh", "res://.godot/imported/frappe.obj-1a6d8b8758a7e427a82117bf46d232de.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

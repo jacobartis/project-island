@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c4csb2y5j6d2"
+path="res://.godot/imported/wall-window-round-detailed.obj-6faca49deae0cf24d9aa863377f41533.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wall-window-round-detailed.obj-6faca49deae0cf24d9aa863377f41533.mesh"]
+
+source_file="res://environments/models/buildings/tiles/wall-window-round-detailed.obj"
+dest_files=["res://.godot/imported/wall-window-round-detailed.obj-6faca49deae0cf24d9aa863377f41533.mesh", "res://.godot/imported/wall-window-round-detailed.obj-6faca49deae0cf24d9aa863377f41533.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
