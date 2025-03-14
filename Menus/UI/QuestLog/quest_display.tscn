@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://pjkf282ur4u4"]
+
+[ext_resource type="Script" uid="uid://brmard2il8sn5" path="res://Menus/UI/QuestLog/quest_display.gd" id="1_xhrjc"]
+
+[node name="QuestDisplay" type="HBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xhrjc")
+
+[node name="QName" type="Label" parent="."]
+layout_mode = 2
+
+[node name="Desc" type="Label" parent="."]
+layout_mode = 2
+
+[node name="Status" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Complete" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+color = Color(0, 1, 0.00392157, 1)
