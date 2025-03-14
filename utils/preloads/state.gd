@@ -20,15 +20,20 @@ func d_end(_d):
 	in_dialogue = false
 	end_dialogue.emit()
 
-func give_item(n):
-	var item = null
-	match n:
-		"rod":
-			item = preload("res://player/items/fishing_rod/fishing_rod.tscn").instantiate()
-		_:
-			push_warning("No such item "+n)
-			return
-	get_player().give_item(item)
+func can_give(id):
+	var item = InventoryItem.new().create(id)
+	return Inventory.can_add_item(item)
+
+func item_count(id):
+	return Inventory.item_count(id)
+
+func remove_item(id,quant):
+	return Inventory.remove_item_quant(id,quant)
+
+func give_item(id):
+	#Not the best, cant pass attributes
+	var item = InventoryItem.new().create(id)
+	Inventory.add_to_best(item)
 
 func give_hat(n):
 	var hat = null
