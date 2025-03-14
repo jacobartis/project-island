@@ -56,7 +56,10 @@ func update():
 		x.update()
 
 func check_selected():
-	var selected = get_tree().get_first_node_in_group("player").current
+	var player = get_tree().get_first_node_in_group("player")
+	if !player:
+		return
+	var selected = player.current
 	for x in slots:
 		if x == selected: continue
 		slots[x].set_selected(false)
