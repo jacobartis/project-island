@@ -25,6 +25,9 @@ elif State.item_count(1)>=1:
 	- Hand the man a fish
 		Fishing Man: [wave amp=25 freq=5]TASTY[/wave] thank you kind man.
 		Fishing Man: Here, take a souveinr
+		if QuestManager.is_active(0):
+			do QuestManager.set_manual_req(0,1,true)
+		do QuestManager.check_complete(0)
 		do State.remove_item(1,1)
 		do State.give_hat("fishing")
 	- Nah
