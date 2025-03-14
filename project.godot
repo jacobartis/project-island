@@ -20,6 +20,9 @@ config/icon="res://icon.svg"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 State="*res://utils/preloads/state.gd"
 Mouse="*res://utils/preloads/mouse.gd"
+QuestManager="*res://utils/preloads/quest_manager.gd"
+ItemDict="*res://utils/preloads/item_dict.gd"
+Inventory="*res://utils/preloads/inventory.gd"
 
 [dialogue_manager]
 
@@ -38,6 +41,16 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg", "res://addons/terrabrush/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://environments/": "yellow",
+"res://items/": "pink",
+"res://npcs/": "green",
+"res://quests/": "orange",
+"res://utils/": "purple"
+}
 
 [input]
 
@@ -69,6 +82,16 @@ interact={
 use={
 "deadzone": 0.2,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"canceled":false,"pressed":false,"double_click":false,"script":null)
+]
+}
+next_item={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":81,"key_label":0,"unicode":113,"location":0,"echo":false,"script":null)
+]
+}
+prev_item={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194306,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
 
