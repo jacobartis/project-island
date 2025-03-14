@@ -27,7 +27,7 @@ metadata/_custom_type_script = "uid://dy8xv6oonbwsi"
 
 [resource]
 script = ExtResource("1_3tsfs")
-quest_name = "Fishing"
+quest_name = "Catch a Fish"
 description = "Catch a fish and give it to the Fishing Man."
 requirements = Dictionary[int, ExtResource("1_0rp6k")]({
 0: SubResource("Resource_0od3t"),
