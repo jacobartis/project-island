@@ -2,14 +2,14 @@
 
 [ext_resource type="Texture2D" uid="uid://hpc8xchy6v4p" path="res://icon.svg" id="1_nev1f"]
 [ext_resource type="Script" uid="uid://b4v1dfx12ar7q" path="res://items/scripts/item_resource.gd" id="1_rbuu2"]
-[ext_resource type="PackedScene" uid="uid://bjgtwcx3muhrg" path="res://items/fish/fish.tscn" id="2_wxjr5"]
+[ext_resource type="PackedScene" uid="uid://dqcibm375dr8y" path="res://items/fish/fish_held.tscn" id="2_nev1f"]
 
 [resource]
 script = ExtResource("1_rbuu2")
 item_name = "Fish"
 description = "Cool ass fish, just look at it"
 icon = ExtResource("1_nev1f")
-scene = ExtResource("2_wxjr5")
+scene = ExtResource("2_nev1f")
 max_stack = 99
 additional_info_keys = Array[String]([])
 metadata/_custom_type_script = "uid://b4v1dfx12ar7q"
