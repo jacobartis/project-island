@@ -1,7 +1,9 @@
 extends Control
-@onready var msg_storage = $MsgStorage
 
 const QUEST_DISPLAY = preload("res://Menus/UI/QuestLog/quest_display.tscn")
+
+@export var active_storage:VBoxContainer
+@export var complete_storage:VBoxContainer
 
 func _process(delta):
 	if State.in_dialogue: return
@@ -16,9 +18,13 @@ func _process(delta):
 		update()
 
 func update():
-	msg_storage.get_children().all(func (x):x.queue_free())
-	for id in QuestManager.active_quests:
+	display_quest(active_storage,QuestManager.active_quests)
+	display_quest(complete_storage,QuestManager.completed_quests)
+
+func display_quest(con:VBoxContainer,quests:Array):
+	con.get_children().all(func (x):x.queue_free())
+	for id in quests:
 		var disp = QUEST_DISPLAY.instantiate()
 		var quest = QuestManager.get_quest(id)
 		disp.display_quest(quest)
-		msg_storage.add_child(disp)
+		con.add_child(disp)

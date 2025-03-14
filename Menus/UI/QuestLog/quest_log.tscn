@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://csioqx6snfcj5" path="res://Menus/UI/QuestLog/quest_log.gd" id="1_yeoqb"]
 
-[node name="QuestLog" type="Control"]
+[node name="QuestLog" type="Control" node_paths=PackedStringArray("active_storage", "complete_storage")]
 layout_mode = 3
 anchor_left = 0.091
 anchor_top = 0.088
@@ -15,20 +15,53 @@ offset_bottom = 0.0239868
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yeoqb")
+active_storage = NodePath("TabContainer/Active/ScrollContainer/MsgStorage")
+complete_storage = NodePath("TabContainer/Completed/ScrollContainer/MsgStorage")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.493545, 0.493546, 0.493546, 1)
+current_tab = 0
 
-[node name="MsgStorage" type="VBoxContainer" parent="."]
+[node name="Active" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Active"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 12.0
+offset_right = -11.9999
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MsgStorage" type="VBoxContainer" parent="TabContainer/Active/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 2
+
+[node name="Completed" type="TabBar" parent="TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Completed"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="MsgStorage" type="VBoxContainer" parent="TabContainer/Completed/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
