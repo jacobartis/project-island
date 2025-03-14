@@ -22,9 +22,10 @@ func update():
 	display_quest(complete_storage,QuestManager.completed_quests)
 
 func display_quest(con:VBoxContainer,quests:Array):
-	con.get_children().all(func (x):x.queue_free())
+	for x in con.get_children():
+		x.queue_free()
+	print(con.get_children())
 	for id in quests:
 		var disp = QUEST_DISPLAY.instantiate()
-		var quest = QuestManager.get_quest(id)
-		disp.display_quest(quest)
+		disp.display_quest(id)
 		con.add_child(disp)
