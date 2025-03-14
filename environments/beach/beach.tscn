@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=33 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
@@ -16,9 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://gyv32knfwkg1" path="res://npcs/test_man/test_man.tscn" id="14_sovbs"]
 [ext_resource type="Script" uid="uid://cnsu8rkv4vclo" path="res://environments/beach/water.gd" id="16_vmgc7"]
 [ext_resource type="PackedScene" uid="uid://6eb3gsxdms3f" path="res://npcs/fishing_man/fishing_man.tscn" id="17_6w15t"]
-[ext_resource type="PackedScene" uid="uid://dyqhfqab8y1k3" path="res://Menus/UI/QuestLog/quest_log.tscn" id="17_ccg1x"]
-[ext_resource type="PackedScene" uid="uid://cqmj0bctttqg" path="res://Menus/UI/QuestLog/quest_popup.tscn" id="18_ccg1x"]
-[ext_resource type="PackedScene" uid="uid://h3dq6y7m3yx0" path="res://Menus/UI/Inventory/inventory_menu.tscn" id="19_0aeod"]
+[ext_resource type="ArrayMesh" uid="uid://d3sb2sp1f57vm" path="res://environments/models/buildings/tiles/door-rotate-square-b.obj" id="17_10mp2"]
+[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="18_w05xj"]
+[ext_resource type="Material" uid="uid://cpq441uyqkg54" path="res://utils/resources/highlight_material.tres" id="19_4507h"]
+[ext_resource type="Script" uid="uid://b1regs7orop10" path="res://environments/scripts/scene_transition.gd" id="20_kkc5w"]
+[ext_resource type="Script" uid="uid://qtep6gsamlqf" path="res://environments/scripts/exit_point.gd" id="21_ief57"]
 
 [sub_resource type="Resource" id="Resource_57d7k"]
 script = ExtResource("5_ri83c")
@@ -100,6 +102,9 @@ background_mode = 2
 sky = SubResource("Sky_3436y")
 ambient_light_source = 3
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_inj3g"]
+size = Vector3(0.147461, 2.2207, 1)
+
 [node name="World" type="Node3D"]
 
 [node name="Green" parent="." instance=ExtResource("1_ri83c")]
@@ -152,18 +157,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.4394, 3.1344, 100.028)
 [node name="Green2" parent="." instance=ExtResource("17_6w15t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.0437, 2.16728, 94.4847)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Door-rotate-square-b" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -69.8513, 1, 86.0089)
+mesh = ExtResource("17_10mp2")
 
-[node name="QuestLog" parent="CanvasLayer" instance=ExtResource("17_ccg1x")]
+[node name="Interactable" type="Area3D" parent="Door-rotate-square-b"]
+script = ExtResource("18_w05xj")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door-rotate-square-b/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.42075)
+shape = SubResource("BoxShape3D_inj3g")
+
+[node name="Highlight" type="Node3D" parent="Door-rotate-square-b"]
 visible = false
-mouse_filter = 1
 
-[node name="QuestPopup" parent="CanvasLayer" instance=ExtResource("18_ccg1x")]
-mouse_filter = 1
+[node name="Door-rotate-square-b" type="MeshInstance3D" parent="Door-rotate-square-b/Highlight"]
+material_override = ExtResource("19_4507h")
+mesh = ExtResource("17_10mp2")
+skeleton = NodePath("../..")
 
-[node name="InventoryMenu" parent="CanvasLayer" instance=ExtResource("19_0aeod")]
-visible = false
-mouse_filter = 1
+[node name="SceneTransition" type="Node" parent="Door-rotate-square-b"]
+script = ExtResource("20_kkc5w")
+file = "uid://o3qnly1rjefv"
+
+[node name="ExitPoint" type="Marker3D" parent="Door-rotate-square-b"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326286, 1, 0.371101)
+script = ExtResource("21_ief57")
+metadata/_custom_type_script = "uid://qtep6gsamlqf"
 
 [connection signal="body_entered" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_entered"]
 [connection signal="body_exited" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_exited"]
+[connection signal="hide_highlight" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/Highlight" method="hide"]
+[connection signal="interacted" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/SceneTransition" method="transition"]
+[connection signal="show_highlight" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/Highlight" method="show"]
