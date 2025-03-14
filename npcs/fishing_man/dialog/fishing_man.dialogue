@@ -3,16 +3,32 @@ if State.rod == "":
 	Fishing Man: Hi, I'm the fishing man.
 	Fishing Man: I [shake rate=20 level=10]LOVE[/shake] fishing.
 	Fishing Man: Heres my rod, please catch me a fish.
-	set State.rod = "true"
-	do State.give_item("rod")
-elif State.fish != "":
+	if State.can_give(0):
+		set State.rod = "true"
+		do State.give_item(0)
+		do QuestManager.start_quest(0)
+	else:
+		set State.rod = "fail"
+		Fishing Man: Whoops, looks like you don't have room for my [wave amp=25 freq=5]rod[/wave].
+		Fishing Man: Please come back when you have space 
+elif State.rod == "fail":
+	Fishing Man: Heres my rod, please catch me a fish.
+	if State.can_give(0):
+		set State.rod = "true"
+		do State.give_item(0)
+		do QuestManager.start_quest(0)
+	else:
+		Fishing Man: Whoops, looks like you don't have room for my [wave amp=25 freq=5]rod[/wave].
+		Fishing Man: Please come back when you have space 
+elif State.item_count(1)>=1:
 	Fishing Man: [wave amp=25 freq=5]oooooooo[/wave] you have fish?
 	- Hand the man a fish
 		Fishing Man: [wave amp=25 freq=5]TASTY[/wave] thank you kind man.
 		Fishing Man: Here, take a souveinr
+		do State.remove_item(1,1)
 		do State.give_hat("fishing")
 	- Nah
 		Fishing Man: :(
-elif State.fish == "":
+elif State.item_count(1)==0:
 	Fishing Man: Go catch some fish, make me proud!
 => END
