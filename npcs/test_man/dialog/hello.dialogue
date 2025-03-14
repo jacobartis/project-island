@@ -1,4 +1,8 @@
 ~ white
+if not QuestManager.is_active(1):
+	do QuestManager.start_quest(1)
+if QuestManager.is_active(1):
+	do QuestManager.set_manual_req(1,0,true)
 if State.test_state == "":
 	Goober: What's up fucker, this is some dialogue!
 	~ question
@@ -16,6 +20,10 @@ elif State.test_state == "spoken":
 => END
 
 ~ green
+if not QuestManager.is_active(1):
+	do QuestManager.start_quest(1)
+if QuestManager.is_active(1):
+	do QuestManager.set_manual_req(1,1,true)
 if State.test_state == "":
 	Green: How's it going man, nice to see some fresh faces.
 elif State.test_state == "set":

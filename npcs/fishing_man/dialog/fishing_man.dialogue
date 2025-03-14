@@ -1,4 +1,8 @@
 ~ start
+if not QuestManager.is_active(1):
+	do QuestManager.start_quest(1)
+if QuestManager.is_active(1):
+	do QuestManager.set_manual_req(1,2,true)
 if State.rod == "":
 	Fishing Man: Hi, I'm the fishing man.
 	Fishing Man: I [shake rate=20 level=10]LOVE[/shake] fishing.
@@ -20,6 +24,9 @@ elif State.rod == "fail":
 	else:
 		Fishing Man: Whoops, looks like you don't have room for my [wave amp=25 freq=5]rod[/wave].
 		Fishing Man: Please come back when you have space 
+elif QuestManager.is_complete(0):
+	Fishing Man: Thanks for that fish.
+	Fishing Man: Be sure to explore the rest of the cove. Theres much more fish to catch.
 elif State.item_count(1)>=1:
 	Fishing Man: [wave amp=25 freq=5]oooooooo[/wave] you have fish?
 	- Hand the man a fish
