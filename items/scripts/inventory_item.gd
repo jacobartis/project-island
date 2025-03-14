@@ -31,4 +31,6 @@ static func can_stack(a:InventoryItem,b:InventoryItem):
 	return a.get_item_info().max_stack-a.stack>=b.stack
 
 static func equal(a:InventoryItem,b:InventoryItem):
+	if not a and not b: return true
+	if not a or not b: return false
 	return a.id == b.id and a.additional_info.values() == b.additional_info.values()
