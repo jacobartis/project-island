@@ -21,6 +21,9 @@ func transition(file:String,exit_id:int):
 	var exit = exits.filter(func (x): return x.id == exit_id)[0]
 	if not exit:
 		exit = exits[0]
+	#TODO Temp to remove existing player from scenes
+	if get_tree().get_first_node_in_group("player"):
+		get_tree().get_first_node_in_group("player").queue_free()
 	var player = packed_player.instantiate()
 	get_tree().current_scene.add_child(player)
 	player.global_transform = exit.global_transform
