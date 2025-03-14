@@ -1,0 +1,49 @@
+[gd_scene load_steps=3 format=3 uid="uid://h3dq6y7m3yx0"]
+
+[ext_resource type="Script" uid="uid://cohv2kilwrijt" path="res://Menus/UI/Inventory/inventory_menu.gd" id="1_xrdhn"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qdh43"]
+font_size = 32
+
+[node name="InventoryMenu" type="Panel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 148.0
+offset_top = 85.0
+offset_right = -148.0
+offset_bottom = -85.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xrdhn")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.063
+offset_left = -58.0
+offset_top = 14.0
+offset_right = 58.0
+offset_bottom = 14.176
+grow_horizontal = 2
+text = "Inventory"
+label_settings = SubResource("LabelSettings_qdh43")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SlotContainer" type="GridContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.089
+anchor_top = 0.137
+anchor_right = 0.911
+anchor_bottom = 0.863
+offset_left = -0.528
+offset_top = 0.223991
+offset_right = 0.527954
+offset_bottom = -0.223999
+grow_horizontal = 2
+grow_vertical = 2
+columns = 5
