@@ -1,14 +1,15 @@
 extends Node
 
 signal inventory_update()
+signal slot_updated(slot)
 
-var inventory: Dictionary ={
-	0:null,
-	1:null,
-	2:null,
-	3:null,
-	4:null
-}
+var inventory_size = 30
+
+var inventory: Dictionary ={}
+
+func _ready():
+	for x in inventory_size:
+		inventory[x] = null
 
 func find_item(id):
 	for x in inventory.keys():
@@ -35,6 +36,11 @@ func item_count(id):
 
 func get_item(slot):
 	return inventory[slot]
+
+func can_place_item(item:InventoryItem,pos:int):
+	var curr_item = Inventory.get_item(pos)
+	if not curr_item: return true
+	return InventoryItem.can_stack(curr_item,item)
 
 func can_add_item(item:InventoryItem):
 	var invent_pos = Inventory.find_item(item.id)
@@ -65,9 +71,19 @@ func add_item(item:InventoryItem,slot:int):
 		return
 	inventory[slot] = item
 	inventory_update.emit()
+	slot_updated.emit(slot)
 	print_status()
 
+func move_item(a:int, b:int):
+	if not a in inventory or not b in inventory: return
+	var a_temp = inventory[a]
+	inventory[a] = inventory[b]
+	inventory[b] = a_temp
+	slot_updated.emit(a)
+	slot_updated.emit(b)
+
 func remove_item_quant(id,quant):
+	var slots = []
 	for x in inventory.keys():
 		if not inventory[x]:
 			continue
@@ -77,9 +93,17 @@ func remove_item_quant(id,quant):
 			inventory[x].stack -= sub
 			if inventory[x].stack == 0:
 				inventory[x] = null
+			slots.append(x)
 			quant -= sub
 	inventory_update.emit()
+	for x in slots:
+		slot_updated.emit(x)
 	print_status()
+
+func remove_item(pos:int):
+	if not pos in inventory: return
+	inventory[pos] = null
+	slot_updated.emit(pos)
 
 func print_status():
 	for x in inventory.keys():
