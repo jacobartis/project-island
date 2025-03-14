@@ -9,8 +9,17 @@ var third: bool = true
 var sens: float = 0.01
 var limit = deg_to_rad(75)
 
+func _ready():
+	enable()
+
 func _input(event):
 	move_cam(event as InputEventMouseMotion)
+
+func disable():
+	cam.current = false
+
+func enable():
+	cam.current = true
 
 func _process(delta):
 	if third:
