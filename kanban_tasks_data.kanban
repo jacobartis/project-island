@@ -41,7 +41,8 @@
 				"18cf47ff-0215-46ab-b530-aa2a9b1ff17e",
 				"e1a35606-c70c-480f-ba81-35f6ce687793",
 				"7454432a-d63f-4730-b701-95070ef5d645",
-				"8ff7bafc-f33d-471c-9500-8815ebc966ba"
+				"8ff7bafc-f33d-471c-9500-8815ebc966ba",
+				"5057cc7d-ff5b-4afc-82df-78dae3d16616"
 			]
 		},
 		{
@@ -52,7 +53,9 @@
 		{
 			"uuid": "a6d6735f-943b-4f62-854f-1dd796d5a882",
 			"title": "Working on",
-			"tasks": []
+			"tasks": [
+				"b1e1990c-a484-4bba-984f-680737ab0c62"
+			]
 		},
 		{
 			"uuid": "a8491082-e66a-46b4-802d-98f94f81fd19",
@@ -191,6 +194,20 @@
 		{
 			"uuid": "7e7f4da7-1f4b-4c1e-82e1-7aa178e880f2",
 			"title": "Simple inventory",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "5057cc7d-ff5b-4afc-82df-78dae3d16616",
+			"title": "Goober band",
+			"description": "Get the band back together.\nHire them for live music",
+			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
+			"steps": []
+		},
+		{
+			"uuid": "b1e1990c-a484-4bba-984f-680737ab0c62",
+			"title": "Basic inventory UI",
 			"description": "",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
 			"steps": []
