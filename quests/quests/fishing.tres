@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=10 format=3 uid="uid://bmxxgsa8bg1n2"]
+
+[ext_resource type="Script" uid="uid://bfagaweslhd06" path="res://quests/scripts/requirements/quest_requirement.gd" id="1_0rp6k"]
+[ext_resource type="Script" uid="uid://8g8lb6bi7vfj" path="res://quests/scripts/quest_resource.gd" id="1_3tsfs"]
+[ext_resource type="Script" uid="uid://tdfcfw3qilj6" path="res://quests/scripts/rewards/quest_reward.gd" id="2_64rq6"]
+[ext_resource type="Script" uid="uid://24lossxyn1pj" path="res://quests/scripts/requirements/item_requirement.gd" id="2_hy5yh"]
+[ext_resource type="Script" uid="uid://rwa801ifftad" path="res://quests/scripts/requirements/manual_requirement.gd" id="3_dlv4l"]
+[ext_resource type="Script" uid="uid://dy8xv6oonbwsi" path="res://quests/scripts/rewards/item_reward.gd" id="5_dlv4l"]
+
+[sub_resource type="Resource" id="Resource_0od3t"]
+script = ExtResource("2_hy5yh")
+item_id = 1
+quant = 1
+metadata/_custom_type_script = "uid://24lossxyn1pj"
+
+[sub_resource type="Resource" id="Resource_iv5kw"]
+script = ExtResource("3_dlv4l")
+description = "Hand the fish to the Fishing Man"
+metadata/_custom_type_script = "uid://rwa801ifftad"
+
+[sub_resource type="Resource" id="Resource_5x8xl"]
+script = ExtResource("5_dlv4l")
+item_id = 1
+quant = 2
+additional_info = {}
+metadata/_custom_type_script = "uid://dy8xv6oonbwsi"
+
+[resource]
+script = ExtResource("1_3tsfs")
+quest_name = "Fishing"
+description = "Catch a fish and give it to the Fishing Man."
+requirements = Dictionary[int, ExtResource("1_0rp6k")]({
+0: SubResource("Resource_0od3t"),
+1: SubResource("Resource_iv5kw")
+})
+rewards = Array[ExtResource("2_64rq6")]([SubResource("Resource_5x8xl")])
+metadata/_custom_type_script = "uid://8g8lb6bi7vfj"
