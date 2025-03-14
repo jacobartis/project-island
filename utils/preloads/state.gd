@@ -4,6 +4,7 @@ signal start_dialogue()
 signal end_dialogue()
 
 var in_dialogue: bool = false
+var in_menu: bool = false
 
 #Bad but single player so we good
 func get_player():
@@ -19,6 +20,9 @@ func d_start(_d):
 func d_end(_d):
 	in_dialogue = false
 	end_dialogue.emit()
+
+func can_act():
+	return not in_dialogue and not in_menu
 
 func can_give(id):
 	var item = InventoryItem.new().create(id)

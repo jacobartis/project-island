@@ -30,7 +30,7 @@ func _process(delta):
 	if !casted and can_cast and !State.in_dialogue:
 		handle_charge(delta)
 	
-	if State.in_dialogue:
+	if not State.can_act():
 		return
 	
 	if casted and Input.is_action_just_pressed("use") and nibble_avalible != 0:

@@ -16,6 +16,7 @@ var water_height:float = 0
 
 func _ready():
 	Mouse.lock()
+	Inventory.slot_updated.connect(check_slot)
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -25,13 +26,13 @@ func _physics_process(delta):
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and !State.in_dialogue:
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and State.can_act():
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var raw_input = Input.get_vector("left", "right", "forward", "backward")
-	if State.in_dialogue:
+	if not State.can_act():
 		raw_input = Vector2.ZERO
 	var forward = cam.global_basis.z
 	var right = cam.global_basis.x
@@ -55,10 +56,14 @@ var current = 0
 
 func _process(delta):
 	if Input.is_action_just_pressed("next_item"):
-		current = posmod(current+1,5)
+		current = posmod(current+1,Inventory.inventory_size)
 		equip(current)
 	elif Input.is_action_just_pressed("prev_item"):
-		current = posmod(current-1,5)
+		current = posmod(current-1,Inventory.inventory_size)
+		equip(current)
+
+func check_slot(id):
+	if id == current:
 		equip(current)
 
 func equip(slot):
