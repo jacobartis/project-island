@@ -9,7 +9,7 @@ func _input(event):
 	move_cam(event as InputEventMouseMotion)
 
 func move_cam(event:InputEventMouseMotion):
-	if !event or State.in_dialogue: return
+	if !event or not State.can_act(): return
 	var y = event.relative.y
 	var x = event.relative.x
 	rotation.x -= y*sens
