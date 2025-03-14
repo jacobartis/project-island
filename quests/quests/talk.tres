@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=10 format=3 uid="uid://bdkqqk06np0e5"]
+
+[ext_resource type="Script" uid="uid://bfagaweslhd06" path="res://quests/scripts/requirements/quest_requirement.gd" id="1_nwflo"]
+[ext_resource type="Script" uid="uid://tdfcfw3qilj6" path="res://quests/scripts/rewards/quest_reward.gd" id="2_nrls5"]
+[ext_resource type="Script" uid="uid://rwa801ifftad" path="res://quests/scripts/requirements/manual_requirement.gd" id="2_tcnkn"]
+[ext_resource type="Script" uid="uid://8g8lb6bi7vfj" path="res://quests/scripts/quest_resource.gd" id="3_tcnkn"]
+[ext_resource type="Script" uid="uid://dy8xv6oonbwsi" path="res://quests/scripts/rewards/item_reward.gd" id="4_tcnkn"]
+
+[sub_resource type="Resource" id="Resource_caft8"]
+script = ExtResource("2_tcnkn")
+description = "Talk to the White guy"
+metadata/_custom_type_script = "uid://rwa801ifftad"
+
+[sub_resource type="Resource" id="Resource_p3r70"]
+script = ExtResource("2_tcnkn")
+description = "Talk to the Green guy"
+metadata/_custom_type_script = "uid://rwa801ifftad"
+
+[sub_resource type="Resource" id="Resource_bph32"]
+script = ExtResource("2_tcnkn")
+description = "Talk to the Fishing Man"
+metadata/_custom_type_script = "uid://rwa801ifftad"
+
+[sub_resource type="Resource" id="Resource_06arr"]
+script = ExtResource("4_tcnkn")
+item_id = 0
+quant = 3
+additional_info = {}
+metadata/_custom_type_script = "uid://dy8xv6oonbwsi"
+
+[resource]
+script = ExtResource("3_tcnkn")
+quest_name = "Talk to people"
+description = "Talk to everyone around the cove."
+requirements = Dictionary[int, ExtResource("1_nwflo")]({
+0: SubResource("Resource_caft8"),
+1: SubResource("Resource_p3r70"),
+2: SubResource("Resource_bph32")
+})
+rewards = Array[ExtResource("2_nrls5")]([SubResource("Resource_06arr")])
+metadata/_custom_type_script = "uid://8g8lb6bi7vfj"
