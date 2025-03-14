@@ -40,20 +40,21 @@
 				"b0a184d8-c50e-48c1-bfd4-f335f57083dc",
 				"18cf47ff-0215-46ab-b530-aa2a9b1ff17e",
 				"e1a35606-c70c-480f-ba81-35f6ce687793",
-				"7454432a-d63f-4730-b701-95070ef5d645"
+				"7454432a-d63f-4730-b701-95070ef5d645",
+				"8ff7bafc-f33d-471c-9500-8815ebc966ba"
 			]
 		},
 		{
 			"uuid": "cdc30063-638b-4816-91b5-43d3c128d759",
 			"title": "Todo",
-			"tasks": [
-				"aeb31edc-6b19-44e7-9380-bcf04924d6d0"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "a6d6735f-943b-4f62-854f-1dd796d5a882",
 			"title": "Working on",
-			"tasks": []
+			"tasks": [
+				"aeb31edc-6b19-44e7-9380-bcf04924d6d0"
+			]
 		},
 		{
 			"uuid": "a8491082-e66a-46b4-802d-98f94f81fd19",
@@ -61,7 +62,8 @@
 			"tasks": [
 				"66101ff0-fca4-45a6-b81a-982c3b28c1c1",
 				"4dec619b-7197-457c-ad92-5dd79d604607",
-				"743a5a93-185e-4c5a-902d-2c54020adb3b"
+				"743a5a93-185e-4c5a-902d-2c54020adb3b",
+				"f6ce778d-3e1e-4711-837a-f7ff0ca5a059"
 			]
 		}
 	],
@@ -162,6 +164,20 @@
 			"title": "Add simple quest system?",
 			"description": "",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "f6ce778d-3e1e-4711-837a-f7ff0ca5a059",
+			"title": "Simple Fishing",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "8ff7bafc-f33d-471c-9500-8815ebc966ba",
+			"title": "Baker Goober",
+			"description": "",
+			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
 			"steps": []
 		}
 	],
