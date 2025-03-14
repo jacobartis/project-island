@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=30 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://6eb3gsxdms3f" path="res://npcs/fishing_man/fishing_man.tscn" id="17_6w15t"]
 [ext_resource type="PackedScene" uid="uid://dyqhfqab8y1k3" path="res://Menus/UI/QuestLog/quest_log.tscn" id="17_ccg1x"]
 [ext_resource type="PackedScene" uid="uid://cqmj0bctttqg" path="res://Menus/UI/QuestLog/quest_popup.tscn" id="18_ccg1x"]
+[ext_resource type="PackedScene" uid="uid://h3dq6y7m3yx0" path="res://Menus/UI/Inventory/inventory_menu.tscn" id="19_0aeod"]
 
 [sub_resource type="Resource" id="Resource_57d7k"]
 script = ExtResource("5_ri83c")
@@ -105,7 +106,7 @@ ambient_light_source = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.9574, 2.87185, 95.1051)
 
 [node name="Player" parent="." instance=ExtResource("1_ybgaf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.0745, 5.00528, 101.464)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -69.8671, 2.63085, 99.8133)
 
 [node name="TerraBrush" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
@@ -155,8 +156,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.0437, 2.16728, 94.4847)
 
 [node name="QuestLog" parent="CanvasLayer" instance=ExtResource("17_ccg1x")]
 visible = false
+mouse_filter = 1
 
 [node name="QuestPopup" parent="CanvasLayer" instance=ExtResource("18_ccg1x")]
+mouse_filter = 1
+
+[node name="InventoryMenu" parent="CanvasLayer" instance=ExtResource("19_0aeod")]
+visible = false
+mouse_filter = 1
 
 [connection signal="body_entered" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_entered"]
 [connection signal="body_exited" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_exited"]
