@@ -50,9 +50,23 @@ func _physics_process(delta):
 	var target_angle = Vector3.BACK.signed_angle_to(last_move_dir,Vector3.UP)
 	mesh.global_rotation.y = lerp_angle(mesh.rotation.y,target_angle,rot_speed*delta)
 
-func give_item(scene):
-	hand.add_child(scene)
-	scene.global_transform = hand.global_transform
+#Very temp
+var current = 0
+
+func _process(delta):
+	if Input.is_action_just_pressed("next_item"):
+		current = posmod(current+1,5)
+		equip(current)
+	elif Input.is_action_just_pressed("prev_item"):
+		current = posmod(current-1,5)
+		equip(current)
+
+func equip(slot):
+	var item = Inventory.get_item(slot)
+	if not item: 
+		hand.unequip()
+		return
+	hand.equip(item.get_item_info().scene)
 
 func give_hat(hat:Hat):
 	head.top_hat().attach_hat(hat)
