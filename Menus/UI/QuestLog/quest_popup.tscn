@@ -30,7 +30,7 @@ tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3),
+"times": PackedFloat32Array(0.1, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -96,9 +96,11 @@ label_settings = SubResource("LabelSettings_5y55x")
 
 [node name="Completed" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_ui3a0")
+bus = &"SFX"
 
 [node name="Started" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_163i6")
+bus = &"SFX"
 
 [node name="QuestListener" type="Node" parent="."]
 script = ExtResource("4_yhjh5")
@@ -110,8 +112,4 @@ libraries = {
 }
 
 [connection signal="quest_completed" from="QuestListener" to="." method="_on_quest_listener_quest_completed"]
-[connection signal="quest_completed" from="QuestListener" to="Completed" method="play"]
-[connection signal="quest_completed" from="QuestListener" to="AnimationPlayer" method="play" binds= ["fade"]]
 [connection signal="quest_started" from="QuestListener" to="." method="_on_quest_listener_quest_started"]
-[connection signal="quest_started" from="QuestListener" to="Started" method="play"]
-[connection signal="quest_started" from="QuestListener" to="AnimationPlayer" method="play" binds= ["fade"]]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=29 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://gyv32knfwkg1" path="res://npcs/test_man/test_man.tscn" id="14_sovbs"]
 [ext_resource type="Script" uid="uid://cnsu8rkv4vclo" path="res://environments/beach/water.gd" id="16_vmgc7"]
 [ext_resource type="PackedScene" uid="uid://6eb3gsxdms3f" path="res://npcs/fishing_man/fishing_man.tscn" id="17_6w15t"]
+[ext_resource type="PackedScene" uid="uid://dyqhfqab8y1k3" path="res://Menus/UI/QuestLog/quest_log.tscn" id="17_ccg1x"]
+[ext_resource type="PackedScene" uid="uid://cqmj0bctttqg" path="res://Menus/UI/QuestLog/quest_popup.tscn" id="18_ccg1x"]
 
 [sub_resource type="Resource" id="Resource_57d7k"]
 script = ExtResource("5_ri83c")
@@ -148,6 +150,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.4394, 3.1344, 100.028)
 
 [node name="Green2" parent="." instance=ExtResource("17_6w15t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -70.0437, 2.16728, 94.4847)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="QuestLog" parent="CanvasLayer" instance=ExtResource("17_ccg1x")]
+visible = false
+
+[node name="QuestPopup" parent="CanvasLayer" instance=ExtResource("18_ccg1x")]
 
 [connection signal="body_entered" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_entered"]
 [connection signal="body_exited" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_exited"]
