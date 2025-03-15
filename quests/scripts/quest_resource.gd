@@ -30,5 +30,8 @@ func set_manual_req(req_id,val):
 		return 
 	requirements[req_id].set_complete(val)
 
+func is_req_complete(req_id):
+	return requirements[req_id].is_complete()
+
 func give_rewards():
 	rewards.all(func (x):x.give())
