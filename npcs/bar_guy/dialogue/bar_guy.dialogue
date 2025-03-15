@@ -1,8 +1,10 @@
 ~ start
 if QuestManager.is_active(2):
 	=> QuestUpdate
-else:
+elif not QuestManager.is_active(2) and not QuestManager.is_complete(2):
 	=> Intro
+else:
+	=> PostQuest
 => END
 
 ~ Intro
@@ -11,6 +13,8 @@ Bar Goober: Say, could you please fetch it from the beach for me.
 - Yes Sir
 	Bar Goober: Oh thank you so much my dear boy.
 	do QuestManager.start_quest(2)
+	if QuestManager.is_req_complete(2,0):
+		=> SuppriseFinish
 - No
 	Bar Goober: Oh ok, I see how it is...
 => END
@@ -24,5 +28,13 @@ Bar Goober: Keep Looking.
 ~ QuestFinish
 do QuestManager.set_manual_req(2,1,true)
 do QuestManager.check_complete(0)
-Bar Goober: Thank you.
+=> PostQuest
+
+~ SuppriseFinish
+Bar Goober: HOLY SHIT YOUR FAST!!!
+=> QuestFinish
+
+~ PostQuest
+Bar Goober: Thank you for your help.
+Bar Goober: You're a real life saver.
 => END
