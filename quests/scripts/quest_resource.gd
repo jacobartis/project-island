@@ -34,4 +34,5 @@ func is_req_complete(req_id):
 	return requirements[req_id].is_complete()
 
 func give_rewards():
-	rewards.all(func (x):x.give())
+	for x in rewards:
+		x.give()
