@@ -1,0 +1,57 @@
+[gd_scene load_steps=3 format=3 uid="uid://dn6ydjn4oqgbq"]
+
+[ext_resource type="Script" uid="uid://d1re4u0gd4qrl" path="res://Menus/UI/farming/planter_menu.gd" id="1_onlb1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_t6ecf"]
+font_size = 32
+
+[node name="PlanterMenu" type="Control" groups=["planter_ui"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_onlb1")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.692
+anchor_top = 0.145
+anchor_right = 0.953
+anchor_bottom = 0.855
+offset_left = -0.184021
+offset_top = 0.0399933
+offset_right = 0.143921
+offset_bottom = -0.0400391
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.113
+offset_bottom = 0.0199966
+grow_horizontal = 2
+text = "Seed?"
+label_settings = SubResource("LabelSettings_t6ecf")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 33.0
+offset_top = 67.0
+offset_right = -33.0
+offset_bottom = -22.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/ScrollContainer"]
+layout_mode = 2
