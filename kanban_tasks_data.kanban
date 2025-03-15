@@ -42,13 +42,19 @@
 				"e1a35606-c70c-480f-ba81-35f6ce687793",
 				"7454432a-d63f-4730-b701-95070ef5d645",
 				"8ff7bafc-f33d-471c-9500-8815ebc966ba",
-				"5057cc7d-ff5b-4afc-82df-78dae3d16616"
+				"5057cc7d-ff5b-4afc-82df-78dae3d16616",
+				"4a06338b-6980-437a-bc2e-374368643829",
+				"6d6e246a-6ac8-43de-8a84-09caf8993bf4"
 			]
 		},
 		{
 			"uuid": "cdc30063-638b-4816-91b5-43d3c128d759",
 			"title": "Todo",
-			"tasks": []
+			"tasks": [
+				"45713932-ba44-43df-ae6d-f2e134f182df",
+				"fc83521b-96d1-4660-9b8d-1ee4073843c8",
+				"3afecdb3-5486-4282-999d-b104c1153c38"
+			]
 		},
 		{
 			"uuid": "a6d6735f-943b-4f62-854f-1dd796d5a882",
@@ -68,7 +74,8 @@
 				"aeb31edc-6b19-44e7-9380-bcf04924d6d0",
 				"b1e1990c-a484-4bba-984f-680737ab0c62",
 				"99a8ed66-1678-4939-bad5-c6ab7704c72f",
-				"9ea2934e-5038-429d-8d8e-47265e7642b0"
+				"9ea2934e-5038-429d-8d8e-47265e7642b0",
+				"827428a4-6d99-4010-823d-56590920075d"
 			]
 		}
 	],
@@ -76,7 +83,7 @@
 		{
 			"uuid": "1e8ee206-c767-4536-b880-f10bf4892ebf",
 			"title": "Fishing",
-			"description": "Create concept for fishing mechanics and minigame.\nLittle guy fish battling.\nYou need to catch/buy the bait\nJust pokemon (or any game) to upgrade you fishing power.\n\nMinigame ideas:\n- Fighting game\n- Turn based \n- Clash royal\n- Stardew fishing game\n- My idea of final fantasy combat\n- Rythm game\n- Boring",
+			"description": "Create concept for fishing mechanics and minigame.\nLittle guy fish battling.\nYou need to catch/buy the bait\nJust pokemon (or any game) to upgrade you fishing power.\n\nMinigame ideas:\n- Fighting game\n- Turn based \n- Clash royal\n- Stardew fishing game\n- My idea of final fantasy combat\n- Rythm game\n- Boring\n\nFishing golf event (teleport player to bobber)\nPhishing Golf Asociation\n\nIf bobber in the air for long enough, start catching special fish with space invaders. Goober equips helmet.",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
 			"steps": []
 		},
@@ -132,7 +139,7 @@
 		{
 			"uuid": "e1a35606-c70c-480f-ba81-35f6ce687793",
 			"title": "Farmer Goober",
-			"description": "",
+			"description": "Rat guy",
 			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
 			"steps": []
 		},
@@ -202,7 +209,7 @@
 		{
 			"uuid": "5057cc7d-ff5b-4afc-82df-78dae3d16616",
 			"title": "Goober band",
-			"description": "Get the band back together.\nHire them for live music",
+			"description": "Get the band back together.\nHire them for live music\n\nDemo has no other characters, leaving the bar empty of patrons.",
 			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
 			"steps": []
 		},
@@ -225,6 +232,48 @@
 			"title": "Scene transitions",
 			"description": "",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "827428a4-6d99-4010-823d-56590920075d",
+			"title": "Make topdown travel",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "4a06338b-6980-437a-bc2e-374368643829",
+			"title": "Oil rig location and Goober",
+			"description": "",
+			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
+			"steps": []
+		},
+		{
+			"uuid": "45713932-ba44-43df-ae6d-f2e134f182df",
+			"title": "Have scenes save when you exit them",
+			"description": "Need to have a way of saving the file to disk then using the correct version if avalible when loading a scene.",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "fc83521b-96d1-4660-9b8d-1ee4073843c8",
+			"title": "Add cool skybox to inside locations",
+			"description": "",
+			"category": "8e01d1f1-f2ad-4c80-a601-3597b029e60f",
+			"steps": []
+		},
+		{
+			"uuid": "3afecdb3-5486-4282-999d-b104c1153c38",
+			"title": "Orthoganal Cam inside???",
+			"description": "",
+			"category": "8e01d1f1-f2ad-4c80-a601-3597b029e60f",
+			"steps": []
+		},
+		{
+			"uuid": "6d6e246a-6ac8-43de-8a84-09caf8993bf4",
+			"title": "Bar Goober",
+			"description": "Friendly bear character\n",
+			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
 			"steps": []
 		}
 	],
