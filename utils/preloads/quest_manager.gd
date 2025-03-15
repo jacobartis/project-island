@@ -6,6 +6,7 @@ signal quest_completed(id)
 var quests: Dictionary = {
 	0:preload("res://quests/quests/fishing.tres"),
 	1:preload("res://quests/quests/talk.tres"),
+	2:preload("res://quests/quests/FetchBeer.tres"),
 }
 
 var active_quests = []
@@ -49,5 +50,8 @@ func complete_quest(quest_id):
 
 func set_manual_req(quest_id:int,req_pos:int,status:bool):
 	if not is_quest(quest_id): return
-	if not is_active(quest_id): return
 	get_quest(quest_id).set_manual_req(req_pos,status)
+
+func is_req_complete(quest_id:int,req_pos:int):
+	if not is_quest(quest_id): return
+	return get_quest(quest_id).is_req_complete(req_pos)
