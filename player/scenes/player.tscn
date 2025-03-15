@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://47y3qjxgnxm8"]
 
 [ext_resource type="Script" uid="uid://c5qhyasn0pg4" path="res://player/scripts/player.gd" id="1_blui3"]
-[ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="2_1pmg0"]
 [ext_resource type="Script" uid="uid://cqpej174tg5v3" path="res://player/scenes/3rdPCam.gd" id="2_ochrj"]
 [ext_resource type="Script" uid="uid://cx8x55y5dw6fu" path="res://player/scripts/interact_area.gd" id="4_7b0y7"]
 [ext_resource type="Script" uid="uid://cdwsrmyu6n8g3" path="res://player/hats/hat.gd" id="4_87uja"]
+[ext_resource type="PackedScene" uid="uid://dfa2tb6rlw0v2" path="res://TestAssets/human.blend" id="4_okfwm"]
 [ext_resource type="Script" uid="uid://der4k3dxokh0e" path="res://player/scenes/hand.gd" id="4_tn8gd"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7m2wk"]
@@ -12,36 +12,50 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ta1aj"]
 size = Vector3(1, 2, 1)
 
-[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("mesh") groups=["player"]]
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("mesh", "hand", "head", "animation_player") groups=["player"]]
 script = ExtResource("1_blui3")
-mesh = NodePath("MeshInstance3D")
+mesh = NodePath("Guy")
+hand = NodePath("Guy/Hand")
+head = NodePath("Guy/Head")
+animation_player = NodePath("Guy/human/AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7m2wk")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-mesh = ExtResource("2_1pmg0")
+[node name="Guy" type="Node3D" parent="."]
 
-[node name="InteractArea" type="Area3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-script = ExtResource("4_7b0y7")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/InteractArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
-shape = SubResource("BoxShape3D_ta1aj")
-
-[node name="Hand" type="Node3D" parent="MeshInstance3D"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.262478, 0.840992, -0.069225)
+[node name="Hand" type="Node3D" parent="Guy"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.262478, -0.159008, -0.069225)
 script = ExtResource("4_tn8gd")
 
-[node name="Head" type="Node3D" parent="MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0234033, 1.80977, -0.0331453)
+[node name="Head" type="Node3D" parent="Guy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0234033, 0.80977, -0.0331453)
 script = ExtResource("4_87uja")
 
-[node name="Base" type="Marker3D" parent="MeshInstance3D/Head"]
+[node name="Base" type="Marker3D" parent="Guy/Head"]
 
-[node name="Top" type="Marker3D" parent="MeshInstance3D/Head"]
+[node name="Top" type="Marker3D" parent="Guy/Head"]
+
+[node name="Bones" type="Node3D" parent="Guy"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="human" parent="Guy" instance=ExtResource("4_okfwm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="Skeleton3D" parent="Guy/human/MaleArm" index="0"]
+bones/6/position = Vector3(0.198623, 0.474928, -0.0236119)
+bones/6/rotation = Quaternion(0.0516838, 0.986187, 0.00425743, -0.157311)
+bones/8/rotation = Quaternion(0.46814, 0.582739, 0.448666, -0.489857)
+bones/10/rotation = Quaternion(0.0920159, -0.993443, -0.05792, 0.0353411)
+bones/17/rotation = Quaternion(0.997308, 9.39205e-09, -1.2775e-07, -0.0733204)
+bones/18/rotation = Quaternion(0.0920158, 0.993443, 0.0579197, 0.0353414)
+
+[node name="InteractArea" type="Area3D" parent="Guy"]
+script = ExtResource("4_7b0y7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Guy/InteractArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("BoxShape3D_ta1aj")
 
 [node name="3rdPCam" type="Node3D" parent="." node_paths=PackedStringArray("cam") groups=["player_cam"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.712766, 0)
@@ -54,5 +68,7 @@ spring_length = 5.0
 [node name="Cam" type="Camera3D" parent="3rdPCam/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.51156)
 
-[connection signal="area_entered" from="MeshInstance3D/InteractArea" to="MeshInstance3D/InteractArea" method="_on_area_entered"]
-[connection signal="area_exited" from="MeshInstance3D/InteractArea" to="MeshInstance3D/InteractArea" method="_on_area_exited"]
+[connection signal="area_entered" from="Guy/InteractArea" to="Guy/InteractArea" method="_on_area_entered"]
+[connection signal="area_exited" from="Guy/InteractArea" to="Guy/InteractArea" method="_on_area_exited"]
+
+[editable path="Guy/human"]
