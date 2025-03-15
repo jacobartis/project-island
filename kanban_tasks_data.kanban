@@ -59,7 +59,9 @@
 		{
 			"uuid": "a6d6735f-943b-4f62-854f-1dd796d5a882",
 			"title": "Working on",
-			"tasks": []
+			"tasks": [
+				"73e9745f-1879-4dd9-862d-f08655eb0a63"
+			]
 		},
 		{
 			"uuid": "a8491082-e66a-46b4-802d-98f94f81fd19",
@@ -274,6 +276,13 @@
 			"title": "Bar Goober",
 			"description": "Friendly bear character\n",
 			"category": "039741ed-12b4-478a-bd09-989b722e2d4b",
+			"steps": []
+		},
+		{
+			"uuid": "73e9745f-1879-4dd9-862d-f08655eb0a63",
+			"title": "Creating planter and seeds",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
 			"steps": []
 		}
 	],
