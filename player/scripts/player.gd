@@ -47,7 +47,6 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 	if direction:
 		animation_player.play("Walking")
-		print(animation_player.current_animation)
 	move_and_slide()
 	if direction.length()>.2:
 		last_move_dir = direction

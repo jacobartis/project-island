@@ -24,7 +24,6 @@ func update():
 func display_quest(con:VBoxContainer,quests:Array):
 	for x in con.get_children():
 		x.queue_free()
-	print(con.get_children())
 	for id in quests:
 		var disp = QUEST_DISPLAY.instantiate()
 		disp.display_quest(id)
