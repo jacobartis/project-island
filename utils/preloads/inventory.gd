@@ -3,9 +3,11 @@ extends Node
 signal inventory_update()
 signal slot_updated(slot)
 
-var inventory_size = 30
+var inventory_size = 15
 
 var inventory: Dictionary ={}
+
+var shmeppins: int = 0
 
 func _ready():
 	for x in inventory_size:
