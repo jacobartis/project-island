@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=4 uid="uid://dyqipfjhiekv1"]
+[gd_scene load_steps=16 format=4 uid="uid://dyqipfjhiekv1"]
 
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="1_vlwgo"]
+[ext_resource type="ArrayMesh" uid="uid://dr3fquxr482ad" path="res://items/shovel/tool-shovel.obj" id="1_yk4m0"]
 [ext_resource type="ArrayMesh" uid="uid://bybhkqxs8gafy" path="res://TestAssets/apron_man.obj" id="2_joj57"]
 [ext_resource type="Script" uid="uid://cmui4yend4mi4" path="res://utils/scripts/dialogue_entry.gd" id="3_nyd4q"]
+[ext_resource type="Resource" uid="uid://bfmekmvkxr1b6" path="res://npcs/farming_man/farming_man.dialogue" id="4_3136d"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqp73"]
 
@@ -99,6 +101,14 @@ shape = SubResource("CapsuleShape3D_bqp73")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 mesh = SubResource("ArrayMesh_pmsh2")
 
+[node name="Hand" type="Node3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.27441, 0.834031, -0.0765511)
+
+[node name="Tool-shovel" type="MeshInstance3D" parent="MeshInstance3D/Hand"]
+transform = Transform3D(0.199969, 0.00525042, -0.000231506, -1.8533e-10, 0.0197986, 0.199564, 0.00350793, -0.2993, 0.013197, 0.0114108, -0.0243971, 0.47488)
+mesh = ExtResource("1_yk4m0")
+skeleton = NodePath("../..")
+
 [node name="Interactable" type="Area3D" parent="."]
 script = ExtResource("1_vlwgo")
 metadata/_custom_type_script = "uid://onyg7lf3hcvc"
@@ -117,6 +127,7 @@ skeleton = NodePath("../..")
 
 [node name="DialogueEntry" type="Node" parent="."]
 script = ExtResource("3_nyd4q")
+dialogue_resource = ExtResource("4_3136d")
 
 [connection signal="hide_highlight" from="Interactable" to="Highlight" method="hide"]
 [connection signal="interacted" from="Interactable" to="DialogueEntry" method="start_dialogue"]
