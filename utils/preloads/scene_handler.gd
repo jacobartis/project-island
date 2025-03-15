@@ -32,7 +32,8 @@ func transition(file:String,exit_id:int):
 	if get_tree().current_scene is Node2D:
 		player = packed_player_2D.instantiate()
 	get_tree().current_scene.add_child(player)
-	player.global_transform = exit.global_transform
+	#Make transform if you want to have fun (applys exit scale to player)
+	player.global_position = exit.global_position
 
 func load_scene(file):
 	var load_progress:Array[float] = []
