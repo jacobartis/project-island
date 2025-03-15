@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://o3qnly1rjefv"]
+[gd_scene load_steps=39 format=4 uid="uid://o3qnly1rjefv"]
 
 [ext_resource type="Script" uid="uid://qtep6gsamlqf" path="res://environments/scripts/exit_point.gd" id="1_3t5jh"]
 [ext_resource type="ArrayMesh" uid="uid://bf0oe7q2455bx" path="res://environments/models/buildings/tiles/floor.obj" id="1_7twnd"]
@@ -16,6 +16,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c0qttkt3ee501" path="res://environments/models/food/barrel.obj" id="14_lbcwl"]
 [ext_resource type="ArrayMesh" uid="uid://cgg86i6xsoi3i" path="res://environments/models/forest/decorations/log_stackLarge.obj" id="14_oxhh7"]
 [ext_resource type="ArrayMesh" uid="uid://3kqcrhfrx407" path="res://environments/models/buildings/tiles/column-thin.obj" id="15_jum3o"]
+[ext_resource type="PackedScene" uid="uid://dyqipfjhiekv1" path="res://npcs/farming_man/farming_man.tscn" id="17_b1nr2"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yd747"]
 
@@ -345,6 +346,9 @@ environment = SubResource("Environment_yd747")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.965926, 1.13133e-08, -0.258819, 0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="FarmingMan" parent="." instance=ExtResource("17_b1nr2")]
+transform = Transform3D(0.739055, 0, -0.673645, 0, 1, 0, 0.673645, 0, 0.739055, -3.59337, 1, 0)
 
 [connection signal="hide_highlight" from="Room/CoveDoor/Interactable" to="Room/CoveDoor/Highlight" method="hide"]
 [connection signal="interacted" from="Room/CoveDoor/Interactable" to="Room/CoveDoor/SceneTransition" method="transition"]
