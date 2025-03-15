@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://csjbxwguy05wg"
+path="res://.godot/imported/roof-slanted-corner-inner.obj-8025916bed3b3e6608af58d7933a06ce.mesh"
+
+[deps]
+
+files=["res://.godot/imported/roof-slanted-corner-inner.obj-8025916bed3b3e6608af58d7933a06ce.mesh"]
+
+source_file="res://environments/models/buildings/external/roof-slanted-corner-inner.obj"
+dest_files=["res://.godot/imported/roof-slanted-corner-inner.obj-8025916bed3b3e6608af58d7933a06ce.mesh", "res://.godot/imported/roof-slanted-corner-inner.obj-8025916bed3b3e6608af58d7933a06ce.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

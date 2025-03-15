@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bsihitla6xysw"
+path="res://.godot/imported/building-corner-window-sill.obj-b4837ee581861d1912a224aa1991b9bf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-corner-window-sill.obj-b4837ee581861d1912a224aa1991b9bf.mesh"]
+
+source_file="res://environments/models/buildings/external/building-corner-window-sill.obj"
+dest_files=["res://.godot/imported/building-corner-window-sill.obj-b4837ee581861d1912a224aa1991b9bf.mesh", "res://.godot/imported/building-corner-window-sill.obj-b4837ee581861d1912a224aa1991b9bf.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

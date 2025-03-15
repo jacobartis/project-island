@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b3yxgi03x41s4"
+path="res://.godot/imported/building-window-right-sill.obj-c3191af9e9ce27518a59a0aebee2befd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-window-right-sill.obj-c3191af9e9ce27518a59a0aebee2befd.mesh"]
+
+source_file="res://environments/models/buildings/external/building-window-right-sill.obj"
+dest_files=["res://.godot/imported/building-window-right-sill.obj-c3191af9e9ce27518a59a0aebee2befd.mesh", "res://.godot/imported/building-window-right-sill.obj-c3191af9e9ce27518a59a0aebee2befd.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

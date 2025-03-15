@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://l6gvj8wa5qvc"
+path="res://.godot/imported/building-windows-round.obj-2a6eca300adfc64c55e6f3076be0deec.mesh"
+
+[deps]
+
+files=["res://.godot/imported/building-windows-round.obj-2a6eca300adfc64c55e6f3076be0deec.mesh"]
+
+source_file="res://environments/models/buildings/external/building-windows-round.obj"
+dest_files=["res://.godot/imported/building-windows-round.obj-2a6eca300adfc64c55e6f3076be0deec.mesh", "res://.godot/imported/building-windows-round.obj-2a6eca300adfc64c55e6f3076be0deec.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
