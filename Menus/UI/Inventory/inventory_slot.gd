@@ -65,10 +65,20 @@ func get_description():
 		return current_item.get_item_info().description
 
 func drag():
-	icon.global_position = get_global_mouse_position()
+	icon.z_index = 2
+	icon.global_position = get_global_mouse_position() - Vector2(icon.size/2)
+
 
 func reset_drag():
+	icon.z_index = 1
 	icon.position = Vector2.ZERO
 
 func _on_pickup_pressed():
 	clicked.emit()
+
+
+#TODO Doesn't work with the two buttons
+func _on_select_pressed():
+	var player = get_tree().get_first_node_in_group("player")
+	player.current = invent_slot
+	update()

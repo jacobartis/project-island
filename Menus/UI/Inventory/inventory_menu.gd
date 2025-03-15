@@ -2,6 +2,7 @@ extends Panel
 const INVENTORY_SLOT = preload("res://Menus/UI/Inventory/inventory_slot.tscn")
 
 @onready var slot_container = $SlotContainer
+@export var shemp_counter:Label
 
 var selected:int = -1
 var drag: bool = false
@@ -54,6 +55,7 @@ func _process(delta):
 func update():
 	for x in slots.values():
 		x.update()
+	shemp_counter.set_text("Shemps: {s}".format({"s":Inventory.shmeppins}))
 
 func check_selected():
 	var player = get_tree().get_first_node_in_group("player")
@@ -76,6 +78,7 @@ func slot_clicked(pos:int):
 func slot_hovered(pos:int):
 	if drag:
 		hovered = pos
+
 func slot_unhovered(pos:int):
 	if drag and pos == hovered:
 		hovered = -1

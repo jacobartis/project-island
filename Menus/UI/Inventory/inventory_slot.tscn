@@ -1,8 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://fgm5j2w72t2d"]
+[gd_scene load_steps=9 format=3 uid="uid://fgm5j2w72t2d"]
 
 [ext_resource type="Script" uid="uid://c41j2vlpoj3tp" path="res://Menus/UI/Inventory/inventory_slot.gd" id="1_v6put"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_v6put"]
 
 [sub_resource type="Gradient" id="Gradient_ksv0e"]
 offsets = PackedFloat32Array(0)
@@ -17,6 +15,16 @@ colors = PackedColorArray(0.805198, 0.313075, 0.285649, 0.211765)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ksv0e"]
 gradient = SubResource("Gradient_v6put")
+
+[sub_resource type="Gradient" id="Gradient_ysucr"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.703062, 0.269611, 0.81184, 0.211765)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7m143"]
+gradient = SubResource("Gradient_ysucr")
+
+[sub_resource type="LabelSettings" id="LabelSettings_v6put"]
+font_size = 32
 
 [node name="InventorySlot" type="Control"]
 layout_mode = 3
@@ -40,18 +48,16 @@ grow_vertical = 2
 mouse_filter = 1
 color = Color(0.151276, 0.151276, 0.151276, 1)
 
-[node name="Stack" type="Label" parent="."]
+[node name="Select" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -171.0
 grow_horizontal = 2
-grow_vertical = 0
-label_settings = SubResource("LabelSettings_v6put")
-horizontal_alignment = 2
-vertical_alignment = 1
+grow_vertical = 2
+mouse_filter = 1
+button_mask = 2
+flat = true
 
 [node name="Pickup" type="Button" parent="."]
 layout_mode = 1
@@ -85,6 +91,17 @@ grow_vertical = 2
 mouse_filter = 2
 texture = SubResource("GradientTexture2D_ksv0e")
 
+[node name="Hover" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = SubResource("GradientTexture2D_7m143")
+
 [node name="Control" type="AspectRatioContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -99,16 +116,39 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Icon" type="TextureRect" parent="Control"]
+z_index = 1
+custom_minimum_size = Vector2(105.6, 105.6)
 layout_mode = 2
 mouse_filter = 2
+expand_mode = 1
 
 [node name="GhostIcon" type="TextureRect" parent="Control"]
 modulate = Color(1, 1, 1, 0.368627)
 layout_mode = 2
 mouse_filter = 2
+expand_mode = 1
+
+[node name="Stack" type="Label" parent="."]
+z_index = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.736
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 0.0719604
+offset_right = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+label_settings = SubResource("LabelSettings_v6put")
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [connection signal="highlighted" from="." to="Highlighted" method="show"]
+[connection signal="mouse_entered" from="." to="Hover" method="show"]
+[connection signal="mouse_exited" from="." to="Hover" method="hide"]
 [connection signal="selected" from="." to="Selected" method="show"]
 [connection signal="unhighlighted" from="." to="Highlighted" method="hide"]
 [connection signal="unselected" from="." to="Selected" method="hide"]
+[connection signal="pressed" from="Select" to="." method="_on_select_pressed"]
 [connection signal="button_down" from="Pickup" to="." method="_on_pickup_pressed"]
