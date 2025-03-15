@@ -2,17 +2,17 @@
 
 [ext_resource type="Script" uid="uid://dqkyxgcprq2ih" path="res://items/scripts/pickup.gd" id="1_20t80"]
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="1_u0876"]
-[ext_resource type="ArrayMesh" uid="uid://ctfxfp3avdby6" path="res://items/fish/fish.obj" id="2_20t80"]
+[ext_resource type="ArrayMesh" uid="uid://cyiqtb4d638d4" path="res://environments/models/food/fish.obj" id="3_cjak8"]
 [ext_resource type="Material" uid="uid://cpq441uyqkg54" path="res://utils/resources/highlight_material.tres" id="4_0hp6m"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_0hp6m"]
-size = Vector3(0.5271, 0.210693, 1.28882)
+size = Vector3(0.5271, 0.449219, 0.611084)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cjak8"]
 albedo_color = Color(2.88785e-07, 0.548191, 0.549578, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_20t80"]
-size = Vector3(0.402344, 0.218994, 1)
+size = Vector3(0.127197, 0.1875, 0.588135)
 
 [node name="Fish" type="RigidBody3D"]
 collision_layer = 2
@@ -31,17 +31,17 @@ metadata/_custom_type_script = "uid://onyg7lf3hcvc"
 shape = SubResource("BoxShape3D_0hp6m")
 
 [node name="Fish" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123191, 0)
 material_override = SubResource("StandardMaterial3D_cjak8")
-mesh = ExtResource("2_20t80")
+mesh = ExtResource("3_cjak8")
 
 [node name="Highlight" type="Node3D" parent="."]
 visible = false
 
 [node name="Fish2" type="MeshInstance3D" parent="Highlight"]
-transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.123191, 0)
 material_override = ExtResource("4_0hp6m")
-mesh = ExtResource("2_20t80")
+mesh = ExtResource("3_cjak8")
 skeleton = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
