@@ -16,6 +16,8 @@ var can_cast: bool = true
 @export_category("Charge")
 @export var max_charge: float = 10
 @export var charge_speed: float = 5
+@export var charge_power: float = 1
+@export var power_ratio: Vector2 = Vector2(2,1)
 var hold_delay: float = 0
 var charge: float = 0
 var raw: float = 0
@@ -27,11 +29,12 @@ var nibble_avalible: float = 0
 
 func _process(delta):
 	
-	if !casted and can_cast and !State.in_dialogue:
-		handle_charge(delta)
 	
 	if not State.can_act():
 		return
+	
+	if !casted and can_cast and !State.in_dialogue:
+		handle_charge(delta)
 	
 	if casted and Input.is_action_just_pressed("use") and nibble_avalible != 0:
 		start_catch()
@@ -55,7 +58,7 @@ func handle_charge(delta):
 		raw = raw+delta*charge_speed
 		charge = pingpong(raw,max_charge)
 	elif hold_delay == 0 and raw!=0:
-		throw_cast(charge)
+		throw_cast(charge*charge_power)
 		raw = 0
 		charge = 0
 	anim_t.set("parameters/blend_position",charge/max_charge)
@@ -67,7 +70,7 @@ func throw_cast(power):
 	bobber.linear_velocity = Vector3.ZERO
 	bobber.global_position = global_position
 	#Distribution of virtical and horizontal power
-	var pow_dist = Vector2(2,1).normalized()
+	var pow_dist = power_ratio.normalized()
 	var h_pow = -global_basis.z*pow_dist.x*power
 	var v_pow = global_basis.y*pow_dist.y*power
 	bobber.apply_impulse(h_pow+v_pow)

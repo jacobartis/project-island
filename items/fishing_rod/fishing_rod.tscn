@@ -200,16 +200,16 @@ libraries = {
 }
 
 [connection signal="cast" from="." to="CastHolder/Bobber" method="show"]
+[connection signal="cast" from="." to="CastHolder/Bobber/Node/Node3D" method="_on_fishing_rod_cast"]
 [connection signal="cast" from="." to="CableHolder" method="show"]
 [connection signal="cast" from="." to="CastSFX" method="play"]
-[connection signal="cast" from="." to="CastHolder/Bobber/Node/Node3D" method="_on_fishing_rod_cast"]
 [connection signal="catch" from="." to="." method="_on_catch"]
 [connection signal="catch" from="." to="Ding" method="play"]
 [connection signal="pull_back" from="." to="CastHolder/Bobber" method="hide"]
+[connection signal="pull_back" from="." to="CastHolder/Bobber/Node/Node3D" method="_on_fishing_rod_pull_back"]
 [connection signal="pull_back" from="." to="CableHolder" method="hide"]
 [connection signal="pull_back" from="." to="Nibble" method="stop"]
 [connection signal="pull_back" from="." to="CastSFX" method="play"]
-[connection signal="pull_back" from="." to="CastHolder/Bobber/Node/Node3D" method="_on_fishing_rod_pull_back"]
 [connection signal="timeout" from="CastDelay" to="." method="_on_cast_delay_timeout"]
 [connection signal="timeout" from="Nibble" to="." method="_on_nibble_timeout"]
 [connection signal="timeout" from="Nibble" to="CastHolder/Bobber" method="pull"]
