@@ -1,0 +1,17 @@
+~ start
+if QuestManager.is_active(3) or QuestManager.is_complete(3):
+	=> PostQuest
+else:
+	=> intro
+=> END 
+
+~ intro
+Farming Man: What's up man.
+*He hands you a small rusted key*
+Farming Man: ...
+do QuestManager.start_quest(3)
+=> END
+
+~ PostQuest
+Farming Man: ...
+=> END

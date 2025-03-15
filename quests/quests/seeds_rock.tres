@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="Quest" load_steps=6 format=3 uid="uid://ccj4h1g3loi53"]
+
+[ext_resource type="Script" uid="uid://bfagaweslhd06" path="res://quests/scripts/requirements/quest_requirement.gd" id="1_25b17"]
+[ext_resource type="Script" uid="uid://rwa801ifftad" path="res://quests/scripts/requirements/manual_requirement.gd" id="2_2f2jv"]
+[ext_resource type="Script" uid="uid://tdfcfw3qilj6" path="res://quests/scripts/rewards/quest_reward.gd" id="2_a6hd6"]
+[ext_resource type="Script" uid="uid://8g8lb6bi7vfj" path="res://quests/scripts/quest_resource.gd" id="3_2f2jv"]
+
+[sub_resource type="Resource" id="Resource_nmcep"]
+script = ExtResource("2_2f2jv")
+description = "Investigate the side door to the bar."
+metadata/_custom_type_script = "uid://rwa801ifftad"
+
+[resource]
+script = ExtResource("3_2f2jv")
+quest_name = "Seeds Rock"
+description = "UNLOCK THE POWER OF SEEDS."
+requirements = Dictionary[int, ExtResource("1_25b17")]({
+0: SubResource("Resource_nmcep")
+})
+rewards = Array[ExtResource("2_a6hd6")]([])
+metadata/_custom_type_script = "uid://8g8lb6bi7vfj"

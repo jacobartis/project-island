@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bfmekmvkxr1b6"
+path="res://.godot/imported/farming_man.dialogue-c92b53ef6e8d76e004ab7b4597a2931b.tres"
+
+[deps]
+
+source_file="res://npcs/farming_man/farming_man.dialogue"
+dest_files=["res://.godot/imported/farming_man.dialogue-c92b53ef6e8d76e004ab7b4597a2931b.tres"]
+
+[params]
+
+defaults=true
