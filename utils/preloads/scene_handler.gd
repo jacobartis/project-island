@@ -2,8 +2,10 @@ extends Node
 
 #Handles transitioning between scenes
 var packed_player:PackedScene = null
+var packed_player_2D:PackedScene = preload("res://player/scenes/player_2d.tscn")
 
 func save_player():
+	if get_tree().current_scene is Node2D: return
 	var player = get_tree().get_first_node_in_group("player")
 	packed_player = PackedScene.new()
 	packed_player.pack(player)
@@ -18,13 +20,17 @@ func transition(file:String,exit_id:int):
 	await get_tree().create_timer(.2).timeout
 	await load_scene(file)
 	var exits = get_tree().get_nodes_in_group("ExitPoint")
-	var exit = exits.filter(func (x): return x.id == exit_id)[0]
+	var exit = null
+	if not exits.filter(func (x): return x.id == exit_id).is_empty():
+		exit = exits.filter(func (x): return x.id == exit_id)[0]
 	if not exit:
 		exit = exits[0]
 	#TODO Temp to remove existing player from scenes
 	if get_tree().get_first_node_in_group("player"):
 		get_tree().get_first_node_in_group("player").queue_free()
 	var player = packed_player.instantiate()
+	if get_tree().current_scene is Node2D:
+		player = packed_player_2D.instantiate()
 	get_tree().current_scene.add_child(player)
 	player.global_transform = exit.global_transform
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=34 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
@@ -105,6 +105,9 @@ ambient_light_source = 3
 [sub_resource type="BoxShape3D" id="BoxShape3D_inj3g"]
 size = Vector3(0.147461, 2.2207, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ief57"]
+albedo_color = Color(0.52549, 1, 1, 1)
+
 [node name="World" type="Node3D"]
 
 [node name="Green" parent="." instance=ExtResource("1_ri83c")]
@@ -183,7 +186,73 @@ file = "uid://o3qnly1rjefv"
 
 [node name="ExitPoint" type="Marker3D" parent="Door-rotate-square-b"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326286, 1, 0.371101)
+visible = false
 script = ExtResource("21_ief57")
+metadata/_custom_type_script = "uid://qtep6gsamlqf"
+
+[node name="Door2D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -72.8513, 1, 86.0089)
+material_override = SubResource("StandardMaterial3D_ief57")
+mesh = ExtResource("17_10mp2")
+
+[node name="Interactable" type="Area3D" parent="Door2D"]
+script = ExtResource("18_w05xj")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door2D/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.42075)
+shape = SubResource("BoxShape3D_inj3g")
+
+[node name="Highlight" type="Node3D" parent="Door2D"]
+visible = false
+
+[node name="Door-rotate-square-b" type="MeshInstance3D" parent="Door2D/Highlight"]
+material_override = ExtResource("19_4507h")
+mesh = ExtResource("17_10mp2")
+skeleton = NodePath("../..")
+
+[node name="SceneTransition" type="Node" parent="Door2D"]
+script = ExtResource("20_kkc5w")
+file = "uid://bht10866y8fy2"
+
+[node name="ExitPoint" type="Marker3D" parent="Door2D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326286, 1, 0.371101)
+visible = false
+script = ExtResource("21_ief57")
+id = 1
+metadata/_custom_type_script = "uid://qtep6gsamlqf"
+
+[node name="Door2D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.965926, 0, 0.258819, 0, 1, 0, -0.258819, 0, 0.965926, -100.851, 2, 101.009)
+material_override = SubResource("StandardMaterial3D_ief57")
+mesh = ExtResource("17_10mp2")
+
+[node name="Interactable" type="Area3D" parent="Door2D2"]
+script = ExtResource("18_w05xj")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Door2D2/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.42075)
+shape = SubResource("BoxShape3D_inj3g")
+
+[node name="Highlight" type="Node3D" parent="Door2D2"]
+visible = false
+
+[node name="Door-rotate-square-b" type="MeshInstance3D" parent="Door2D2/Highlight"]
+material_override = ExtResource("19_4507h")
+mesh = ExtResource("17_10mp2")
+skeleton = NodePath("../..")
+
+[node name="SceneTransition" type="Node" parent="Door2D2"]
+script = ExtResource("20_kkc5w")
+file = "uid://bht10866y8fy2"
+exit_id = 1
+
+[node name="ExitPoint" type="Marker3D" parent="Door2D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326286, 1, 0.371101)
+visible = false
+script = ExtResource("21_ief57")
+id = 2
 metadata/_custom_type_script = "uid://qtep6gsamlqf"
 
 [connection signal="body_entered" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_entered"]
@@ -191,3 +260,9 @@ metadata/_custom_type_script = "uid://qtep6gsamlqf"
 [connection signal="hide_highlight" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/Highlight" method="hide"]
 [connection signal="interacted" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/SceneTransition" method="transition"]
 [connection signal="show_highlight" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/Highlight" method="show"]
+[connection signal="hide_highlight" from="Door2D/Interactable" to="Door2D/Highlight" method="hide"]
+[connection signal="interacted" from="Door2D/Interactable" to="Door2D/SceneTransition" method="transition"]
+[connection signal="show_highlight" from="Door2D/Interactable" to="Door2D/Highlight" method="show"]
+[connection signal="hide_highlight" from="Door2D2/Interactable" to="Door2D2/Highlight" method="hide"]
+[connection signal="interacted" from="Door2D2/Interactable" to="Door2D2/SceneTransition" method="transition"]
+[connection signal="show_highlight" from="Door2D2/Interactable" to="Door2D2/Highlight" method="show"]
