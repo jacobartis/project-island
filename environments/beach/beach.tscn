@@ -29,7 +29,7 @@
 [ext_resource type="Script" uid="uid://cfxnlgc58r3o8" path="res://quests/scripts/quest_lock.gd" id="29_1yvki"]
 [ext_resource type="Script" uid="uid://cmui4yend4mi4" path="res://utils/scripts/dialogue_entry.gd" id="29_ark7w"]
 [ext_resource type="ArrayMesh" uid="uid://dy3uxjocgf8uy" path="res://environments/models/buildings/external/building-sample-tower-d.obj" id="29_m1ocf"]
-[ext_resource type="Shader" uid="uid://dhc1lkcfh682i" path="res://environments/beach/rushing_water.gdshader" id="29_o55g6"]
+[ext_resource type="Shader" uid="uid://dslf0keu7opa7" path="res://environments/beach/rushing_water.gdshader" id="29_o55g6"]
 [ext_resource type="PackedScene" uid="uid://cvws7kkdnjhla" path="res://quests/scenes/missing_beer.tscn" id="29_s84rl"]
 [ext_resource type="Resource" uid="uid://b6fjnm5wilihl" path="res://environments/dialogues/object_dialogue.dialogue" id="30_4rxd0"]
 [ext_resource type="ArrayMesh" uid="uid://boamwtd1g8sf2" path="res://environments/models/buildings/external/building-sample-tower-a.obj" id="30_ark7w"]
