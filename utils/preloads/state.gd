@@ -39,6 +39,9 @@ func give_item(id):
 	var item = InventoryItem.new().create(id)
 	Inventory.add_to_best(item)
 
+func get_random(a,b):
+	return randi_range(a,b)
+
 func give_hat(n):
 	var hat = null
 	match n:
