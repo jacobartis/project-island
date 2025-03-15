@@ -1,44 +1,48 @@
 ~ start
 if not QuestManager.is_active(1):
 	do QuestManager.start_quest(1)
-if QuestManager.is_active(1):
-	do QuestManager.set_manual_req(1,2,true)
-if State.rod == "":
-	Fishing Man: Hi, I'm the fishing man.
-	Fishing Man: I [shake rate=20 level=10]LOVE[/shake] fishing.
-	Fishing Man: Heres my rod, please catch me a fish.
-	if State.can_give(0):
-		set State.rod = "true"
-		do State.give_item(0)
-		do QuestManager.start_quest(0)
-	else:
-		set State.rod = "fail"
-		Fishing Man: Whoops, looks like you don't have room for my [wave amp=25 freq=5]rod[/wave].
-		Fishing Man: Please come back when you have space 
-elif State.rod == "fail":
-	Fishing Man: Heres my rod, please catch me a fish.
-	if State.can_give(0):
-		set State.rod = "true"
-		do State.give_item(0)
-		do QuestManager.start_quest(0)
-	else:
-		Fishing Man: Whoops, looks like you don't have room for my [wave amp=25 freq=5]rod[/wave].
-		Fishing Man: Please come back when you have space 
+do QuestManager.set_manual_req(1,2,true)
+if not QuestManager.is_active(0) and not QuestManager.is_complete(0):
+	=> StartQuest
+elif QuestManager.is_active(0) and QuestManager.is_req_complete(0,0):
+	=> CompleteQuest
+elif QuestManager.is_active(0):
+	=> QuestReminder
 elif QuestManager.is_complete(0):
-	Fishing Man: Thanks for that fish.
-	Fishing Man: Be sure to explore the rest of the cove. Theres much more fish to catch.
-elif State.item_count(1)>=1:
-	Fishing Man: [wave amp=25 freq=5]oooooooo[/wave] you have fish?
-	- Hand the man a fish
-		Fishing Man: [wave amp=25 freq=5]TASTY[/wave] thank you kind man.
-		Fishing Man: Here, take a souveinr
-		if QuestManager.is_active(0):
-			do QuestManager.set_manual_req(0,1,true)
-		do QuestManager.check_complete(0)
-		do State.remove_item(1,1)
-		do State.give_hat("fishing")
-	- Nah
-		Fishing Man: :(
-elif State.item_count(1)==0:
-	Fishing Man: Go catch some fish, make me proud!
+	=> PostQuest
 => END
+
+~ StartQuest
+Fishing Man: Hi, I'm the fishing man.
+Fishing Man: I [shake rate=20 level=10]LOVE[/shake] fishing.
+Fishing Man: Heres my rod, please catch me a fish.
+if State.can_give(0):
+	do State.give_item(0)
+	do QuestManager.start_quest(0)
+else:
+	Fishing Man: Whoops, looks like you don't have room for my [wave amp=25 freq=5]rod[/wave].
+	Fishing Man: Please come back when you have space 
+
+~ QuestReminder
+Fishing Man: Go catch some fish, make me proud!
+=> END
+
+~ CompleteQuest
+Fishing Man: [wave amp=25 freq=5]oooooooo[/wave] you have fish?
+- Hand the man a fish
+	Fishing Man: [wave amp=25 freq=5]TASTY[/wave] thank you kind man.
+	Fishing Man: Here, take a souveinr
+	if QuestManager.is_active(0):
+		do QuestManager.set_manual_req(0,1,true)
+	do QuestManager.check_complete(0)
+	do State.remove_item(1,1)
+	do State.give_hat("fishing")
+- Nah
+	Fishing Man: :(
+	=> END
+=> PostQuest
+
+~ PostQuest
+Fishing Man: Thanks for that fish.
+Fishing Man: Be sure to explore the rest of the cove. Theres much more fish to catch.
+=> END!
