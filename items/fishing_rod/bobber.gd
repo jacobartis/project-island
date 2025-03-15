@@ -10,12 +10,15 @@ func pull():
 func _physics_process(delta):
 	if !water_bodies(): return
 	var wat = water_bodies()[0]
+	if wat.is_in_group("air"): return
 	var depth = wat.global_position.y - global_position.y
 	var force = Vector3.DOWN*float_force*get_gravity()*depth*.9-get_gravity()
 	apply_central_force(force)
 
 func _integrate_forces(state):
 	if !water_bodies(): return
+	var wat = water_bodies()[0]
+	if wat.is_in_group("air"): return
 	state.linear_velocity *= 1-0.05
 	state.angular_velocity *= 1-0.05
 
