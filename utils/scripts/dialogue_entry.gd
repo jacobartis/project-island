@@ -1,4 +1,5 @@
 extends Node
+class_name DialogueEntry
 
 @export var dialogue_resource:DialogueResource
 @export var dialogue_start:String = "start"
