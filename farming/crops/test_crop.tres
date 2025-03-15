@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="CropEntry" load_steps=2 format=3 uid="uid://dwlu3h71r0gvr"]
+
+[ext_resource type="Script" uid="uid://dxs3a1vp7dn8m" path="res://farming/crops/crop_entry.gd" id="1_0dypi"]
+
+[resource]
+script = ExtResource("1_0dypi")
+plant_name = "Placeholder"
+description = "Placeholder description"
+metadata/_custom_type_script = "uid://dxs3a1vp7dn8m"
