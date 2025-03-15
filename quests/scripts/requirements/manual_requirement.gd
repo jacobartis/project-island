@@ -10,5 +10,8 @@ func is_complete():
 func get_status()-> String:
 	return description
 
+func get_completed() -> String:
+	return description
+
 func set_complete(val:bool):
 	complete = val
