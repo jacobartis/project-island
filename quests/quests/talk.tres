@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Quest" load_steps=10 format=3 uid="uid://bdkqqk06np0e5"]
+[gd_resource type="Resource" script_class="Quest" load_steps=12 format=3 uid="uid://bdkqqk06np0e5"]
 
 [ext_resource type="Script" uid="uid://bfagaweslhd06" path="res://quests/scripts/requirements/quest_requirement.gd" id="1_nwflo"]
 [ext_resource type="Script" uid="uid://tdfcfw3qilj6" path="res://quests/scripts/rewards/quest_reward.gd" id="2_nrls5"]
@@ -28,6 +28,20 @@ quant = 3
 additional_info = {}
 metadata/_custom_type_script = "uid://dy8xv6oonbwsi"
 
+[sub_resource type="Resource" id="Resource_tcnkn"]
+script = ExtResource("4_tcnkn")
+item_id = 0
+quant = 1
+additional_info = {}
+metadata/_custom_type_script = "uid://dy8xv6oonbwsi"
+
+[sub_resource type="Resource" id="Resource_6xhc5"]
+script = ExtResource("4_tcnkn")
+item_id = 0
+quant = 1
+additional_info = {}
+metadata/_custom_type_script = "uid://dy8xv6oonbwsi"
+
 [resource]
 script = ExtResource("3_tcnkn")
 quest_name = "Talk to people"
@@ -37,5 +51,5 @@ requirements = Dictionary[int, ExtResource("1_nwflo")]({
 1: SubResource("Resource_p3r70"),
 2: SubResource("Resource_bph32")
 })
-rewards = Array[ExtResource("2_nrls5")]([SubResource("Resource_06arr")])
+rewards = Array[ExtResource("2_nrls5")]([SubResource("Resource_06arr"), SubResource("Resource_tcnkn"), SubResource("Resource_6xhc5")])
 metadata/_custom_type_script = "uid://8g8lb6bi7vfj"
