@@ -7,6 +7,7 @@ var quests: Dictionary = {
 	0:preload("res://quests/quests/fishing.tres"),
 	1:preload("res://quests/quests/talk.tres"),
 	2:preload("res://quests/quests/FetchBeer.tres"),
+	3:preload("res://quests/quests/seeds_rock.tres")
 }
 
 var active_quests = []
