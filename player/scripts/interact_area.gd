@@ -12,12 +12,10 @@ func set_closest(new:Interactable):
 		new.highlight = true
 	closest = new
 
-func _input(event):
-	if event.is_action("interact") and closest and !State.in_dialogue:
-		closest.interacted.emit()
-
 func _process(delta):
 	check_closest()
+	if Input.is_action_just_pressed("interact") and closest and !State.in_dialogue:
+		closest.interacted.emit()
 
 func check_closest():
 	if objects.is_empty():
