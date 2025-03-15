@@ -1,0 +1,28 @@
+~ start
+if QuestManager.is_active(2):
+	=> QuestUpdate
+else:
+	=> Intro
+=> END
+
+~ Intro
+Bar Goober: Hello my crate of beer is missing but I'm oh so busy.
+Bar Goober: Say, could you please fetch it from the beach for me.
+- Yes Sir
+	Bar Goober: Oh thank you so much my dear boy.
+	do QuestManager.start_quest(2)
+- No
+	Bar Goober: Oh ok, I see how it is...
+=> END
+
+~ QuestUpdate
+if QuestManager.is_req_complete(2,0):
+	=> QuestFinish
+Bar Goober: Keep Looking.
+=> END
+
+~ QuestFinish
+do QuestManager.set_manual_req(2,1,true)
+do QuestManager.check_complete(0)
+Bar Goober: Thank you.
+=> END

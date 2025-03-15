@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bkavch5at2mls"
+path="res://.godot/imported/bar_guy.dialogue-5152cde8a359e5086b6bee44784112fa.tres"
+
+[deps]
+
+source_file="res://npcs/bar_guy/dialogue/bar_guy.dialogue"
+dest_files=["res://.godot/imported/bar_guy.dialogue-5152cde8a359e5086b6bee44784112fa.tres"]
+
+[params]
+
+defaults=true
