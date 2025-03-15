@@ -5,6 +5,8 @@ signal show_highlight()
 signal hide_highlight()
 signal interacted()
 
+@export var animation_name: String = "interact"
+
 var highlight: bool = false :set=set_highlight
 
 func set_highlight(new:bool):
