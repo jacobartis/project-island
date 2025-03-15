@@ -25,6 +25,7 @@ ItemDict="*res://utils/preloads/item_dict.gd"
 Inventory="*res://utils/preloads/inventory.gd"
 UI="*res://Menus/UI/ui_preload.tscn"
 SceneHandler="*res://utils/preloads/scene_handler.gd"
+SeedPouch="*res://utils/preloads/seed_pouch.gd"
 
 [dialogue_manager]
 
@@ -49,11 +50,16 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 folder_colors={
 "res://Menus/": "gray",
 "res://environments/": "yellow",
+"res://farming/": "teal",
 "res://items/": "pink",
 "res://npcs/": "green",
 "res://quests/": "orange",
 "res://utils/": "purple"
 }
+
+[global_group]
+
+room_cam=""
 
 [input]
 
