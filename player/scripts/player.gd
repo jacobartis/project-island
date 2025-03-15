@@ -1,8 +1,9 @@
 extends CharacterBody3D
 
-@export var mesh: MeshInstance3D
-@onready var hand = $MeshInstance3D/Hand
-@onready var head = $MeshInstance3D/Head
+@export var mesh: Node3D
+@export var hand:Node3D 
+@export var head:Node3D
+@export var animation_player: AnimationPlayer
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
@@ -44,6 +45,9 @@ func _physics_process(delta):
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	if direction:
+		animation_player.play("Walking")
+		print(animation_player.current_animation)
 	move_and_slide()
 	if direction.length()>.2:
 		last_move_dir = direction
