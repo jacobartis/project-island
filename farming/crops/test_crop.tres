@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="CropEntry" load_steps=2 format=3 uid="uid://dwlu3h71r0gvr"]
+[gd_resource type="Resource" script_class="CropEntry" load_steps=3 format=3 uid="uid://dwlu3h71r0gvr"]
 
 [ext_resource type="Script" uid="uid://dxs3a1vp7dn8m" path="res://farming/crops/crop_entry.gd" id="1_0dypi"]
+[ext_resource type="PackedScene" uid="uid://b1x4d3kr3tuc4" path="res://farming/crops/scenes/crop.tscn" id="1_r80d5"]
 
 [resource]
 script = ExtResource("1_0dypi")
 plant_name = "Placeholder"
 description = "Placeholder description"
+scene = ExtResource("1_r80d5")
 metadata/_custom_type_script = "uid://dxs3a1vp7dn8m"
