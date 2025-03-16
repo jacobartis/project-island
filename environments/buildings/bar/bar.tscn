@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://o3qnly1rjefv"]
+[gd_scene load_steps=42 format=4 uid="uid://o3qnly1rjefv"]
 
 [ext_resource type="Script" uid="uid://qtep6gsamlqf" path="res://environments/scripts/exit_point.gd" id="1_3t5jh"]
 [ext_resource type="ArrayMesh" uid="uid://bf0oe7q2455bx" path="res://environments/models/buildings/tiles/floor.obj" id="1_7twnd"]
@@ -16,6 +16,7 @@
 [ext_resource type="ArrayMesh" uid="uid://c0qttkt3ee501" path="res://environments/models/food/barrel.obj" id="14_lbcwl"]
 [ext_resource type="ArrayMesh" uid="uid://cgg86i6xsoi3i" path="res://environments/models/forest/decorations/log_stackLarge.obj" id="14_oxhh7"]
 [ext_resource type="ArrayMesh" uid="uid://3kqcrhfrx407" path="res://environments/models/buildings/tiles/column-thin.obj" id="15_jum3o"]
+[ext_resource type="Shader" uid="uid://bh0mmbcbcmadx" path="res://environments/shaders/sky_box_shader.gdshader" id="17_8s0x0"]
 [ext_resource type="PackedScene" uid="uid://dyqipfjhiekv1" path="res://npcs/farming_man/farming_man.tscn" id="17_b1nr2"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yd747"]
@@ -28,7 +29,7 @@ resource_name = "colormap"
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("10_51pe0")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_oxhh7"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_b1nr2"]
 _surfaces = [{
 "aabb": AABB(-0.05, 0, -1, 0.1, 2.4, 2),
 "format": 34359742465,
@@ -79,7 +80,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("x8xMvZqZGUAAAIC/0sxMvUHNzDAAAIA/0sxMvUHNzDAAAIC/x8xMvZqZGUAAAIA/0sxMvUHNzDAAAIA/0sxMPZqZGUAAAIA/x8xMPQAAAAAAAIA/x8xMvZqZGUAAAIA/0sxMPZqZGUAAAIC/0sxMvUHNzDAAAIC/x8xMPQAAAAAAAIC/x8xMvZqZGUAAAIC/0sxMPZqZGUAAAIA/x8xMvZqZGUAAAIC/0sxMPZqZGUAAAIC/x8xMvZqZGUAAAIA/x8xMPQAAAAAAAIC/0sxMPZqZGUAAAIA/0sxMPZqZGUAAAIC/x8xMPQAAAAAAAIA/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f/9/////P/9//3////8//3//f////z//f/9/////P/////////+//////////7//////////v/////////+//3///////7//f///////v/9///////+//3///////7////9/////v////3////+/////f////7////9/////vw==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_oxhh7")
+shadow_mesh = SubResource("ArrayMesh_b1nr2")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxhh7"]
 size = Vector3(0.2, 4, 10)
@@ -140,9 +141,26 @@ size = Vector3(0.147461, 2.2207, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_51pe0"]
 size = Vector3(6, 2, 2)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_68nw3"]
+shader = ExtResource("17_8s0x0")
+shader_parameter/sky_color = Color(0.03, 0.05, 0.11, 1)
+shader_parameter/star_base_color = Color(0.8, 1, 0.3, 1)
+shader_parameter/star_hue_offset = 0.6
+shader_parameter/star_intensity = 0.08
+shader_parameter/star_twinkle_speed = 0.8
+shader_parameter/star_twinkle_intensity = 0.2
+shader_parameter/layer_scale = 20.0
+shader_parameter/layer_scale_step = 10.0
+shader_parameter/layers_count = 3
+
+[sub_resource type="Sky" id="Sky_l6hdd"]
+sky_material = SubResource("ShaderMaterial_68nw3")
+
 [sub_resource type="Environment" id="Environment_yd747"]
-background_mode = 1
-background_color = Color(0.525101, 0.525101, 0.525101, 1)
+background_mode = 2
+background_color = Color(0.762404, 0.762404, 0.762403, 1)
+sky = SubResource("Sky_l6hdd")
+ambient_light_source = 2
 
 [node name="Bar" type="Node3D"]
 
@@ -345,7 +363,7 @@ shape = SubResource("BoxShape3D_51pe0")
 environment = SubResource("Environment_yd747")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.965926, 1.13133e-08, -0.258819, 0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(0.258819, -4.2222e-08, 0.965926, -0.965926, -1.13133e-08, 0.258819, 1.40785e-15, -1, -4.37114e-08, 0, 0, 0)
 
 [node name="FarmingMan" parent="." instance=ExtResource("17_b1nr2")]
 transform = Transform3D(0.739055, 0, -0.673645, 0, 1, 0, 0.673645, 0, 0.739055, -3.59337, 1, 0)
