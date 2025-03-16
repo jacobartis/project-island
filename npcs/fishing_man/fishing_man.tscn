@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://6eb3gsxdms3f"]
+[gd_scene load_steps=12 format=3 uid="uid://6eb3gsxdms3f"]
 
 [ext_resource type="ArrayMesh" uid="uid://bngs1g03fh6e6" path="res://TestAssets/human.obj" id="1_5b8fl"]
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="2_8o0wa"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://cmui4yend4mi4" path="res://utils/scripts/dialogue_entry.gd" id="3_oxdw8"]
 [ext_resource type="Material" uid="uid://cpq441uyqkg54" path="res://utils/resources/highlight_material.tres" id="4_neytm"]
 [ext_resource type="Resource" uid="uid://dg82aurxgp5qj" path="res://npcs/fishing_man/dialog/fishing_man.dialogue" id="5_pg8f8"]
+[ext_resource type="AudioStream" uid="uid://pldm5lnd5hff" path="res://items/fishing_rod/ding-101492.mp3" id="7_55e7g"]
+[ext_resource type="Script" uid="uid://bvupwt3jtqogy" path="res://npcs/dialogue_sfx_player.gd" id="8_jwkk5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bqp73"]
 
@@ -53,6 +55,15 @@ mesh = ExtResource("2_pg8f8")
 [node name="DialogueEntry" type="Node" parent="."]
 script = ExtResource("3_oxdw8")
 dialogue_resource = ExtResource("5_pg8f8")
+
+[node name="DialogueSFXPlayer" type="Node" parent="."]
+script = ExtResource("8_jwkk5")
+character = "Fishing Man"
+
+[node name="Audio" type="Node3D" parent="."]
+
+[node name="Default" type="AudioStreamPlayer3D" parent="Audio"]
+stream = ExtResource("7_55e7g")
 
 [connection signal="hide_highlight" from="Interactable" to="Highlight" method="hide"]
 [connection signal="interacted" from="Interactable" to="DialogueEntry" method="start_dialogue"]
