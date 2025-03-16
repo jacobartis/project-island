@@ -1,24 +1,78 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1x4d3kr3tuc4"]
+[gd_scene load_steps=9 format=3 uid="uid://b1x4d3kr3tuc4"]
 
 [ext_resource type="Script" uid="uid://x06j8dblviuo" path="res://farming/scenes/crop.gd" id="1_upi6d"]
+[ext_resource type="Script" uid="uid://dtxi4jn5jhh1t" path="res://farming/crops/crop_data.gd" id="2_yc1km"]
+[ext_resource type="Script" uid="uid://dr3qswmswakc8" path="res://farming/crops/crop_stage.gd" id="3_8ke2e"]
+
+[sub_resource type="Resource" id="Resource_8ke2e"]
+script = ExtResource("2_yc1km")
+stages = Array[int]([5, 2, 3])
+metadata/_custom_type_script = "uid://dtxi4jn5jhh1t"
 
 [sub_resource type="BoxMesh" id="BoxMesh_t4j0g"]
-size = Vector3(0.2, 0.2, 0.4)
+size = Vector3(0.1, 0.1, 0.2)
 
-[node name="Crop" type="Node3D"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_8ke2e"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ke2e"]
+albedo_color = Color(0.458824, 1, 1, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_mhm5k"]
+top_radius = 0.2
+bottom_radius = 0.1
+height = 1.0
+
+[node name="Crop" type="Node3D" node_paths=PackedStringArray("stage_nodes")]
 script = ExtResource("1_upi6d")
+crop_data = SubResource("Resource_8ke2e")
+stage_nodes = {
+0: NodePath("CropStage1"),
+1: NodePath("CropStage2"),
+2: NodePath("CropStage3")
+}
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_t4j0g")
+[node name="CropStage1" type="Node3D" parent="."]
+visible = false
+script = ExtResource("3_8ke2e")
+metadata/_custom_type_script = "uid://dr3qswmswakc8"
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.56785, 0, -0.427836)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CropStage1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.264335)
 mesh = SubResource("BoxMesh_t4j0g")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.432519, 0, 0.661612)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="CropStage1"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.40184, 0, -0.196896)
 mesh = SubResource("BoxMesh_t4j0g")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.343873, 0, -0.939016, 0, 1, 0, 0.939016, 0, 0.343873, 0.553963, 0, 0.317089)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="CropStage1"]
+transform = Transform3D(0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, 0.866025, -0.0991373, 0, 0.235219)
 mesh = SubResource("BoxMesh_t4j0g")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="CropStage1"]
+transform = Transform3D(0.343873, 0, -0.939016, 0, 1, 0, 0.939016, 0, 0.343873, 0.406152, 0, -0.0773468)
+mesh = SubResource("BoxMesh_t4j0g")
+skeleton = NodePath("../..")
+
+[node name="CropStage2" type="Node3D" parent="."]
+visible = false
+script = ExtResource("3_8ke2e")
+metadata/_custom_type_script = "uid://dr3qswmswakc8"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CropStage2"]
+mesh = SubResource("CylinderMesh_8ke2e")
+
+[node name="CropStage3" type="Node3D" parent="."]
+visible = false
+script = ExtResource("3_8ke2e")
+metadata/_custom_type_script = "uid://dr3qswmswakc8"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CropStage3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+material_override = SubResource("StandardMaterial3D_8ke2e")
+mesh = SubResource("CylinderMesh_mhm5k")
