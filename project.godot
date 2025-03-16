@@ -26,6 +26,7 @@ Inventory="*res://utils/preloads/inventory.gd"
 UI="*res://Menus/UI/ui_preload.tscn"
 SceneHandler="*res://utils/preloads/scene_handler.gd"
 SeedPouch="*res://utils/preloads/seed_pouch.gd"
+DayManager="*res://utils/preloads/day_manager.gd"
 
 [dialogue_manager]
 
