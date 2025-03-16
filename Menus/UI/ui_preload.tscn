@@ -19,3 +19,4 @@ visible = false
 mouse_filter = 1
 
 [node name="PlanterMenu" parent="." instance=ExtResource("4_rg1kr")]
+visible = false
