@@ -14,7 +14,7 @@ elif QuestManager.is_complete(0):
 
 ~ StartQuest
 Fishing Man: Hi, I'm the fishing man.
-Fishing Man: I [shake rate=20 level=10]LOVE[/shake] fishing.
+Fishing Man: [#Cool] I [shake rate=20 level=10]LOVE[/shake] fishing.
 Fishing Man: Heres my rod, please catch me a fish.
 if State.can_give(0):
 	do State.give_item(0)
