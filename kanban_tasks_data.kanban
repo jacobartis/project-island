@@ -22,7 +22,7 @@
 		},
 		{
 			"uuid": "8e01d1f1-f2ad-4c80-a601-3597b029e60f",
-			"title": "Visual",
+			"title": "Detail",
 			"color": "d72176"
 		}
 	],
@@ -52,8 +52,9 @@
 			"title": "Todo",
 			"tasks": [
 				"45713932-ba44-43df-ae6d-f2e134f182df",
-				"fc83521b-96d1-4660-9b8d-1ee4073843c8",
-				"3afecdb3-5486-4282-999d-b104c1153c38"
+				"3afecdb3-5486-4282-999d-b104c1153c38",
+				"288ee74b-b77f-4acc-8810-89b85a83c743",
+				"9b7ddd43-e49c-42af-b284-da3397d2a4ff"
 			]
 		},
 		{
@@ -77,7 +78,9 @@
 				"b1e1990c-a484-4bba-984f-680737ab0c62",
 				"99a8ed66-1678-4939-bad5-c6ab7704c72f",
 				"9ea2934e-5038-429d-8d8e-47265e7642b0",
-				"827428a4-6d99-4010-823d-56590920075d"
+				"827428a4-6d99-4010-823d-56590920075d",
+				"fc83521b-96d1-4660-9b8d-1ee4073843c8",
+				"a150d4ba-9437-4009-a536-760de9e2ee32"
 			]
 		}
 	],
@@ -283,6 +286,48 @@
 			"title": "Creating planter and seeds",
 			"description": "",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": [
+				{
+					"details": "Create seed planting system",
+					"done": true
+				},
+				{
+					"details": "Create planter object",
+					"done": true
+				},
+				{
+					"details": "Create day cycle for plants to grow",
+					"done": true
+				},
+				{
+					"details": "Add harvest",
+					"done": false
+				},
+				{
+					"details": "Add more crop data (sickness, watering, etc)",
+					"done": false
+				}
+			]
+		},
+		{
+			"uuid": "288ee74b-b77f-4acc-8810-89b85a83c743",
+			"title": "Add new fish types",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "9b7ddd43-e49c-42af-b284-da3397d2a4ff",
+			"title": "Add popup for catching a new fish",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "a150d4ba-9437-4009-a536-760de9e2ee32",
+			"title": "Play sfx when npc talking",
+			"description": "",
+			"category": "8e01d1f1-f2ad-4c80-a601-3597b029e60f",
 			"steps": []
 		}
 	],
