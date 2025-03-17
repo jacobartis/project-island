@@ -90,6 +90,7 @@ func transition(scene_name:String,exit_id:int):
 	get_tree().current_scene.add_child(player)
 	#Make transform if you want to have fun (applys exit scale to player)
 	player.global_position = exit.global_position
+	exit.used.emit()
 
 
 func load_scene(new_scene_name:String):
