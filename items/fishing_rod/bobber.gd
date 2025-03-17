@@ -7,6 +7,9 @@ extends RigidBody3D
 func pull():
 	apply_impulse(Vector3.DOWN*10)
 
+func _ready():
+	hide()
+
 func _process(delta):
 	if not water_bodies():
 		$Helmit.hide()
