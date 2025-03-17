@@ -34,7 +34,7 @@ Fishing Man: [wave amp=25 freq=5]oooooooo[/wave] you have fish?
 	if QuestManager.is_active("Fishing"):
 		do QuestManager.set_manual_req("Fishing","Talk",true)
 	do QuestManager.check_complete("Fishing")
-	do State.remove_item("Fish:TestFish",1)
+	do State.remove_tag("Fish",1)
 	do State.give_hat("fishing")
 - Nah
 	Fishing Man: :(
