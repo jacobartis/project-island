@@ -7,6 +7,18 @@ extends RigidBody3D
 func pull():
 	apply_impulse(Vector3.DOWN*10)
 
+func _process(delta):
+	if not water_bodies():
+		$Helmit.hide()
+		return
+	
+	var wat = water_bodies()[0]
+	if wat.is_in_group("air"):
+		$Helmit.show()
+	else:
+		$Helmit.hide()
+	
+
 func _physics_process(delta):
 	if !water_bodies(): return
 	var wat = water_bodies()[0]
