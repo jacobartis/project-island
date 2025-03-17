@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="8_57d7k"]
 [ext_resource type="Texture2D" uid="uid://cwk5ycta2si3v" path="res://environments/beach/World/Foliage_0_0_0.res" id="10_vmgc7"]
 [ext_resource type="PackedScene" uid="uid://gyv32knfwkg1" path="res://npcs/test_man/test_man.tscn" id="14_sovbs"]
+[ext_resource type="Resource" uid="uid://l5tmq7xg0pf0" path="res://environments/beach/beach_fishing_table.tres" id="15_21kcm"]
 [ext_resource type="Script" uid="uid://bndd3da6d50pt" path="res://fishing/fish_data.gd" id="15_ttyst"]
 [ext_resource type="Resource" uid="uid://bodd0yrquvcq4" path="res://fishing/fish/test_fish/test_fish.tres" id="16_21kcm"]
 [ext_resource type="Script" uid="uid://cnsu8rkv4vclo" path="res://environments/scripts/water.gd" id="16_vmgc7"]
@@ -104,12 +105,6 @@ material = SubResource("ShaderMaterial_smrik")
 size = Vector2(1000, 1000)
 subdivide_width = 100
 subdivide_depth = 100
-
-[sub_resource type="Resource" id="Resource_sbsin"]
-script = ExtResource("17_n03lg")
-fish = Array[ExtResource("15_ttyst")]([ExtResource("16_21kcm")])
-base_quality_bonus = 2.5
-metadata/_custom_type_script = "uid://bkce1n5wvso7"
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ri83c"]
 
@@ -283,7 +278,7 @@ gravity_point_center = Vector3(0, 1, 0)
 gravity_direction = Vector3(0, 1, 0)
 linear_damp = 100.0
 script = ExtResource("16_vmgc7")
-fish_table = SubResource("Resource_sbsin")
+fish_table = ExtResource("15_21kcm")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/WaterPhysics"]
 shape = SubResource("WorldBoundaryShape3D_ri83c")
