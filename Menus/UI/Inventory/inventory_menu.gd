@@ -3,6 +3,7 @@ const INVENTORY_SLOT = preload("res://Menus/UI/Inventory/inventory_slot.tscn")
 
 @onready var slot_container = $SlotContainer
 @export var shemp_counter:Label
+@export var description: Control
 
 var selected:int = -1
 var drag: bool = false
@@ -34,11 +35,15 @@ func _process(delta):
 		State.in_menu = visible
 		update()
 	
+	description.global_position = get_global_mouse_position()-description.size/2+Vector2(0,description.size.y)
+	
 	if Input.is_action_pressed("l_click") and drag:
 		slots[selected].drag()
+		description.hide()
 		drag_time += delta
 	elif Input.is_action_just_released("l_click") and drag:
 		if drag_time>=.2 and hovered in slots:
+			description.show_item(slots[selected])
 			if Inventory.can_place_item(Inventory.get_item(selected),hovered):
 				var item = Inventory.get_item(selected)
 				Inventory.remove_item(selected)
@@ -47,9 +52,11 @@ func _process(delta):
 			else:
 				Inventory.move_item(selected,hovered)
 				slot_clicked(hovered)
+		
 		drag = false
 		drag_time = 0
 		slots[selected].reset_drag()
+		description.update_display()
 		update()
 
 func update():
@@ -78,7 +85,9 @@ func slot_clicked(pos:int):
 func slot_hovered(pos:int):
 	if drag:
 		hovered = pos
+	description.show_item(slots[pos])
 
 func slot_unhovered(pos:int):
 	if drag and pos == hovered:
 		hovered = -1
+	description.hide_item(slots[pos])
