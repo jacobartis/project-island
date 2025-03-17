@@ -97,6 +97,21 @@ size = Vector3(0.2, 4, 10)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4u2p3"]
 
+[sub_resource type="Animation" id="Animation_2t7j8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/MeshInstance3D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.1, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_gvgq1"]
 resource_name = "press"
 length = 0.5
@@ -111,21 +126,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(2, 0.5, 1),
 "update": 0,
 "values": [Vector3(0, 0.1, 0), Vector3(0, 0, 0), Vector3(0, 0.1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_2t7j8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/MeshInstance3D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0.1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qvyo2"]
@@ -224,10 +224,11 @@ skeleton = NodePath("../..")
 
 [node name="SceneTransition" type="Node" parent="Level/Door-rotate-square-b"]
 script = ExtResource("9_jw6d7")
-file = "uid://semv70jqg34e"
+scene_name = "Cove"
 exit_id = 5
 
 [node name="Walls" type="StaticBody3D" parent="Level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.209213, 0)
 
 [node name="Wall2" type="MeshInstance3D" parent="Level/Walls"]
 transform = Transform3D(-2.18557e-08, 0, 5, 0, 1.5, 0, -0.5, 0, -2.18557e-07, 0, 0, 5)

@@ -68,7 +68,7 @@ skeleton = NodePath("../..")
 
 [node name="SceneTransition" type="Node" parent="Door-rotate-square-b"]
 script = ExtResource("9_wqp35")
-file = "uid://semv70jqg34e"
+scene_name = "Cove"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yd747")

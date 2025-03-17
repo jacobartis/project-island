@@ -1,4 +1,4 @@
-[gd_scene load_steps=73 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=77 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
@@ -218,6 +218,16 @@ shader_parameter/speed = Vector2(0, -1)
 material = SubResource("ShaderMaterial_gdsnp")
 size = Vector3(4, 5, 0.1)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1ocf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ark7w"]
+albedo_color = Color(0.864486, 0.32302, 0.42688, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_4rxd0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_naeyc"]
+albedo_color = Color(0.26768, 0.537375, 0.751903, 1)
+
 [node name="World" type="Node3D"]
 
 [node name="Green" parent="." instance=ExtResource("1_ri83c")]
@@ -305,7 +315,7 @@ skeleton = NodePath("../..")
 
 [node name="SceneTransition" type="Node" parent="LevelObjects/Door2D2"]
 script = ExtResource("20_kkc5w")
-file = "uid://bht10866y8fy2"
+scene_name = "2d"
 exit_id = 1
 
 [node name="ExitPoint2D2" type="Marker3D" parent="LevelObjects/Door2D2"]
@@ -339,7 +349,7 @@ skeleton = NodePath("../..")
 
 [node name="SceneTransition" type="Node" parent="LevelObjects/Door2D"]
 script = ExtResource("20_kkc5w")
-file = "uid://bht10866y8fy2"
+scene_name = "2d"
 
 [node name="ExitPoint2D1" type="Marker3D" parent="LevelObjects/Door2D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.326286, 1, 0.371101)
@@ -482,7 +492,7 @@ skeleton = NodePath("../..")
 
 [node name="SceneTransition" type="Node" parent="LevelObjects/BarDoor"]
 script = ExtResource("20_kkc5w")
-file = "uid://o3qnly1rjefv"
+scene_name = "Bar"
 
 [node name="ExitPointBar" type="Marker3D" parent="LevelObjects/BarDoor"]
 transform = Transform3D(1, -7.45058e-09, -3.72529e-09, -1.49012e-08, 1, 2.32831e-09, 0, -4.65661e-09, 1, 0.378448, 1.10339, 0.411709)
@@ -514,7 +524,7 @@ skeleton = NodePath("../..")
 
 [node name="SceneTransition" type="Node" parent="LevelObjects/Door-rotate-square-b2"]
 script = ExtResource("20_kkc5w")
-file = "uid://bbix37b5x20st"
+scene_name = "Alley"
 
 [node name="AlleyExitPoint" type="Marker3D" parent="LevelObjects/Door-rotate-square-b2"]
 transform = Transform3D(1, -7.45058e-09, -3.72529e-09, -1.49012e-08, 1, 2.32831e-09, 0, -4.65661e-09, 1, 0.378448, 1.10339, 0.411709)
@@ -568,7 +578,7 @@ skeleton = NodePath("../..")
 
 [node name="SceneTransition" type="Node" parent="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b"]
 script = ExtResource("20_kkc5w")
-file = "uid://btw43jswoybr8"
+scene_name = "FishingHut"
 
 [node name="ExitPointFishingHut" type="Marker3D" parent="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b"]
 transform = Transform3D(1, -7.45058e-09, -3.72529e-09, -1.49012e-08, 1, 2.32831e-09, 0, -4.65661e-09, 1, 0.378448, 1.10339, 0.411709)
@@ -609,6 +619,25 @@ mesh = SubResource("BoxMesh_o55g6")
 [node name="MissingBeer" parent="LevelObjects" instance=ExtResource("29_s84rl")]
 transform = Transform3D(0.487224, -0.304738, 0.818381, 0.283194, 0.941629, 0.182032, -0.826083, 0.143071, 0.545085, -75, 0.759183, 90)
 
+[node name="ColourBlock" type="Node3D" parent="LevelObjects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77, 2, 97)
+
+[node name="Interactable" type="Area3D" parent="LevelObjects/ColourBlock"]
+script = ExtResource("18_w05xj")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObjects/ColourBlock/Interactable"]
+shape = SubResource("BoxShape3D_m1ocf")
+
+[node name="CollisionShape3D" type="MeshInstance3D" parent="LevelObjects/ColourBlock"]
+material_override = SubResource("StandardMaterial3D_ark7w")
+mesh = SubResource("BoxMesh_4rxd0")
+
+[node name="CollisionShape3D2" type="MeshInstance3D" parent="LevelObjects/ColourBlock"]
+visible = false
+material_override = SubResource("StandardMaterial3D_naeyc")
+mesh = SubResource("BoxMesh_4rxd0")
+
 [connection signal="body_entered" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_entered"]
 [connection signal="body_exited" from="Water/WaterPhysics" to="Water/WaterPhysics" method="_on_body_exited"]
 [connection signal="body_entered" from="AirWater" to="AirWater" method="_on_body_entered"]
@@ -631,3 +660,5 @@ transform = Transform3D(0.487224, -0.304738, 0.818381, 0.283194, 0.941629, 0.182
 [connection signal="hide_highlight" from="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Interactable" to="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Highlight" method="hide"]
 [connection signal="interacted" from="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Interactable" to="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/SceneTransition" method="transition"]
 [connection signal="show_highlight" from="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Interactable" to="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Highlight" method="show"]
+[connection signal="interacted" from="LevelObjects/ColourBlock/Interactable" to="LevelObjects/ColourBlock/CollisionShape3D" method="hide"]
+[connection signal="interacted" from="LevelObjects/ColourBlock/Interactable" to="LevelObjects/ColourBlock/CollisionShape3D2" method="show"]

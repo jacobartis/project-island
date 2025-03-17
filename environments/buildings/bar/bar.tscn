@@ -331,7 +331,7 @@ skeleton = NodePath("../..")
 
 [node name="SceneTransition" type="Node" parent="Room/CoveDoor"]
 script = ExtResource("6_go3mk")
-file = "uid://semv70jqg34e"
+scene_name = "Cove"
 exit_id = 3
 
 [node name="ExitPointFromCove" type="Marker3D" parent="Room/CoveDoor"]

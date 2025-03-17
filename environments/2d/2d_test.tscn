@@ -56,7 +56,7 @@ shape = SubResource("RectangleShape2D_7h3ep")
 
 [node name="SceneTransition" type="Node" parent="Door"]
 script = ExtResource("5_awqw6")
-file = "uid://semv70jqg34e"
+scene_name = "Cove"
 exit_id = 1
 metadata/_custom_type_script = "uid://b1regs7orop10"
 
@@ -85,7 +85,7 @@ shape = SubResource("RectangleShape2D_7h3ep")
 
 [node name="SceneTransition" type="Node" parent="Door2"]
 script = ExtResource("5_awqw6")
-file = "uid://semv70jqg34e"
+scene_name = "Cove"
 exit_id = 2
 metadata/_custom_type_script = "uid://b1regs7orop10"
 
