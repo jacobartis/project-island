@@ -1,6 +1,6 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=2 format=3 uid="uid://o2wvoy8m8dey"]
 
-[ext_resource type="AudioStream" uid="uid://ckhvoxfdp1j4g" path="res://environments/sfx/dorm-door-opening-6038.mp3" id="1_rpxeb"]
+[ext_resource type="AudioStream" uid="uid://b0qqd6prcojh4" path="res://environments/sfx/dorm-door-opening-6038.mp3" id="1_rpxeb"]
 
 [resource]
 random_pitch = 1.2
