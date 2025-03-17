@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=4 uid="uid://bbix37b5x20st"]
+[gd_scene load_steps=37 format=4 uid="uid://bbix37b5x20st"]
 
 [ext_resource type="Script" uid="uid://qtep6gsamlqf" path="res://environments/scripts/exit_point.gd" id="1_yo2hf"]
 [ext_resource type="Script" uid="uid://dgtq3t71bnq0" path="res://environments/scripts/fixed_follow_cam.gd" id="4_vg3wb"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="5_oj3f4"]
+[ext_resource type="AudioStream" uid="uid://o2wvoy8m8dey" path="res://environments/sfx/door.tres" id="6_2t7j8"]
 [ext_resource type="ArrayMesh" uid="uid://d3sb2sp1f57vm" path="res://environments/models/buildings/tiles/door-rotate-square-b.obj" id="6_6tj5n"]
 [ext_resource type="Texture2D" uid="uid://b685o8krif52j" path="res://environments/models/buildings/tiles/Textures/colormap.png" id="7_4u2p3"]
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="7_h86wp"]
@@ -175,11 +176,6 @@ ambient_light_color = Color(0.964742, 0.964742, 0.964742, 1)
 
 [node name="Alley" type="Node3D"]
 
-[node name="ExitPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51636, 1, 0)
-script = ExtResource("1_yo2hf")
-id = 5
-
 [node name="Level" type="Node3D" parent="."]
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Level"]
@@ -226,6 +222,15 @@ skeleton = NodePath("../..")
 script = ExtResource("9_jw6d7")
 scene_name = "Cove"
 exit_id = 5
+
+[node name="DoorSFX" type="AudioStreamPlayer3D" parent="Level/Door-rotate-square-b"]
+stream = ExtResource("6_2t7j8")
+bus = &"SFX"
+
+[node name="ExitPoint" type="Marker3D" parent="Level/Door-rotate-square-b"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42901, 1, 0.390159)
+script = ExtResource("1_yo2hf")
+id = 5
 
 [node name="Walls" type="StaticBody3D" parent="Level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.209213, 0)
@@ -341,6 +346,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 
 [connection signal="hide_highlight" from="Level/Door-rotate-square-b/Interactable" to="Level/Door-rotate-square-b/Highlight" method="hide"]
 [connection signal="interacted" from="Level/Door-rotate-square-b/Interactable" to="Level/Door-rotate-square-b/SceneTransition" method="transition"]
 [connection signal="show_highlight" from="Level/Door-rotate-square-b/Interactable" to="Level/Door-rotate-square-b/Highlight" method="show"]
+[connection signal="used" from="Level/Door-rotate-square-b/ExitPoint" to="Level/Door-rotate-square-b/DoorSFX" method="play"]
 [connection signal="hide_highlight" from="Level/DayButton/Interactable" to="Level/DayButton/Highlight" method="hide"]
 [connection signal="interacted" from="Level/DayButton/Interactable" to="Level/DayButton" method="_on_interactable_interacted"]
 [connection signal="show_highlight" from="Level/DayButton/Interactable" to="Level/DayButton/Highlight" method="show"]

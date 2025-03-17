@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btw43jswoybr8"]
+[gd_scene load_steps=14 format=3 uid="uid://btw43jswoybr8"]
 
 [ext_resource type="Script" uid="uid://qtep6gsamlqf" path="res://environments/scripts/exit_point.gd" id="1_7nhgj"]
 [ext_resource type="PackedScene" uid="uid://6eb3gsxdms3f" path="res://npcs/fishing_man/fishing_man.tscn" id="2_dplj6"]
@@ -8,6 +8,7 @@
 [ext_resource type="ArrayMesh" uid="uid://d3sb2sp1f57vm" path="res://environments/models/buildings/tiles/door-rotate-square-b.obj" id="6_hiswg"]
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="7_u42qk"]
 [ext_resource type="Material" uid="uid://cpq441uyqkg54" path="res://utils/resources/highlight_material.tres" id="8_aom7b"]
+[ext_resource type="AudioStream" uid="uid://o2wvoy8m8dey" path="res://environments/sfx/door.tres" id="9_lymtp"]
 [ext_resource type="Script" uid="uid://b1regs7orop10" path="res://environments/scripts/scene_transition.gd" id="9_wqp35"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yd747"]
@@ -20,10 +21,6 @@ background_mode = 1
 background_color = Color(0.525101, 0.525101, 0.525101, 1)
 
 [node name="Bar" type="Node3D"]
-
-[node name="ExitPoint" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.51636, 1, 0)
-script = ExtResource("1_7nhgj")
 
 [node name="Green2" parent="." instance=ExtResource("2_dplj6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.955433, 0)
@@ -70,6 +67,14 @@ skeleton = NodePath("../..")
 script = ExtResource("9_wqp35")
 scene_name = "Cove"
 
+[node name="DoorSFX" type="AudioStreamPlayer3D" parent="Door-rotate-square-b"]
+stream = ExtResource("9_lymtp")
+bus = &"SFX"
+
+[node name="ExitPoint" type="Marker3D" parent="Door-rotate-square-b"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42901, 1, 0.390159)
+script = ExtResource("1_7nhgj")
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_yd747")
 
@@ -79,3 +84,4 @@ transform = Transform3D(0.965926, 1.13133e-08, -0.258819, 0.258819, -4.2222e-08,
 [connection signal="hide_highlight" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/Highlight" method="hide"]
 [connection signal="interacted" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/SceneTransition" method="transition"]
 [connection signal="show_highlight" from="Door-rotate-square-b/Interactable" to="Door-rotate-square-b/Highlight" method="show"]
+[connection signal="used" from="Door-rotate-square-b/ExitPoint" to="Door-rotate-square-b/DoorSFX" method="play"]
