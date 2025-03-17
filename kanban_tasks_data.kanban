@@ -52,10 +52,9 @@
 			"uuid": "cdc30063-638b-4816-91b5-43d3c128d759",
 			"title": "Todo",
 			"tasks": [
+				"741a47c1-f42e-442f-b88e-ee45206e8708",
 				"288ee74b-b77f-4acc-8810-89b85a83c743",
 				"9b7ddd43-e49c-42af-b284-da3397d2a4ff",
-				"741a47c1-f42e-442f-b88e-ee45206e8708",
-				"e24fc301-eed2-4b65-a0a4-8f3fcc0c8b09",
 				"84c201fe-094f-4124-9e32-27df0f940a6a",
 				"31dbb565-343a-41cb-a4fb-892044d8c1b7",
 				"f1a784c0-7420-4617-9f34-8ccdbd66b494",
@@ -67,9 +66,7 @@
 		{
 			"uuid": "a6d6735f-943b-4f62-854f-1dd796d5a882",
 			"title": "Working on",
-			"tasks": [
-				"45713932-ba44-43df-ae6d-f2e134f182df"
-			]
+			"tasks": []
 		},
 		{
 			"uuid": "a8491082-e66a-46b4-802d-98f94f81fd19",
@@ -86,8 +83,10 @@
 				"99a8ed66-1678-4939-bad5-c6ab7704c72f",
 				"9ea2934e-5038-429d-8d8e-47265e7642b0",
 				"827428a4-6d99-4010-823d-56590920075d",
+				"e24fc301-eed2-4b65-a0a4-8f3fcc0c8b09",
 				"fc83521b-96d1-4660-9b8d-1ee4073843c8",
-				"a150d4ba-9437-4009-a536-760de9e2ee32"
+				"a150d4ba-9437-4009-a536-760de9e2ee32",
+				"45713932-ba44-43df-ae6d-f2e134f182df"
 			]
 		}
 	],
@@ -307,7 +306,20 @@
 			"title": "SFX for charcters speaking",
 			"description": "",
 			"category": "8e01d1f1-f2ad-4c80-a601-3597b029e60f",
-			"steps": []
+			"steps": [
+				{
+					"details": "Fishing man",
+					"done": true
+				},
+				{
+					"details": "Bar man",
+					"done": false
+				},
+				{
+					"details": "Farmer man",
+					"done": false
+				}
+			]
 		},
 		{
 			"uuid": "e24fc301-eed2-4b65-a0a4-8f3fcc0c8b09",
