@@ -20,7 +20,7 @@ collision_mask = 2
 
 [node name="Pickup" type="Node" parent="."]
 script = ExtResource("1_20t80")
-item_id = 1
+item_id = "Fish:TestFish"
 metadata/_custom_type_script = "uid://dqkyxgcprq2ih"
 
 [node name="Interactable" type="Area3D" parent="."]

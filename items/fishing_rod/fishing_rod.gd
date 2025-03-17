@@ -4,9 +4,6 @@ signal cast()
 signal pull_back()
 signal catch()
 
-#TEMP
-const FISH = preload("res://items/fish/fish.tscn")
-
 @onready var anim_t = $AnimationTree
 @onready var bobber = $CastHolder/Bobber
 
@@ -25,6 +22,7 @@ var raw: float = 0
 @export_category("Fish")
 @export var nibble_delay:float = 5
 @export var nibble_window:float = 1
+@export var fishing_bonus:float = 0
 var nibble_avalible: float = 0
 
 func _process(delta):
@@ -76,7 +74,6 @@ func throw_cast(power):
 	bobber.apply_impulse(h_pow+v_pow)
 
 func start_catch():
-	print("FISH!")
 	catch.emit()
 	return_cast()
 
@@ -101,6 +98,8 @@ func _on_nibble_timeout():
 #TEMP TODO
 func _on_catch():
 	State.fish = "Caught"
-	var fish = FISH.instantiate()
+	var water = bobber.get_water()
+	var fish_data:FishData = water.get_fish(fishing_bonus)
+	var fish = fish_data.fish_scene.instantiate()
 	get_tree().get_current_scene().add_child(fish)
 	fish.global_position = global_position

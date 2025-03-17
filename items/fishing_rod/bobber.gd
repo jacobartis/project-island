@@ -10,6 +10,10 @@ func pull():
 func _ready():
 	hide()
 
+func get_water():
+	if not water_bodies(): return null
+	return water_bodies()[0]
+
 func _process(delta):
 	if not water_bodies():
 		$Helmit.hide()

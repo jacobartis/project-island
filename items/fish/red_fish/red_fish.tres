@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://bukl1fnchcwmt"]
+
+[ext_resource type="Texture2D" uid="uid://tooi84ke3nc" path="res://items/fish/test_fish/fish.png" id="1_541d8"]
+[ext_resource type="Script" uid="uid://b4v1dfx12ar7q" path="res://items/scripts/item_resource.gd" id="1_miikn"]
+
+[sub_resource type="PackedScene" id="PackedScene_541d8"]
+
+[resource]
+script = ExtResource("1_miikn")
+item_name = "Red Fish"
+description = "It's like a fish, but more red."
+icon = ExtResource("1_541d8")
+scene = SubResource("PackedScene_541d8")
+max_stack = 1
+additional_info_keys = Array[String]([])
+metadata/_custom_type_script = "uid://b4v1dfx12ar7q"

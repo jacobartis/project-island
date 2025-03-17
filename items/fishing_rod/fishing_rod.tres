@@ -1,7 +1,8 @@
-[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://c54r6db7t37wd"]
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://c54r6db7t37wd"]
 
 [ext_resource type="Script" uid="uid://b4v1dfx12ar7q" path="res://items/scripts/item_resource.gd" id="1_5tlnn"]
 [ext_resource type="Texture2D" uid="uid://be0tpc6wl1cgf" path="res://items/fishing_rod/fishing_rod_icon.png" id="1_eft1h"]
+[ext_resource type="Script" uid="uid://bs7turnljpy58" path="res://items/scripts/additional_data.gd" id="1_nhfvb"]
 [ext_resource type="PackedScene" uid="uid://c44g1lknhnnv5" path="res://items/fishing_rod/fishing_rod.tscn" id="2_nhfvb"]
 
 [resource]
@@ -11,5 +12,6 @@ description = "A rod typicaly used to catch fish"
 icon = ExtResource("1_eft1h")
 scene = ExtResource("2_nhfvb")
 max_stack = 1
-additional_info_keys = Array[String](["bait"])
+additional_info = Array[ExtResource("1_nhfvb")]([])
+tags = Array[String]([])
 metadata/_custom_type_script = "uid://b4v1dfx12ar7q"

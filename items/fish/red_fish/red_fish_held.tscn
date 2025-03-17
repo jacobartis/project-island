@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo4cno755n8r1"]
+
+[ext_resource type="ArrayMesh" uid="uid://cyiqtb4d638d4" path="res://environments/models/food/fish.obj" id="1_lbawu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_81mxf"]
+albedo_color = Color(0.879079, 0.101265, 0.16819, 1)
+
+[node name="Fish" type="Node3D"]
+
+[node name="Fish" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.125219, -0.233958)
+material_override = SubResource("StandardMaterial3D_81mxf")
+mesh = ExtResource("1_lbawu")

@@ -1,5 +1,13 @@
 extends Area3D
+class_name Water
 
+@export var fish_table:FishingTable
+
+func can_fish():
+	return fish_table != null
+
+func get_fish(bonus):
+	return fish_table.get_fish(bonus)
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):

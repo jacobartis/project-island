@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishingTable" load_steps=3 format=3 uid="uid://clpkt3wqtfqm7"]
+
+[ext_resource type="Script" uid="uid://bndd3da6d50pt" path="res://fishing/fish_data.gd" id="1_7j16x"]
+[ext_resource type="Script" uid="uid://bkce1n5wvso7" path="res://fishing/tables/fishing_table.gd" id="2_g0a7p"]
+
+[resource]
+script = ExtResource("2_g0a7p")
+fish = Array[ExtResource("1_7j16x")]([])
+base_quality_bonus = 2.5
+metadata/_custom_type_script = "uid://bkce1n5wvso7"

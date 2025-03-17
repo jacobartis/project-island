@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://gyv32knfwkg1" path="res://npcs/test_man/test_man.tscn" id="14_sovbs"]
 [ext_resource type="Script" uid="uid://bndd3da6d50pt" path="res://fishing/fish_data.gd" id="15_ttyst"]
 [ext_resource type="Resource" uid="uid://bodd0yrquvcq4" path="res://fishing/fish/test_fish/test_fish.tres" id="16_21kcm"]
-[ext_resource type="Script" uid="uid://cnsu8rkv4vclo" path="res://environments/beach/water.gd" id="16_vmgc7"]
+[ext_resource type="Script" uid="uid://cnsu8rkv4vclo" path="res://environments/scripts/water.gd" id="16_vmgc7"]
 [ext_resource type="ArrayMesh" uid="uid://d3sb2sp1f57vm" path="res://environments/models/buildings/tiles/door-rotate-square-b.obj" id="17_10mp2"]
 [ext_resource type="Script" uid="uid://bkce1n5wvso7" path="res://fishing/tables/fishing_table.gd" id="17_n03lg"]
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="18_w05xj"]
