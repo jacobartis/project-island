@@ -28,6 +28,10 @@ func can_give(id):
 	var item = InventoryItem.new().create(id)
 	return Inventory.can_add_item(item)
 
+func remove_tag(id,quant):
+	return Inventory.remove_tag(id,quant)
+
+
 func item_count(id):
 	return Inventory.item_count(id)
 

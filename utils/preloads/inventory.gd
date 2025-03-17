@@ -36,6 +36,23 @@ func count_tag(tag:String):
 		total += x.stack
 	return total
 
+#TODO Add generic remove function
+func remove_tag(tag:String,quant:int):
+	var slots = []
+	for x in inventory.keys():
+		if not inventory[x]:
+			continue
+		if tag in inventory[x].get_item_info().tags:
+			var sub = min(inventory[x].stack,quant)
+			inventory[x].stack -= sub
+			if inventory[x].stack == 0:
+				inventory[x] = null
+			slots.append(x)
+			quant -= sub
+	inventory_update.emit()
+	for x in slots:
+		slot_updated.emit(x)
+
 func find_empty():
 	for x in inventory.keys():
 		if not inventory[x]:
