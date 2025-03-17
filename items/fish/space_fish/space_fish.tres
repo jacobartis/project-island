@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bsdgxpel2432k"]
+
+[ext_resource type="Script" uid="uid://bs7turnljpy58" path="res://items/scripts/additional_data.gd" id="1_ljst1"]
+[ext_resource type="Texture2D" uid="uid://dj8px108rmbnf" path="res://items/fish/space_fish/space_fish.png" id="2_7753a"]
+[ext_resource type="Script" uid="uid://b4v1dfx12ar7q" path="res://items/scripts/item_resource.gd" id="2_o2o48"]
+[ext_resource type="PackedScene" uid="uid://simkcyhfsfth" path="res://items/fish/space_fish/space_fish.tscn" id="3_c5yb3"]
+
+[resource]
+script = ExtResource("2_o2o48")
+item_name = "Space Fish"
+description = "Don't ask how they got there..."
+icon = ExtResource("2_7753a")
+scene = ExtResource("3_c5yb3")
+max_stack = 99
+additional_info = Dictionary[String, ExtResource("1_ljst1")]({})
+tags = Array[String](["Fish", "Food"])
+metadata/_custom_type_script = "uid://b4v1dfx12ar7q"

@@ -1,16 +1,16 @@
 [gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://gek70pfw357f"]
 
 [ext_resource type="Script" uid="uid://bs7turnljpy58" path="res://items/scripts/additional_data.gd" id="1_3i1wm"]
-[ext_resource type="Texture2D" uid="uid://tooi84ke3nc" path="res://items/fish/test_fish/fish.png" id="1_nev1f"]
 [ext_resource type="Script" uid="uid://b4v1dfx12ar7q" path="res://items/scripts/item_resource.gd" id="1_rbuu2"]
-[ext_resource type="PackedScene" uid="uid://dqcibm375dr8y" path="res://items/fish/test_fish/fish_held.tscn" id="2_nev1f"]
+[ext_resource type="Texture2D" uid="uid://tooi84ke3nc" path="res://items/fish/fish.png" id="2_3i1wm"]
+[ext_resource type="PackedScene" uid="uid://dqcibm375dr8y" path="res://items/fish/test_fish/fish.tscn" id="3_p5wsi"]
 
 [resource]
 script = ExtResource("1_rbuu2")
 item_name = "Fish"
 description = "Cool ass fish, just look at it"
-icon = ExtResource("1_nev1f")
-scene = ExtResource("2_nev1f")
+icon = ExtResource("2_3i1wm")
+scene = ExtResource("3_p5wsi")
 max_stack = 99
 additional_info = Dictionary[String, ExtResource("1_3i1wm")]({})
 tags = Array[String](["Fish", "Food"])

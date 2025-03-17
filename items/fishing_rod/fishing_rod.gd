@@ -100,6 +100,5 @@ func _on_catch():
 	State.fish = "Caught"
 	var water = bobber.get_water()
 	var fish_data:FishData = water.get_fish(fishing_bonus)
-	var fish = fish_data.fish_scene.instantiate()
-	get_tree().get_current_scene().add_child(fish)
-	fish.global_position = global_position
+	var item:InventoryItem = InventoryItem.new().create(fish_data.item_id)
+	Inventory.add_to_best(item)

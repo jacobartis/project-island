@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="FishData" load_steps=2 format=3 uid="uid://bodd0yrquvcq4"]
+
+[ext_resource type="Script" uid="uid://bndd3da6d50pt" path="res://fishing/fish_data.gd" id="1_hgvqo"]
+
+[resource]
+script = ExtResource("1_hgvqo")
+item_id = "Fish:TestFish"
+difficulty = 0.0
+rarity = 0
+metadata/_custom_type_script = "uid://bndd3da6d50pt"

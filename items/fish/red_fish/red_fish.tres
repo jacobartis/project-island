@@ -1,15 +1,15 @@
 [gd_resource type="Resource" script_class="Item" load_steps=5 format=3 uid="uid://bukl1fnchcwmt"]
 
-[ext_resource type="Texture2D" uid="uid://tooi84ke3nc" path="res://items/fish/test_fish/fish.png" id="1_541d8"]
 [ext_resource type="Script" uid="uid://b4v1dfx12ar7q" path="res://items/scripts/item_resource.gd" id="1_miikn"]
 [ext_resource type="Script" uid="uid://bs7turnljpy58" path="res://items/scripts/additional_data.gd" id="1_xuqr6"]
-[ext_resource type="PackedScene" uid="uid://bo4cno755n8r1" path="res://items/fish/red_fish/red_fish_held.tscn" id="3_2vypu"]
+[ext_resource type="Texture2D" uid="uid://bkd7c12rg5k4n" path="res://items/fish/red_fish/red_fish.png" id="2_2vypu"]
+[ext_resource type="PackedScene" uid="uid://bo4cno755n8r1" path="res://items/fish/red_fish/red_fish.tscn" id="3_2vypu"]
 
 [resource]
 script = ExtResource("1_miikn")
 item_name = "Red Fish"
 description = "It's like a fish, but more red."
-icon = ExtResource("1_541d8")
+icon = ExtResource("2_2vypu")
 scene = ExtResource("3_2vypu")
 max_stack = 99
 additional_info = Dictionary[String, ExtResource("1_xuqr6")]({})
