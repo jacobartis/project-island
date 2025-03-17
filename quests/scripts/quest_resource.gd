@@ -3,7 +3,7 @@ class_name Quest
 
 @export var quest_name:String = "Placeholder"
 @export_multiline var description:String = "Placeholder description"
-@export var requirements:Dictionary[int,QuestRequirement] = {}
+@export var requirements:Dictionary[String,QuestRequirement] = {}
 @export var rewards:Array[QuestReward] = []
 
 func get_status():

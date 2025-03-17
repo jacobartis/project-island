@@ -24,7 +24,8 @@ shape = SubResource("BoxShape3D_n87jj")
 
 [node name="RequirementSetter" type="Node" parent="."]
 script = ExtResource("3_40dfb")
-quest_id = 2
+quest_id = "LostBeer"
+req_id = "FindBeer"
 
 [node name="Highlight" type="Node3D" parent="."]
 visible = false
@@ -36,7 +37,8 @@ skeleton = NodePath("../../Interactable")
 
 [node name="QuestLock" type="Node" parent="."]
 script = ExtResource("5_40dfb")
-quest_id = 2
+quest_id = "LostBeer"
+req_id = "FindBeer"
 metadata/_custom_type_script = "uid://cfxnlgc58r3o8"
 
 [connection signal="ready" from="." to="QuestLock" method="trigger"]

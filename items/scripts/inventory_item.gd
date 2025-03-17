@@ -1,16 +1,16 @@
 extends Resource
 class_name InventoryItem
 
-var id: int
+var id: String
 var stack:int = 1
-var additional_info:Dictionary = {}
+var additional_info:Dictionary[String,AdditionalItemData] = {}
 
-func create(id:int, stack:int=1,additional_info:Dictionary={}):
+func create(id:String, stack:int=1, init_add_info:Dictionary={}):
 	self.id = id
 	self.stack = stack
-	for x in ItemDict.get_item(id).additional_info_keys:
-		self.additional_info[x] = "default"
-	self.additional_info = additional_info
+	self.additional_info = ItemDict.get_item(id).additional_info.duplicate(true)
+	for x in init_add_info.keys():
+		self.additional_info[x] = init_add_info[x]
 	return self
 
 func add_additional(key,data):

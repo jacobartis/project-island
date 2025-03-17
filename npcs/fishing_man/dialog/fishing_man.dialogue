@@ -1,24 +1,21 @@
 ~ start
-if not QuestManager.is_active(1):
-	do QuestManager.start_quest(1)
-do QuestManager.set_manual_req(1,2,true)
-if not QuestManager.is_active(0) and not QuestManager.is_complete(0):
+if not QuestManager.is_active("Fishing") and not QuestManager.is_complete("Fishing"):
 	=> StartQuest
-elif QuestManager.is_active(0) and QuestManager.is_req_complete(0,0):
-	=> CompleteQuest
-elif QuestManager.is_active(0):
-	=> QuestReminder
-elif QuestManager.is_complete(0):
+elif QuestManager.is_complete("Fishing"):
 	=> PostQuest
+elif QuestManager.is_req_complete("Fishing","Fish"):
+	=> CompleteQuest
+elif QuestManager.is_active("Fishing"):
+	=> QuestReminder
 => END
 
 ~ StartQuest
 Fishing Man: Hi, I'm the fishing man.
 Fishing Man: I [shake rate=20 level=10]LOVE[/shake] fishing.
 Fishing Man: Heres my rod, please catch me a fish.
-if State.can_give(0):
-	do State.give_item(0)
-	do QuestManager.start_quest(0)
+if State.can_give("Item:FishingRod"):
+	do State.give_item("Item:FishingRod")
+	do QuestManager.start_quest("Fishing")
 else:
 	Fishing Man: Whoops, looks like you don't have room for my [wave amp=25 freq=5]rod[/wave].
 	Fishing Man: Please come back when you have space 
@@ -34,10 +31,10 @@ Fishing Man: [wave amp=25 freq=5]oooooooo[/wave] you have fish?
 	Fishing Man: [wave amp=25 freq=5]TASTY[/wave] 
 	Fishing Man: thank you kind man.
 	Fishing Man: Here, take a souveinr
-	if QuestManager.is_active(0):
-		do QuestManager.set_manual_req(0,1,true)
-	do QuestManager.check_complete(0)
-	do State.remove_item(1,1)
+	if QuestManager.is_active("Fishing"):
+		do QuestManager.set_manual_req("Fishing","Talk",true)
+	do QuestManager.check_complete("Fishing")
+	do State.remove_item("Fish:TestFish",1)
 	do State.give_hat("fishing")
 - Nah
 	Fishing Man: :(

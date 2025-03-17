@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemListResource" load_steps=6 format=3 uid="uid://dpp4a27rl6xqr"]
+
+[ext_resource type="Script" uid="uid://b4v1dfx12ar7q" path="res://items/scripts/item_resource.gd" id="1_vho7i"]
+[ext_resource type="Resource" uid="uid://gek70pfw357f" path="res://items/fish/test_fish/test_fish.tres" id="2_ln3wu"]
+[ext_resource type="Script" uid="uid://xq7iacqj0ull" path="res://items/item_list_resource.gd" id="2_wqxns"]
+[ext_resource type="Resource" uid="uid://bukl1fnchcwmt" path="res://items/fish/red_fish/red_fish.tres" id="3_na0om"]
+[ext_resource type="Resource" uid="uid://c54r6db7t37wd" path="res://items/fishing_rod/fishing_rod.tres" id="4_vkj74"]
+
+[resource]
+script = ExtResource("2_wqxns")
+item_list = Dictionary[String, ExtResource("1_vho7i")]({
+"Fish:RedFish": ExtResource("3_na0om"),
+"Fish:TestFish": ExtResource("2_ln3wu"),
+"Item:FishingRod": ExtResource("4_vkj74")
+})
+metadata/_custom_type_script = "uid://xq7iacqj0ull"

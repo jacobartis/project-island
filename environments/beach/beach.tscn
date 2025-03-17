@@ -1,4 +1,4 @@
-[gd_scene load_steps=80 format=3 uid="uid://semv70jqg34e"]
+[gd_scene load_steps=85 format=3 uid="uid://semv70jqg34e"]
 
 [ext_resource type="PackedScene" uid="uid://do35c715ctgi7" path="res://npcs/test_man/other_guy.tscn" id="1_ri83c"]
 [ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="1_ybgaf"]
@@ -14,8 +14,11 @@
 [ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="8_57d7k"]
 [ext_resource type="Texture2D" uid="uid://cwk5ycta2si3v" path="res://environments/beach/World/Foliage_0_0_0.res" id="10_vmgc7"]
 [ext_resource type="PackedScene" uid="uid://gyv32knfwkg1" path="res://npcs/test_man/test_man.tscn" id="14_sovbs"]
+[ext_resource type="Script" uid="uid://bndd3da6d50pt" path="res://fishing/fish_data.gd" id="15_ttyst"]
+[ext_resource type="Resource" uid="uid://bodd0yrquvcq4" path="res://fishing/fish/test_fish/test_fish.tres" id="16_21kcm"]
 [ext_resource type="Script" uid="uid://cnsu8rkv4vclo" path="res://environments/beach/water.gd" id="16_vmgc7"]
 [ext_resource type="ArrayMesh" uid="uid://d3sb2sp1f57vm" path="res://environments/models/buildings/tiles/door-rotate-square-b.obj" id="17_10mp2"]
+[ext_resource type="Script" uid="uid://bkce1n5wvso7" path="res://fishing/tables/fishing_table.gd" id="17_n03lg"]
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="18_w05xj"]
 [ext_resource type="Material" uid="uid://cpq441uyqkg54" path="res://utils/resources/highlight_material.tres" id="19_4507h"]
 [ext_resource type="Script" uid="uid://b1regs7orop10" path="res://environments/scripts/scene_transition.gd" id="20_kkc5w"]
@@ -102,7 +105,19 @@ size = Vector2(1000, 1000)
 subdivide_width = 100
 subdivide_depth = 100
 
+[sub_resource type="Resource" id="Resource_sbsin"]
+script = ExtResource("17_n03lg")
+fish = Array[ExtResource("15_ttyst")]([ExtResource("16_21kcm")])
+base_quality_bonus = 2.5
+metadata/_custom_type_script = "uid://bkce1n5wvso7"
+
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ri83c"]
+
+[sub_resource type="Resource" id="Resource_ttyst"]
+script = ExtResource("17_n03lg")
+fish = Array[ExtResource("15_ttyst")]([ExtResource("16_21kcm")])
+base_quality_bonus = 2.5
+metadata/_custom_type_script = "uid://bkce1n5wvso7"
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_m1ocf"]
 plane = Plane(0, -1, 0, 0)
@@ -268,6 +283,7 @@ gravity_point_center = Vector3(0, 1, 0)
 gravity_direction = Vector3(0, 1, 0)
 linear_damp = 100.0
 script = ExtResource("16_vmgc7")
+fish_table = SubResource("Resource_sbsin")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Water/WaterPhysics"]
 shape = SubResource("WorldBoundaryShape3D_ri83c")
@@ -279,6 +295,7 @@ gravity_point_center = Vector3(0, 1, 0)
 gravity_direction = Vector3(0, 1, 0)
 linear_damp = 100.0
 script = ExtResource("16_vmgc7")
+fish_table = SubResource("Resource_ttyst")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="AirWater"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.010788, -78.104, -284.012)
@@ -519,59 +536,58 @@ metadata/_custom_type_script = "uid://qtep6gsamlqf"
 stream = ExtResource("32_ark7w")
 bus = &"SFX"
 
-[node name="Door-rotate-square-b2" type="MeshInstance3D" parent="LevelObjects"]
+[node name="AlleyDoor" type="MeshInstance3D" parent="LevelObjects"]
 transform = Transform3D(-1.39662, 0.090562, 0.0351116, 0.0862031, 1.38889, -0.153437, -0.0447585, -0.150905, -1.39112, -72.8653, 0.739385, 81.5784)
 material_override = SubResource("StandardMaterial3D_o55g6")
 mesh = ExtResource("17_10mp2")
 skeleton = NodePath("../..")
 
-[node name="Interactable" type="Area3D" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="Interactable" type="Area3D" parent="LevelObjects/AlleyDoor"]
 script = ExtResource("18_w05xj")
 metadata/_custom_type_script = "uid://onyg7lf3hcvc"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObjects/Door-rotate-square-b2/Interactable"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObjects/AlleyDoor/Interactable"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.42075)
 shape = SubResource("BoxShape3D_inj3g")
 
-[node name="Highlight" type="Node3D" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="Highlight" type="Node3D" parent="LevelObjects/AlleyDoor"]
 visible = false
 
-[node name="Door-rotate-square-b" type="MeshInstance3D" parent="LevelObjects/Door-rotate-square-b2/Highlight"]
+[node name="Door-rotate-square-b" type="MeshInstance3D" parent="LevelObjects/AlleyDoor/Highlight"]
 material_override = ExtResource("19_4507h")
 mesh = ExtResource("17_10mp2")
 skeleton = NodePath("../..")
 
-[node name="SceneTransition" type="Node" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="SceneTransition" type="Node" parent="LevelObjects/AlleyDoor"]
 script = ExtResource("20_kkc5w")
 scene_name = "Alley"
 
-[node name="AlleyExitPoint" type="Marker3D" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="AlleyExitPoint" type="Marker3D" parent="LevelObjects/AlleyDoor"]
 transform = Transform3D(1, -7.45058e-09, -3.72529e-09, -1.49012e-08, 1, 2.32831e-09, 0, -4.65661e-09, 1, 0.378448, 1.10339, 0.411709)
 script = ExtResource("21_ief57")
 id = 5
 metadata/_custom_type_script = "uid://qtep6gsamlqf"
 
-[node name="RequirementSetter" type="Node" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="RequirementSetter" type="Node" parent="LevelObjects/AlleyDoor"]
 script = ExtResource("28_m1ocf")
-quest_id = 3
 metadata/_custom_type_script = "uid://cvykvoiqudua4"
 
-[node name="QuestLockActive" type="Node" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="QuestLockActive" type="Node" parent="LevelObjects/AlleyDoor"]
 script = ExtResource("29_1yvki")
-quest_id = 3
+quest_id = "SeedsRock"
 type = 3
 
-[node name="DialogueEntry" type="Node" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="DialogueEntry" type="Node" parent="LevelObjects/AlleyDoor"]
 script = ExtResource("29_ark7w")
 dialogue_resource = ExtResource("30_4rxd0")
 dialogue_start = "locked_door"
 metadata/_custom_type_script = "uid://cmui4yend4mi4"
 
-[node name="DoorSFX" type="AudioStreamPlayer3D" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="DoorSFX" type="AudioStreamPlayer3D" parent="LevelObjects/AlleyDoor"]
 stream = ExtResource("32_ark7w")
 bus = &"SFX"
 
-[node name="DoorLockedSFX" type="AudioStreamPlayer3D" parent="LevelObjects/Door-rotate-square-b2"]
+[node name="DoorLockedSFX" type="AudioStreamPlayer3D" parent="LevelObjects/AlleyDoor"]
 stream = SubResource("AudioStreamRandomizer_naeyc")
 bus = &"SFX"
 
@@ -685,14 +701,14 @@ mesh = SubResource("BoxMesh_4rxd0")
 [connection signal="interacted" from="LevelObjects/BarDoor/Interactable" to="LevelObjects/BarDoor/SceneTransition" method="transition"]
 [connection signal="show_highlight" from="LevelObjects/BarDoor/Interactable" to="LevelObjects/BarDoor/Highlight" method="show"]
 [connection signal="used" from="LevelObjects/BarDoor/ExitPointBar" to="LevelObjects/BarDoor/DoorSFX" method="play"]
-[connection signal="hide_highlight" from="LevelObjects/Door-rotate-square-b2/Interactable" to="LevelObjects/Door-rotate-square-b2/Highlight" method="hide"]
-[connection signal="interacted" from="LevelObjects/Door-rotate-square-b2/Interactable" to="LevelObjects/Door-rotate-square-b2/QuestLockActive" method="trigger"]
-[connection signal="show_highlight" from="LevelObjects/Door-rotate-square-b2/Interactable" to="LevelObjects/Door-rotate-square-b2/Highlight" method="show"]
-[connection signal="used" from="LevelObjects/Door-rotate-square-b2/AlleyExitPoint" to="LevelObjects/Door-rotate-square-b2/DoorSFX" method="play"]
-[connection signal="fails" from="LevelObjects/Door-rotate-square-b2/QuestLockActive" to="LevelObjects/Door-rotate-square-b2/DialogueEntry" method="start_dialogue"]
-[connection signal="fails" from="LevelObjects/Door-rotate-square-b2/QuestLockActive" to="LevelObjects/Door-rotate-square-b2/DoorLockedSFX" method="play"]
-[connection signal="passes" from="LevelObjects/Door-rotate-square-b2/QuestLockActive" to="LevelObjects/Door-rotate-square-b2/SceneTransition" method="transition"]
-[connection signal="passes" from="LevelObjects/Door-rotate-square-b2/QuestLockActive" to="LevelObjects/Door-rotate-square-b2/RequirementSetter" method="set_manual_req"]
+[connection signal="hide_highlight" from="LevelObjects/AlleyDoor/Interactable" to="LevelObjects/AlleyDoor/Highlight" method="hide"]
+[connection signal="interacted" from="LevelObjects/AlleyDoor/Interactable" to="LevelObjects/AlleyDoor/QuestLockActive" method="trigger"]
+[connection signal="show_highlight" from="LevelObjects/AlleyDoor/Interactable" to="LevelObjects/AlleyDoor/Highlight" method="show"]
+[connection signal="used" from="LevelObjects/AlleyDoor/AlleyExitPoint" to="LevelObjects/AlleyDoor/DoorSFX" method="play"]
+[connection signal="fails" from="LevelObjects/AlleyDoor/QuestLockActive" to="LevelObjects/AlleyDoor/DialogueEntry" method="start_dialogue"]
+[connection signal="fails" from="LevelObjects/AlleyDoor/QuestLockActive" to="LevelObjects/AlleyDoor/DoorLockedSFX" method="play"]
+[connection signal="passes" from="LevelObjects/AlleyDoor/QuestLockActive" to="LevelObjects/AlleyDoor/SceneTransition" method="transition"]
+[connection signal="passes" from="LevelObjects/AlleyDoor/QuestLockActive" to="LevelObjects/AlleyDoor/RequirementSetter" method="set_manual_req"]
 [connection signal="hide_highlight" from="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Interactable" to="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Highlight" method="hide"]
 [connection signal="interacted" from="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Interactable" to="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/SceneTransition" method="transition"]
 [connection signal="show_highlight" from="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Interactable" to="LevelObjects/FishingHut/Building-sample-house-a/Door-rotate-square-b/Highlight" method="show"]

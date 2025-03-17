@@ -4,10 +4,9 @@ signal quest_started(id)
 signal quest_completed(id)
 
 var quests: Dictionary = {
-	0:preload("res://quests/quests/fishing.tres"),
-	1:preload("res://quests/quests/talk.tres"),
-	2:preload("res://quests/quests/FetchBeer.tres"),
-	3:preload("res://quests/quests/seeds_rock.tres")
+	"Fishing":preload("res://quests/quests/fishing.tres"),
+	"LostBeer":preload("res://quests/quests/FetchBeer.tres"),
+	"SeedsRock":preload("res://quests/quests/seeds_rock.tres")
 }
 
 var active_quests = []
@@ -49,10 +48,10 @@ func complete_quest(quest_id):
 	get_quest(quest_id).give_rewards()
 	quest_completed.emit(quest_id)
 
-func set_manual_req(quest_id:int,req_pos:int,status:bool):
+func set_manual_req(quest_id:String,req_pos:String,status:bool):
 	if not is_quest(quest_id): return
 	get_quest(quest_id).set_manual_req(req_pos,status)
 
-func is_req_complete(quest_id:int,req_pos:int):
+func is_req_complete(quest_id:String,req_pos:String):
 	if not is_quest(quest_id): return
 	return get_quest(quest_id).is_req_complete(req_pos)

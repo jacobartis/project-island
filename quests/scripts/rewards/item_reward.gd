@@ -1,7 +1,7 @@
 extends QuestReward
 class_name ItemReward
 
-@export var item_id: int = 0
+@export var item_id: String = ""
 @export var quant: int = 1
 @export var additional_info: Dictionary
 

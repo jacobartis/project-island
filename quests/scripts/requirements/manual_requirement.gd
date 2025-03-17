@@ -1,7 +1,7 @@
 extends QuestRequirement
 class_name ManualRequirement
 #Type of requirement toggled by a flag, explicit somewhere else (eg in dialogue)
-@export var description: String = "Description here"
+@export_multiline var description: String = "Description here"
 var complete: bool = false
 
 func is_complete():

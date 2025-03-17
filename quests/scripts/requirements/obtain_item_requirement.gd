@@ -1,7 +1,7 @@
 extends QuestRequirement
 class_name ObtainItemRequirement
 
-@export var item_id: int = 0
+@export var item_id: String = ""
 @export var quant: int = 1
 var complete: bool = false
 

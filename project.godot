@@ -21,12 +21,12 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 State="*res://utils/preloads/state.gd"
 Mouse="*res://utils/preloads/mouse.gd"
 QuestManager="*res://utils/preloads/quest_manager.gd"
-ItemDict="*res://utils/preloads/item_dict.gd"
 Inventory="*res://utils/preloads/inventory.gd"
 UI="*res://Menus/UI/ui_preload.tscn"
 SceneHandler="*res://utils/preloads/scene_handler.gd"
 SeedPouch="*res://utils/preloads/seed_pouch.gd"
 DayManager="*res://utils/preloads/day_manager.gd"
+ItemDict="*res://utils/preloads/item_dict.gd"
 
 [dialogue_manager]
 
@@ -52,6 +52,7 @@ folder_colors={
 "res://Menus/": "gray",
 "res://environments/": "yellow",
 "res://farming/": "teal",
+"res://fishing/": "blue",
 "res://items/": "pink",
 "res://npcs/": "green",
 "res://quests/": "orange",

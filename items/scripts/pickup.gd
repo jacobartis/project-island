@@ -3,7 +3,7 @@ class_name Pickup
 
 signal picked_up()
 
-@export var item_id:int = 0
+@export var item_id:String = ""
 @export var stack:int = 1
 @export var additional_info:Dictionary
 

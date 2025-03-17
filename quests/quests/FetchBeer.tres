@@ -5,23 +5,23 @@
 [ext_resource type="Script" uid="uid://tdfcfw3qilj6" path="res://quests/scripts/rewards/quest_reward.gd" id="3_qgmls"]
 [ext_resource type="Script" uid="uid://8g8lb6bi7vfj" path="res://quests/scripts/quest_resource.gd" id="4_a6cvc"]
 
-[sub_resource type="Resource" id="Resource_jt8gx"]
+[sub_resource type="Resource" id="Resource_8x04d"]
 script = ExtResource("2_s6iol")
-description = "Find the beer in the cove."
+description = "Find the missing beer in the cove."
 metadata/_custom_type_script = "uid://rwa801ifftad"
 
-[sub_resource type="Resource" id="Resource_pusnr"]
+[sub_resource type="Resource" id="Resource_s6iol"]
 script = ExtResource("2_s6iol")
-description = "Deliver the beer to bar guy."
+description = "Talk to the Bar man to return the beer."
 metadata/_custom_type_script = "uid://rwa801ifftad"
 
 [resource]
 script = ExtResource("4_a6cvc")
 quest_name = "Fetch Beer"
 description = "The bar guy needs his delivery of beer. It should be around the cove. Go get it you shmuck!"
-requirements = Dictionary[int, ExtResource("1_8x04d")]({
-0: SubResource("Resource_jt8gx"),
-1: SubResource("Resource_pusnr")
+requirements = Dictionary[String, ExtResource("1_8x04d")]({
+"FindBeer": SubResource("Resource_8x04d"),
+"Talk": SubResource("Resource_s6iol")
 })
 rewards = Array[ExtResource("3_qgmls")]([])
 metadata/_custom_type_script = "uid://8g8lb6bi7vfj"

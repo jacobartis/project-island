@@ -1,5 +1,5 @@
 ~ start
-if QuestManager.is_active(3) or QuestManager.is_complete(3):
+if QuestManager.is_active("SeedsRock") or QuestManager.is_complete("SeedsRock"):
 	=> PostQuest
 else:
 	=> intro
@@ -9,7 +9,7 @@ else:
 Farming Man: What's up man.
 *He hands you a small rusted key*
 Farming Man: ...
-do QuestManager.start_quest(3)
+do QuestManager.start_quest("SeedsRock")
 => END
 
 ~ PostQuest

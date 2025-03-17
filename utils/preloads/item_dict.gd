@@ -1,13 +1,10 @@
 extends Node
 
-var items: Dictionary = {
-	0:preload("res://items/fishing_rod/fishing_rod.tres"),
-	1:preload("res://items/fish/fish.tres")
-}
+@export var list_resource:ItemListResource = preload("res://items/game_item_list.tres")
 
 func is_item(id):
-	return id in items
+	return id in list_resource.item_list
 
 func get_item(id):
 	if not is_item(id): return
-	return items[id]
+	return list_resource.item_list[id]

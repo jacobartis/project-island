@@ -4,7 +4,7 @@ extends Control
 @export var description:Label
 @export var status_con:VBoxContainer
 
-func display_quest(id:int):
+func display_quest(id:String):
 	var quest = QuestManager.get_quest(id)
 	q_name.set_text(quest.quest_name)
 	description.set_text(quest.description)

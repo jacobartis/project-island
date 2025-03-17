@@ -7,21 +7,21 @@
 [ext_resource type="Script" uid="uid://rwa801ifftad" path="res://quests/scripts/requirements/manual_requirement.gd" id="3_dlv4l"]
 [ext_resource type="Script" uid="uid://dy8xv6oonbwsi" path="res://quests/scripts/rewards/item_reward.gd" id="5_dlv4l"]
 
-[sub_resource type="Resource" id="Resource_0od3t"]
+[sub_resource type="Resource" id="Resource_dlv4l"]
 script = ExtResource("2_hy5yh")
-item_id = 1
+item_id = "Fish:TestFish"
 quant = 1
 metadata/_custom_type_script = "uid://24lossxyn1pj"
 
-[sub_resource type="Resource" id="Resource_iv5kw"]
+[sub_resource type="Resource" id="Resource_0od3t"]
 script = ExtResource("3_dlv4l")
-description = "Hand the fish to the Fishing Man"
+description = "Return to Fishing man."
 metadata/_custom_type_script = "uid://rwa801ifftad"
 
 [sub_resource type="Resource" id="Resource_5x8xl"]
 script = ExtResource("5_dlv4l")
-item_id = 1
-quant = 2
+item_id = "Fish:TestFish"
+quant = 1
 additional_info = {}
 metadata/_custom_type_script = "uid://dy8xv6oonbwsi"
 
@@ -29,9 +29,9 @@ metadata/_custom_type_script = "uid://dy8xv6oonbwsi"
 script = ExtResource("1_3tsfs")
 quest_name = "Catch a Fish"
 description = "Catch a fish and give it to the Fishing Man."
-requirements = Dictionary[int, ExtResource("1_0rp6k")]({
-0: SubResource("Resource_0od3t"),
-1: SubResource("Resource_iv5kw")
+requirements = Dictionary[String, ExtResource("1_0rp6k")]({
+"Fish": SubResource("Resource_dlv4l"),
+"Talk": SubResource("Resource_0od3t")
 })
 rewards = Array[ExtResource("2_64rq6")]([SubResource("Resource_5x8xl")])
 metadata/_custom_type_script = "uid://8g8lb6bi7vfj"

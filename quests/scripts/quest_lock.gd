@@ -4,9 +4,9 @@ class_name QuestLock
 signal passes()
 signal fails()
 
-@export var quest_id:int = 0
+@export var quest_id:String = ""
 @export_enum("Requirement","Active","Complete","Active or Complete") var type: int = 0
-@export var req_id:int = 0
+@export var req_id:String = ""
 
 func trigger():
 	match type:
