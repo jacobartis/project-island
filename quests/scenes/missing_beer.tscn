@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvws7kkdnjhla"]
+[gd_scene load_steps=8 format=3 uid="uid://cvws7kkdnjhla"]
 
 [ext_resource type="ArrayMesh" uid="uid://c1vu8st6lv1ef" path="res://environments/models/buildings/decorations/crate-bottles.obj" id="1_8eigm"]
 [ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="2_i6y4c"]
 [ext_resource type="Script" uid="uid://cvykvoiqudua4" path="res://quests/scripts/requirement_setter.gd" id="3_40dfb"]
 [ext_resource type="Material" uid="uid://cpq441uyqkg54" path="res://utils/resources/highlight_material.tres" id="4_i6y4c"]
 [ext_resource type="Script" uid="uid://cfxnlgc58r3o8" path="res://quests/scripts/quest_lock.gd" id="5_40dfb"]
+[ext_resource type="AudioStream" uid="uid://03smrgng7nng" path="res://quests/scenes/missing_beer_sfx.mp3" id="6_n87jj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_n87jj"]
 
@@ -41,9 +42,17 @@ quest_id = "LostBeer"
 req_id = "FindBeer"
 metadata/_custom_type_script = "uid://cfxnlgc58r3o8"
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("6_n87jj")
+volume_db = -5.0
+bus = &"SFX"
+
 [connection signal="ready" from="." to="QuestLock" method="trigger"]
 [connection signal="hide_highlight" from="Interactable" to="Highlight" method="hide"]
-[connection signal="interacted" from="Interactable" to="." method="queue_free"]
+[connection signal="interacted" from="Interactable" to="." method="hide"]
 [connection signal="interacted" from="Interactable" to="RequirementSetter" method="set_manual_req"]
+[connection signal="interacted" from="Interactable" to="AudioStreamPlayer3D" method="play"]
+[connection signal="interacted" from="Interactable" to="Interactable" method="set_monitorable" binds= [false]]
 [connection signal="show_highlight" from="Interactable" to="Highlight" method="show"]
 [connection signal="passes" from="QuestLock" to="." method="queue_free"]
+[connection signal="finished" from="AudioStreamPlayer3D" to="." method="queue_free"]
