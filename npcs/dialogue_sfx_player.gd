@@ -13,8 +13,6 @@ func _ready():
 	DialogueManager.got_dialogue.connect(check_line)
 
 func check_line(line:DialogueLine):
-	print(line.character)
-	print(line.tags)
 	if line.character != character: return
 	
 	for x in line.tags:
