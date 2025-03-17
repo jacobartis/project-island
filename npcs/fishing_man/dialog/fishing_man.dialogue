@@ -14,7 +14,7 @@ elif QuestManager.is_complete(0):
 
 ~ StartQuest
 Fishing Man: Hi, I'm the fishing man.
-Fishing Man: [#Cool] I [shake rate=20 level=10]LOVE[/shake] fishing.
+Fishing Man: I [shake rate=20 level=10]LOVE[/shake] fishing.
 Fishing Man: Heres my rod, please catch me a fish.
 if State.can_give(0):
 	do State.give_item(0)
@@ -30,7 +30,9 @@ Fishing Man: Go catch some fish, make me proud!
 ~ CompleteQuest
 Fishing Man: [wave amp=25 freq=5]oooooooo[/wave] you have fish?
 - Hand the man a fish
-	Fishing Man: [wave amp=25 freq=5]TASTY[/wave] thank you kind man.
+	Fishing Man: [#Eating] *CRUNCH*
+	Fishing Man: [wave amp=25 freq=5]TASTY[/wave] 
+	Fishing Man: thank you kind man.
 	Fishing Man: Here, take a souveinr
 	if QuestManager.is_active(0):
 		do QuestManager.set_manual_req(0,1,true)
@@ -44,5 +46,6 @@ Fishing Man: [wave amp=25 freq=5]oooooooo[/wave] you have fish?
 
 ~ PostQuest
 Fishing Man: Thanks for that fish.
-Fishing Man: Be sure to explore the rest of the cove. Theres much more fish to catch.
+Fishing Man: Be sure to explore the rest of the cove. 
+Fishing Man: Theres much more fish to catch.
 => END!
