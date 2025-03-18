@@ -1,5 +1,8 @@
 extends Node3D
 
+signal  enter_first()
+signal  exit_first()
+
 @export var cam: Camera3D
 @onready var spring_arm_3d = $SpringArm3D
 
@@ -22,10 +25,16 @@ func enable():
 	cam.current = true
 
 func _process(delta):
-	if third:
-		spring_arm_3d.spring_length = lerpf(spring_arm_3d.spring_length,third_person_dist,transition_speed)
-	else:
+	if Input.is_action_just_pressed("first_person"):
+		third = false
+		enter_first.emit()
+	elif Input.is_action_just_released("first_person"):
+		third = true
+		exit_first.emit()
+	if not third:
 		spring_arm_3d.spring_length = lerpf(spring_arm_3d.spring_length,.01,transition_speed)
+	else:
+		spring_arm_3d.spring_length = lerpf(spring_arm_3d.spring_length,third_person_dist,transition_speed)
 
 func move_cam(event:InputEventMouseMotion):
 	if !event or not State.can_act(): return
