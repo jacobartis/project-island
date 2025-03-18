@@ -12,6 +12,6 @@ description = "A rod typicaly used to catch fish"
 icon = ExtResource("1_eft1h")
 scene = ExtResource("2_nhfvb")
 max_stack = 1
-additional_info = Array[ExtResource("1_nhfvb")]([])
+additional_info = Dictionary[String, ExtResource("1_nhfvb")]({})
 tags = Array[String]([])
 metadata/_custom_type_script = "uid://b4v1dfx12ar7q"
