@@ -61,6 +61,7 @@ shape = SubResource("BoxShape3D_ta1aj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.712766, 0)
 script = ExtResource("2_ochrj")
 cam = NodePath("SpringArm3D/Cam")
+transition_speed = 0.25
 
 [node name="SpringArm3D" type="SpringArm3D" parent="3rdPCam"]
 spring_length = 5.0
@@ -68,7 +69,13 @@ spring_length = 5.0
 [node name="Cam" type="Camera3D" parent="3rdPCam/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.51156)
 
+[node name="MoveRay" type="RayCast3D" parent="3rdPCam" groups=["move_ray"]]
+target_position = Vector3(0, 0, -10)
+collision_mask = 8
+
 [connection signal="area_entered" from="Guy/InteractArea" to="Guy/InteractArea" method="_on_area_entered"]
 [connection signal="area_exited" from="Guy/InteractArea" to="Guy/InteractArea" method="_on_area_exited"]
+[connection signal="enter_first" from="3rdPCam" to="Guy/human" method="hide"]
+[connection signal="exit_first" from="3rdPCam" to="Guy/human" method="show"]
 
 [editable path="Guy/human"]
