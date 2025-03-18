@@ -1,0 +1,208 @@
+[gd_scene load_steps=21 format=4 uid="uid://bbncdh8vvlhhp"]
+
+[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="4_ouq43"]
+[ext_resource type="ArrayMesh" uid="uid://d3sb2sp1f57vm" path="res://environments/models/buildings/tiles/door-rotate-square-b.obj" id="5_djkql"]
+[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="6_doobf"]
+[ext_resource type="Material" uid="uid://cpq441uyqkg54" path="res://utils/resources/highlight_material.tres" id="7_xvl8d"]
+[ext_resource type="Script" uid="uid://b1regs7orop10" path="res://environments/scripts/scene_transition.gd" id="8_nwv5b"]
+[ext_resource type="AudioStream" uid="uid://o2wvoy8m8dey" path="res://environments/sfx/door.tres" id="9_cced8"]
+[ext_resource type="PackedScene" uid="uid://dghsinchufkls" path="res://environments/moveable_objects/table.tscn" id="9_dwxge"]
+[ext_resource type="Texture2D" uid="uid://b685o8krif52j" path="res://environments/models/buildings/tiles/Textures/colormap.png" id="10_di1q8"]
+[ext_resource type="PackedScene" uid="uid://b3ph8st32rsnp" path="res://environments/moveable_objects/bed.tscn" id="10_j43m1"]
+[ext_resource type="Script" uid="uid://qtep6gsamlqf" path="res://environments/scripts/exit_point.gd" id="10_rmnj6"]
+
+[sub_resource type="Environment" id="Environment_yd747"]
+background_mode = 1
+background_color = Color(0.525101, 0.525101, 0.525101, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_go3mk"]
+size = Vector3(0.147461, 2.2207, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7s4xu"]
+resource_name = "colormap"
+vertex_color_is_srgb = true
+albedo_texture = ExtResource("10_di1q8")
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b1nr2"]
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -1, 0.1, 2.4, 2),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAwACAAQAAQAAAAUABgAAAAMABAAGAAMAAAAGAAUABgABAAUABgAEAAcAAQAGAAcA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("x8xMvZqZGUAAAIC/0sxMvUHNzDAAAIA/0sxMvUHNzDAAAIC/0sxMPZqZGUAAAIC/x8xMPQAAAAAAAIC/x8xMvZqZGUAAAIA/0sxMPZqZGUAAAIA/x8xMPQAAAAAAAIA/")
+}, {
+"aabb": AABB(-0.05, 0, -1, 0.1, 2.4, 2),
+"format": 34359742465,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAgADAAAAAwACAAQAAQAAAAUABgAAAAMABAAGAAMAAAAGAAUABgABAAUABgAEAAcAAQAGAAcA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("x8xMvZqZGUAAAIC/0sxMvUHNzDAAAIA/0sxMvUHNzDAAAIC/0sxMPZqZGUAAAIC/x8xMPQAAAAAAAIC/x8xMvZqZGUAAAIA/0sxMPZqZGUAAAIA/x8xMPQAAAAAAAIA/")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_j43m1"]
+_surfaces = [{
+"aabb": AABB(-0.05, 0, -1, 0.1, 2.4, 2),
+"attribute_data": PackedByteArray("/////wAAGD8zM1M//////wAAGD/NzGw//////wAAGD/NzGw//////wAAGD8zM1M//////wAAGD/NzGw//////wAAGD8zM1M//////wAAGD/NzGw//////wAAGD8zM1M//////wAAGD8zM1M//////wAAGD/NzGw//////wAAGD/NzGw//////wAAGD8zM1M//////wAA8D4zM1M//////wAA8D4zM1M//////wAA8D4zM1M//////wAA8D4zM1M//////wAAsD7NzGw//////wAAsD4zM1M//////wAAsD4zM1M//////wAAsD7NzGw/"),
+"format": 34359742495,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACQAIAAsADAANAA4ADQAMAA8AEAARABIAEQAQABMA"),
+"material": SubResource("StandardMaterial3D_7s4xu"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("x8xMvZqZGUAAAIC/0sxMvUHNzDAAAIA/0sxMvUHNzDAAAIC/x8xMvZqZGUAAAIA/0sxMvUHNzDAAAIA/0sxMPZqZGUAAAIA/x8xMPQAAAAAAAIA/x8xMvZqZGUAAAIA/0sxMPZqZGUAAAIC/0sxMvUHNzDAAAIC/x8xMPQAAAAAAAIC/x8xMvZqZGUAAAIC/0sxMPZqZGUAAAIA/x8xMvZqZGUAAAIC/0sxMPZqZGUAAAIC/x8xMvZqZGUAAAIA/x8xMPQAAAAAAAIC/0sxMPZqZGUAAAIA/0sxMPZqZGUAAAIC/x8xMPQAAAAAAAIA/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f/9/////P/9//3////8//3//f////z//f/9/////P/////////+//////////7//////////v/////////+//3///////7//f///////v/9///////+//3///////7////9/////v////3////+/////f////7////9/////vw==")
+}, {
+"aabb": AABB(-0.05, 0, -1, 0.1, 2.4, 2),
+"attribute_data": PackedByteArray("/////wAAGD8zM1M//////wAAGD/NzGw//////wAAGD/NzGw//////wAAGD8zM1M//////wAAGD/NzGw//////wAAGD8zM1M//////wAAGD/NzGw//////wAAGD8zM1M//////wAAGD8zM1M//////wAAGD/NzGw//////wAAGD/NzGw//////wAAGD8zM1M//////wAA8D4zM1M//////wAA8D4zM1M//////wAA8D4zM1M//////wAA8D4zM1M//////wAAsD7NzGw//////wAAsD4zM1M//////wAAsD4zM1M//////wAAsD7NzGw/"),
+"format": 34359742495,
+"index_count": 30,
+"index_data": PackedByteArray("AAABAAIAAQAAAAMABAAFAAYABQAEAAcACAAJAAoACQAIAAsADAANAA4ADQAMAA8AEAARABIAEQAQABMA"),
+"material": SubResource("StandardMaterial3D_7s4xu"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 20,
+"vertex_data": PackedByteArray("x8xMvZqZGUAAAIC/0sxMvUHNzDAAAIA/0sxMvUHNzDAAAIC/x8xMvZqZGUAAAIA/0sxMvUHNzDAAAIA/0sxMPZqZGUAAAIA/x8xMPQAAAAAAAIA/x8xMvZqZGUAAAIA/0sxMPZqZGUAAAIC/0sxMvUHNzDAAAIC/x8xMPQAAAAAAAIC/x8xMvZqZGUAAAIC/0sxMPZqZGUAAAIA/x8xMvZqZGUAAAIC/0sxMPZqZGUAAAIC/x8xMvZqZGUAAAIA/x8xMPQAAAAAAAIC/0sxMPZqZGUAAAIA/0sxMPZqZGUAAAIC/x8xMPQAAAAAAAIA/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f/9/////P/9//3////8//3//f////z//f/9/////P/////////+//////////7//////////v/////////+//3///////7//f///////v/9///////+//3///////7////9/////v////3////+/////f////7////9/////vw==")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_b1nr2")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ybw20"]
+size = Vector3(0.2, 4, 10)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dwxge"]
+size = Vector3(0.1, 3, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dwxge"]
+size = Vector2(10, 10)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_yd747"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xtjsq"]
+size = Vector3(14, 7, 12)
+
+[node name="Bar" type="Node3D"]
+
+[node name="Player" parent="." instance=ExtResource("4_ouq43")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.5172, 1.15929, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_yd747")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.965926, 1.13133e-08, -0.258819, 0.258819, -4.2222e-08, 0.965926, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="Room" type="Node3D" parent="."]
+
+[node name="ExitDoo" type="MeshInstance3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.94537, 0, -0.390159)
+mesh = ExtResource("5_djkql")
+skeleton = NodePath("../..")
+
+[node name="Interactable" type="Area3D" parent="Room/ExitDoo"]
+script = ExtResource("6_doobf")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/ExitDoo/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.42075)
+shape = SubResource("BoxShape3D_go3mk")
+
+[node name="Highlight" type="Node3D" parent="Room/ExitDoo"]
+visible = false
+
+[node name="Door-rotate-square-b" type="MeshInstance3D" parent="Room/ExitDoo/Highlight"]
+material_override = ExtResource("7_xvl8d")
+mesh = ExtResource("5_djkql")
+skeleton = NodePath("../..")
+
+[node name="SceneTransition" type="Node" parent="Room/ExitDoo"]
+script = ExtResource("8_nwv5b")
+scene_name = "Cove"
+exit_id = 6
+
+[node name="DoorSFX" type="AudioStreamPlayer3D" parent="Room/ExitDoo"]
+stream = ExtResource("9_cced8")
+bus = &"SFX"
+
+[node name="ExitPoint" type="Marker3D" parent="Room/ExitDoo"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.42901, 1, 0.390159)
+script = ExtResource("10_rmnj6")
+
+[node name="Walls" type="StaticBody3D" parent="Room"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+collision_layer = 9
+collision_mask = 9
+
+[node name="Wall" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-2.18557e-08, 0, 5, 0, 1.5, 0, -0.5, 0, -2.18557e-07, 0, 0, 1)
+mesh = SubResource("ArrayMesh_j43m1")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, 1)
+shape = SubResource("BoxShape3D_ybw20")
+
+[node name="Wall4" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(0.5, 0, 5.68434e-14, 0, 1.5, 0, -7.10543e-15, 0, 5, 5, 0, -4)
+mesh = SubResource("ArrayMesh_j43m1")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Room/Walls"]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 5, 2, -4)
+shape = SubResource("BoxShape3D_ybw20")
+
+[node name="Wall2" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-2.18557e-08, 0, 5, 0, 1.5, 0, -0.5, 0, -2.18557e-07, 0, 0, -9)
+mesh = SubResource("ArrayMesh_j43m1")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Room/Walls"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 2, -9)
+shape = SubResource("BoxShape3D_ybw20")
+
+[node name="Wall3" type="MeshInstance3D" parent="Room/Walls"]
+transform = Transform3D(-1, 0, -7.54979e-07, 0, 1.5, 0, 1.50996e-07, 0, -5, -5, 0, -4)
+mesh = SubResource("ArrayMesh_j43m1")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Room/Walls"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -5, 2, -4)
+shape = SubResource("BoxShape3D_dwxge")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Room"]
+collision_layer = 9
+collision_mask = 9
+
+[node name="Floor" type="MeshInstance3D" parent="Room/StaticBody3D"]
+mesh = SubResource("PlaneMesh_dwxge")
+skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Room/StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_yd747")
+
+[node name="BuildArea" type="Area3D" parent="." groups=["buildable"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BuildArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)
+shape = SubResource("BoxShape3D_xtjsq")
+
+[node name="Bed2" parent="." instance=ExtResource("9_dwxge")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.471644, 0)
+
+[node name="Bed" parent="." instance=ExtResource("10_j43m1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[connection signal="hide_highlight" from="Room/ExitDoo/Interactable" to="Room/ExitDoo/Highlight" method="hide"]
+[connection signal="interacted" from="Room/ExitDoo/Interactable" to="Room/ExitDoo/SceneTransition" method="transition"]
+[connection signal="show_highlight" from="Room/ExitDoo/Interactable" to="Room/ExitDoo/Highlight" method="show"]
+[connection signal="used" from="Room/ExitDoo/ExitPoint" to="Room/ExitDoo/DoorSFX" method="play"]

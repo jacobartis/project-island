@@ -30,7 +30,7 @@ resource_name = "colormap"
 vertex_color_is_srgb = true
 albedo_texture = ExtResource("10_51pe0")
 
-[sub_resource type="ArrayMesh" id="ArrayMesh_b1nr2"]
+[sub_resource type="ArrayMesh" id="ArrayMesh_68nw3"]
 _surfaces = [{
 "aabb": AABB(-0.05, 0, -1, 0.1, 2.4, 2),
 "format": 34359742465,
@@ -81,7 +81,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("x8xMvZqZGUAAAIC/0sxMvUHNzDAAAIA/0sxMvUHNzDAAAIC/x8xMvZqZGUAAAIA/0sxMvUHNzDAAAIA/0sxMPZqZGUAAAIA/x8xMPQAAAAAAAIA/x8xMvZqZGUAAAIA/0sxMPZqZGUAAAIC/0sxMvUHNzDAAAIC/x8xMPQAAAAAAAIC/x8xMvZqZGUAAAIC/0sxMPZqZGUAAAIA/x8xMvZqZGUAAAIC/0sxMPZqZGUAAAIC/x8xMvZqZGUAAAIA/x8xMPQAAAAAAAIC/0sxMPZqZGUAAAIA/0sxMPZqZGUAAAIC/x8xMPQAAAAAAAIA/AAD/f////78AAP9/////vwAA/3////+/AAD/f////7//f/9/////P/9//3////8//3//f////z//f/9/////P/////////+//////////7//////////v/////////+//3///////7//f///////v/9///////+//3///////7////9/////v////3////+/////f////7////9/////vw==")
 }]
 blend_shape_mode = 0
-shadow_mesh = SubResource("ArrayMesh_b1nr2")
+shadow_mesh = SubResource("ArrayMesh_68nw3")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oxhh7"]
 size = Vector3(0.2, 4, 10)

@@ -532,6 +532,42 @@ metadata/_custom_type_script = "uid://qtep6gsamlqf"
 stream = ExtResource("32_ark7w")
 bus = &"SFX"
 
+[node name="HouseDoor" type="MeshInstance3D" parent="LevelObjects"]
+transform = Transform3D(1.16033, 0.321324, -0.714403, -0.314763, 1.36044, 0.100657, 0.717315, 0.077194, 1.19979, -77.5989, 0.739385, 85.5784)
+material_override = SubResource("StandardMaterial3D_gdsnp")
+mesh = ExtResource("17_10mp2")
+skeleton = NodePath("../..")
+
+[node name="Interactable" type="Area3D" parent="LevelObjects/HouseDoor"]
+script = ExtResource("18_w05xj")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LevelObjects/HouseDoor/Interactable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0.42075)
+shape = SubResource("BoxShape3D_inj3g")
+
+[node name="Highlight" type="Node3D" parent="LevelObjects/HouseDoor"]
+visible = false
+
+[node name="Door-rotate-square-b" type="MeshInstance3D" parent="LevelObjects/HouseDoor/Highlight"]
+material_override = ExtResource("19_4507h")
+mesh = ExtResource("17_10mp2")
+skeleton = NodePath("../..")
+
+[node name="SceneTransition" type="Node" parent="LevelObjects/HouseDoor"]
+script = ExtResource("20_kkc5w")
+scene_name = "House"
+
+[node name="ExitPointHouse" type="Marker3D" parent="LevelObjects/HouseDoor"]
+transform = Transform3D(1, -7.45058e-09, -3.72529e-09, -1.49012e-08, 1, 2.32831e-09, 0, -4.65661e-09, 1, 0.378448, 1.10339, 0.411709)
+script = ExtResource("21_ief57")
+id = 6
+metadata/_custom_type_script = "uid://qtep6gsamlqf"
+
+[node name="DoorSFX" type="AudioStreamPlayer3D" parent="LevelObjects/HouseDoor"]
+stream = ExtResource("32_ark7w")
+bus = &"SFX"
+
 [node name="AlleyDoor" type="MeshInstance3D" parent="LevelObjects"]
 transform = Transform3D(-1.39662, 0.090562, 0.0351116, 0.0862031, 1.38889, -0.153437, -0.0447585, -0.150905, -1.39112, -72.8653, 0.739385, 81.5784)
 material_override = SubResource("StandardMaterial3D_o55g6")
@@ -697,6 +733,10 @@ mesh = SubResource("BoxMesh_4rxd0")
 [connection signal="interacted" from="LevelObjects/BarDoor/Interactable" to="LevelObjects/BarDoor/SceneTransition" method="transition"]
 [connection signal="show_highlight" from="LevelObjects/BarDoor/Interactable" to="LevelObjects/BarDoor/Highlight" method="show"]
 [connection signal="used" from="LevelObjects/BarDoor/ExitPointBar" to="LevelObjects/BarDoor/DoorSFX" method="play"]
+[connection signal="hide_highlight" from="LevelObjects/HouseDoor/Interactable" to="LevelObjects/HouseDoor/Highlight" method="hide"]
+[connection signal="interacted" from="LevelObjects/HouseDoor/Interactable" to="LevelObjects/HouseDoor/SceneTransition" method="transition"]
+[connection signal="show_highlight" from="LevelObjects/HouseDoor/Interactable" to="LevelObjects/HouseDoor/Highlight" method="show"]
+[connection signal="used" from="LevelObjects/HouseDoor/ExitPointHouse" to="LevelObjects/HouseDoor/DoorSFX" method="play"]
 [connection signal="hide_highlight" from="LevelObjects/AlleyDoor/Interactable" to="LevelObjects/AlleyDoor/Highlight" method="hide"]
 [connection signal="interacted" from="LevelObjects/AlleyDoor/Interactable" to="LevelObjects/AlleyDoor/QuestLockActive" method="trigger"]
 [connection signal="show_highlight" from="LevelObjects/AlleyDoor/Interactable" to="LevelObjects/AlleyDoor/Highlight" method="show"]

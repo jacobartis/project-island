@@ -1,0 +1,92 @@
+[gd_scene load_steps=9 format=3 uid="uid://dghsinchufkls"]
+
+[ext_resource type="Script" uid="uid://s50l617u1xxs" path="res://environments/buildings/house/moveable_item.gd" id="1_juvm6"]
+[ext_resource type="ArrayMesh" uid="uid://d3i8pox283ic3" path="res://environments/models/buildings/decorations/table.obj" id="2_4hlbx"]
+[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="3_mkace"]
+[ext_resource type="Material" uid="uid://bhnvpf32dkg7g" path="res://utils/resources/valid.tres" id="4_juvm6"]
+[ext_resource type="Material" uid="uid://dcy7qkolr1h4q" path="res://utils/resources/invalid.tres" id="5_0qc3o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_j43m1"]
+size = Vector3(0.81543, 0.650818, 1.64221)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_juvm6"]
+size = Vector3(0.878906, 0.606445, 1.53906)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_di1q8"]
+size = Vector3(0.749023, 0.449219, 1.58105)
+
+[node name="Table" type="Node3D" node_paths=PackedStringArray("move_highlight", "move_validator", "valid_node", "invalid_node")]
+script = ExtResource("1_juvm6")
+move_highlight = NodePath("MoveHighlight")
+move_validator = NodePath("MoveHighlight/StuffHolder/MoveValidator")
+valid_node = NodePath("MoveHighlight/StuffHolder/Table2")
+invalid_node = NodePath("MoveHighlight/StuffHolder/Table3")
+
+[node name="Object" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+collision_layer = 9
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Object"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0358481, -0.174591, 0.0383911)
+shape = SubResource("BoxShape3D_j43m1")
+
+[node name="Table" type="MeshInstance3D" parent="Object"]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.5, -0.5, 0.864949)
+mesh = ExtResource("2_4hlbx")
+skeleton = NodePath("../..")
+
+[node name="BuildInteractable" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("3_mkace")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="BuildInteractable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.376007, 0)
+shape = SubResource("BoxShape3D_juvm6")
+
+[node name="MoveHighlight" type="Node3D" parent="."]
+
+[node name="StuffHolder" type="Node3D" parent="MoveHighlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="Table2" type="MeshInstance3D" parent="MoveHighlight/StuffHolder"]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.5, -0.5, 0.864949)
+visible = false
+material_override = ExtResource("4_juvm6")
+mesh = ExtResource("2_4hlbx")
+skeleton = NodePath("../../..")
+
+[node name="Table3" type="MeshInstance3D" parent="MoveHighlight/StuffHolder"]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.5, -0.5, 0.864949)
+visible = false
+material_override = ExtResource("5_0qc3o")
+mesh = ExtResource("2_4hlbx")
+skeleton = NodePath("../../..")
+
+[node name="MoveValidator" type="Area3D" parent="MoveHighlight/StuffHolder"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MoveHighlight/StuffHolder/MoveValidator"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.131743, 0)
+shape = SubResource("BoxShape3D_di1q8")
+
+[node name="BuildHighlight" type="Node3D" parent="."]
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="BuildHighlight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.620617, 0)
+light_color = Color(0.432604, 0.775562, 0.470697, 1)
+light_energy = 2.0
+omni_range = 2.0
+
+[node name="Table" type="MeshInstance3D" parent="BuildHighlight"]
+transform = Transform3D(-8.74228e-08, 0, -2, 0, 2, 0, 2, 0, -8.74228e-08, 0.5, 0, 0.865)
+material_override = ExtResource("4_juvm6")
+mesh = ExtResource("2_4hlbx")
+skeleton = NodePath("../..")
+
+[connection signal="move_end" from="." to="Object" method="set_collision_layer_value" binds= [4, true]]
+[connection signal="move_start" from="." to="Object" method="set_collision_layer_value" binds= [4, false]]
+[connection signal="hide_highlight" from="BuildInteractable" to="BuildHighlight" method="hide"]
+[connection signal="interacted" from="BuildInteractable" to="." method="start_move"]
+[connection signal="show_highlight" from="BuildInteractable" to="BuildHighlight" method="show"]
