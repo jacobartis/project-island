@@ -7,16 +7,16 @@
 [ext_resource type="Script" uid="uid://rwa801ifftad" path="res://quests/scripts/requirements/manual_requirement.gd" id="3_dlv4l"]
 [ext_resource type="Script" uid="uid://dy8xv6oonbwsi" path="res://quests/scripts/rewards/item_reward.gd" id="5_dlv4l"]
 
-[sub_resource type="Resource" id="Resource_0od3t"]
-script = ExtResource("3_dlv4l")
-description = "Return to Fishing man."
-metadata/_custom_type_script = "uid://rwa801ifftad"
-
 [sub_resource type="Resource" id="Resource_iv5kw"]
 script = ExtResource("3_0od3t")
 tag = "Fish"
 quant = 1
 metadata/_custom_type_script = "uid://cfjx7rfst3ggc"
+
+[sub_resource type="Resource" id="Resource_0od3t"]
+script = ExtResource("3_dlv4l")
+description = "Return to Fishing man."
+metadata/_custom_type_script = "uid://rwa801ifftad"
 
 [sub_resource type="Resource" id="Resource_5x8xl"]
 script = ExtResource("5_dlv4l")
