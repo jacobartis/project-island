@@ -1,7 +1,7 @@
 ~ start
 if QuestManager.is_active("LostBeer"):
 	=> QuestUpdate
-elif not QuestManager.is_active("LostBeer") and not QuestManager.is_complete("FetchBeer"):
+elif not QuestManager.is_active("LostBeer") and not QuestManager.is_complete("LostBeer"):
 	=> Intro
 else:
 	=> PostQuest
