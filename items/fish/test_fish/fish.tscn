@@ -1,11 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqcibm375dr8y"]
+[gd_scene load_steps=4 format=3 uid="uid://dqcibm375dr8y"]
 
 [ext_resource type="ArrayMesh" uid="uid://cyiqtb4d638d4" path="res://environments/models/food/fish.obj" id="1_g4crx"]
+[ext_resource type="Script" uid="uid://nk7y2yaj1ue" path="res://items/scripts/held_item.gd" id="1_peukx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g4crx"]
 albedo_color = Color(2.88785e-07, 0.548191, 0.549578, 1)
 
 [node name="Fish" type="Node3D"]
+script = ExtResource("1_peukx")
+metadata/_custom_type_script = "uid://nk7y2yaj1ue"
 
 [node name="Fish" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -0.125219, -0.233958)

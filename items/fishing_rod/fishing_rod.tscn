@@ -177,6 +177,7 @@ _data = {
 script = ExtResource("1_vjqo0")
 max_charge = 20.0
 charge_speed = 15.0
+charge_power = 2.0
 nibble_window = 2.0
 
 [node name="RodHolder" type="Node3D" parent="."]

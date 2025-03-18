@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://simkcyhfsfth"]
+[gd_scene load_steps=7 format=3 uid="uid://simkcyhfsfth"]
 
+[ext_resource type="Script" uid="uid://nk7y2yaj1ue" path="res://items/scripts/held_item.gd" id="1_mojhy"]
 [ext_resource type="ArrayMesh" uid="uid://cyiqtb4d638d4" path="res://environments/models/food/fish.obj" id="1_pm7xw"]
 [ext_resource type="ArrayMesh" uid="uid://bo5bxkxfjcy2u" path="res://TestAssets/space_helmit.obj" id="2_nf7up"]
 
@@ -13,6 +14,8 @@ albedo_color = Color(0.769376, 0.698559, 0.636892, 1)
 albedo_color = Color(0, 0, 0, 1)
 
 [node name="Fish" type="Node3D"]
+script = ExtResource("1_mojhy")
+metadata/_custom_type_script = "uid://nk7y2yaj1ue"
 
 [node name="Fish" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, -2.98023e-08, -8.74228e-08, -2.98023e-08, -1, -3.55271e-15, -8.74228e-08, 0, -1, 0, 0.106794, -0.233958)

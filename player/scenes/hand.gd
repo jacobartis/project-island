@@ -1,6 +1,6 @@
 extends Node3D
 
-var current
+var current:HeldItem
 
 func equip(packed:PackedScene):
 	if current:
@@ -14,3 +14,12 @@ func unequip():
 	if not current: return
 	current.queue_free()
 	current = null
+
+func _process(delta):
+	if not State.can_act():
+		return
+	if !current: return
+	if Input.is_action_pressed("use_primary"):
+		current.primary_use()
+	elif Input.is_action_pressed("use_secondary"):
+		current.secondary_use()

@@ -1,4 +1,4 @@
-extends Node3D
+extends HeldItem
 
 signal cast()
 signal pull_back()
@@ -25,22 +25,18 @@ var raw: float = 0
 @export var fishing_bonus:float = 0
 var nibble_avalible: float = 0
 
-func _process(delta):
-	
-	
-	if not State.can_act():
-		return
-	
-	if !casted and can_cast and !State.in_dialogue:
-		handle_charge(delta)
-	
-	if casted and Input.is_action_just_pressed("use") and nibble_avalible != 0:
+func primary_use():
+	if casted and nibble_avalible != 0:
 		start_catch()
 		nibble_avalible = 0
-	elif casted and Input.is_action_just_pressed("use"):
+	elif casted:
 		return_cast()
 		nibble_avalible = 0 
-	
+	elif can_cast:
+		hold_delay = .1
+
+func _process(delta):
+	handle_charge(delta)
 	if casted:
 		nibble_avalible = max(nibble_avalible-delta,0)
 		if !bobber.water_bodies():
@@ -50,8 +46,6 @@ func _process(delta):
 
 func handle_charge(delta):
 	hold_delay = max(hold_delay-delta,0)
-	if Input.is_action_pressed("use"):
-		hold_delay = .1
 	if hold_delay>0:
 		raw = raw+delta*charge_speed
 		charge = pingpong(raw,max_charge)
