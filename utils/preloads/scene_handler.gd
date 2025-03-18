@@ -4,14 +4,15 @@ extends Node
 var packed_player:PackedScene = null
 var packed_player_2D:PackedScene = preload("res://player/scenes/player_2d.tscn")
 
-var scene_name: String = "Cove"
+var scene_name: String = ""
 
 var default_scenes: Dictionary = {
 	"Cove":preload("res://environments/beach/beach.tscn"),
 	"Alley":preload("res://environments/buildings/alley/alley.tscn"),
 	"Bar":preload("res://environments/buildings/bar/bar.tscn"),
 	"FishingHut":preload("res://environments/buildings/fishing_hut/fishing_hut.tscn"),
-	"2d":preload("res://environments/2d/2d_test.tscn")
+	"2d":preload("res://environments/2d/2d_test.tscn"),
+	"House":preload("res://environments/buildings/house/player_house.tscn")
 }
 
 var scenes: Dictionary = {}
