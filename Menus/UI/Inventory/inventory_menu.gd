@@ -37,11 +37,11 @@ func _process(delta):
 	
 	description.global_position = get_global_mouse_position()-description.size/2+Vector2(0,description.size.y)
 	
-	if Input.is_action_pressed("l_click") and drag:
+	if Input.is_action_pressed("use_primary") and drag:
 		slots[selected].drag()
 		description.hide()
 		drag_time += delta
-	elif Input.is_action_just_released("l_click") and drag:
+	elif Input.is_action_just_released("use_primary") and drag:
 		if drag_time>=.2 and hovered in slots:
 			description.show_item(slots[selected])
 			if Inventory.can_place_item(Inventory.get_item(selected),hovered):
