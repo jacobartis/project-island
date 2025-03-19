@@ -1,0 +1,389 @@
+[gd_scene load_steps=17 format=3 uid="uid://djdpv4d4i78ru"]
+
+[ext_resource type="Script" uid="uid://1hkiqeki82fq" path="res://environments/buildings/bar_minigame/glass_washer.gd" id="1_wxfd2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_wxfd2"]
+size = Vector3(1, 1.2, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcxwv"]
+size = Vector3(1, 1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_aw7nl"]
+size = Vector3(0.9, 0.1, 0.9)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vcxwv"]
+size = Vector3(0.843994, 0.0568848, 0.869385)
+
+[sub_resource type="Animation" id="Animation_wxfd2"]
+resource_name = "close"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.966667),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlassDraw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.9), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.966667, 1.1, 1.4),
+"transitions": PackedFloat32Array(0.25, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.311314, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.963237, 0.966667, 1.1, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1.2, 0.8), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_vcxwv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlassDraw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.228753, 0.94944)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aw7nl"]
+resource_name = "active"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GlassDraw:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FrontHinge:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.210335, 0.613478, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.05, 0.9, 1.05), Vector3(0.9, 1.2, 0.9), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qb7k7"]
+resource_name = "open"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.633333, 1.6),
+"transitions": PackedFloat32Array(0.2, 5),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlassDraw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.766667, 1.56667),
+"transitions": PackedFloat32Array(0.2, 5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0666667, 0.466667, 0.633333, 0.8),
+"transitions": PackedFloat32Array(1, 4, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.311314, 0, 0), Vector3(0.174533, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0666667, 0.466667, 0.633333),
+"transitions": PackedFloat32Array(0.5, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1.2, 0.8), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_444nr"]
+resource_name = "soft_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(0.2, 5),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlassDraw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333, 0.766667),
+"transitions": PackedFloat32Array(0.2, 5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.9)]
+}
+
+[sub_resource type="Animation" id="Animation_22rk7"]
+resource_name = "soft_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(5, 0.2),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlassDraw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.833333),
+"transitions": PackedFloat32Array(5, 0.2),
+"update": 0,
+"values": [Vector3(0, 0, 0.9), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_aw7nl"]
+_data = {
+&"RESET": SubResource("Animation_vcxwv"),
+&"active": SubResource("Animation_aw7nl"),
+&"close": SubResource("Animation_wxfd2"),
+&"open": SubResource("Animation_qb7k7"),
+&"soft_close": SubResource("Animation_22rk7"),
+&"soft_open": SubResource("Animation_444nr")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wxfd2"]
+albedo_color = Color(0.34902, 1, 0.215686, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_vcxwv"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.1
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_aw7nl"]
+size = Vector3(0.25, 0.25, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wxfd2"]
+size = Vector3(1.01172, 1.14453, 1.82617)
+
+[node name="GlassWasher" type="Node3D" node_paths=PackedStringArray("cam_pos") groups=["bm_item"]]
+script = ExtResource("1_wxfd2")
+cam_pos = NodePath("CamPos")
+
+[node name="Machine" type="Node3D" parent="."]
+
+[node name="MachineBody" type="MeshInstance3D" parent="Machine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0157402, 0)
+mesh = SubResource("BoxMesh_wxfd2")
+skeleton = NodePath("../..")
+
+[node name="FrontHinge" type="Node3D" parent="Machine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.513987, 0.452091)
+
+[node name="MachineFront" type="MeshInstance3D" parent="Machine/FrontHinge"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0474221, 0.514961)
+mesh = SubResource("BoxMesh_vcxwv")
+skeleton = NodePath("../../..")
+
+[node name="GlassDraw" type="Node3D" parent="Machine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.228753, 0.94944)
+
+[node name="Glasses" type="Node3D" parent="Machine/GlassDraw"]
+
+[node name="GlassSpawns" type="Node3D" parent="Machine/GlassDraw"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0577884, 0)
+
+[node name="GlassSpawn2" type="Marker3D" parent="Machine/GlassDraw/GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.481887, 0, -0.239361)
+
+[node name="GlassSpawn3" type="Marker3D" parent="Machine/GlassDraw/GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333639, 0, 0.187029)
+
+[node name="GlassSpawn4" type="Marker3D" parent="Machine/GlassDraw/GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0945947, 0, -0.0523317)
+
+[node name="GlassSpawn9" type="Marker3D" parent="Machine/GlassDraw/GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108223, 0, -0.289584)
+
+[node name="GlassSpawn5" type="Marker3D" parent="Machine/GlassDraw/GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.191284, -5.96046e-08, 0.224267)
+
+[node name="GlassSpawn6" type="Marker3D" parent="Machine/GlassDraw/GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430329, -5.96046e-08, -0.015094)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Machine/GlassDraw"]
+mesh = SubResource("BoxMesh_aw7nl")
+
+[node name="PlaceGlassArea" type="Area3D" parent="Machine/GlassDraw"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.112791, 0.0315127)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Machine/GlassDraw/PlaceGlassArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159182, 0)
+shape = SubResource("BoxShape3D_vcxwv")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Machine"]
+libraries = {
+&"": SubResource("AnimationLibrary_aw7nl")
+}
+
+[node name="StartButton" type="Node3D" parent="Machine"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.613641, 0.574447)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Machine/StartButton"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wxfd2")
+mesh = SubResource("CylinderMesh_vcxwv")
+
+[node name="StartButton" type="Area3D" parent="Machine/StartButton"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Machine/StartButton/StartButton"]
+shape = SubResource("BoxShape3D_aw7nl")
+
+[node name="WashTime" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="CamPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.422746, 2.36713)
+
+[node name="SelectArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00209802, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.457275)
+shape = SubResource("BoxShape3D_wxfd2")
+
+[connection signal="selected" from="." to="." method="_on_selected"]
+[connection signal="selected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="selected" from="." to="Machine/GlassDraw/PlaceGlassArea/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="selected" from="." to="Machine/StartButton/StartButton/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="unselected" from="." to="." method="_on_unselected"]
+[connection signal="unselected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="unselected" from="." to="Machine/GlassDraw/PlaceGlassArea/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="unselected" from="." to="Machine/StartButton/StartButton/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="input_event" from="Machine/GlassDraw/PlaceGlassArea" to="." method="_on_place_glass_area_input_event"]
+[connection signal="animation_finished" from="Machine/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="input_event" from="Machine/StartButton/StartButton" to="." method="_on_start_button_input_event"]
+[connection signal="timeout" from="WashTime" to="." method="_on_wash_time_timeout"]
+[connection signal="input_event" from="SelectArea" to="." method="_on_select_area_input_event"]

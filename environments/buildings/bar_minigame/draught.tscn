@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=3 uid="uid://x3reh6m2ri7w"]
+
+[ext_resource type="Script" uid="uid://hnttjbsrkhbx" path="res://environments/buildings/bar_minigame/draught.gd" id="1_3s514"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_o3xdu"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3s514"]
+size = Vector3(1.45898, 1.87158, 1.1748)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o3xdu"]
+size = Vector3(0.578125, 0.938477, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3s514"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8cven"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_o3xdu"]
+height = 0.1
+
+[node name="Draught" type="Node3D" node_paths=PackedStringArray("cam_pos") groups=["bm_item", "draught"]]
+script = ExtResource("1_3s514")
+cam_pos = NodePath("CamPosition")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_o3xdu")
+
+[node name="SelectArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.435791, 0)
+shape = SubResource("BoxShape3D_3s514")
+
+[node name="CamPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.429359, 2)
+
+[node name="Tap" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.127924, 0)
+
+[node name="Pull" type="Area3D" parent="Tap"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tap/Pull"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.591962, 0)
+shape = SubResource("BoxShape3D_o3xdu")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tap"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.532378, 0)
+mesh = SubResource("CylinderMesh_3s514")
+
+[node name="GlassPlace" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.203417, 0.75)
+
+[node name="GlassPlace" type="Area3D" parent="GlassPlace"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GlassPlace/GlassPlace"]
+shape = SubResource("BoxShape3D_8cven")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GlassPlace"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.05, 0)
+mesh = SubResource("CylinderMesh_o3xdu")
+
+[connection signal="selected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="selected" from="." to="Tap/Pull/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="selected" from="." to="GlassPlace/GlassPlace/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="unselected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="unselected" from="." to="Tap/Pull/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="unselected" from="." to="GlassPlace/GlassPlace/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="input_event" from="SelectArea" to="." method="_on_select_area_input_event"]
+[connection signal="input_event" from="Tap/Pull" to="." method="_on_pull_input_event"]
+[connection signal="input_event" from="GlassPlace/GlassPlace" to="." method="_on_glass_place_input_event"]

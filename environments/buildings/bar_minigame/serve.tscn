@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://et0efohon80k"]
+
+[ext_resource type="Script" uid="uid://dlfd7o1v4mxaj" path="res://environments/buildings/bar_minigame/serve.gd" id="1_pflum"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ufdfm"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_5ghop"]
+height = 0.1
+
+[node name="Serve" type="Node3D" node_paths=PackedStringArray("cam_pos")]
+script = ExtResource("1_pflum")
+cam_pos = NodePath("CamPos")
+
+[node name="SelectArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectArea"]
+shape = SubResource("BoxShape3D_ufdfm")
+
+[node name="PlaceSelectArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlaceSelectArea"]
+shape = SubResource("BoxShape3D_ufdfm")
+disabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_5ghop")
+
+[node name="CamPos" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.513117, 1.47864)
+
+[connection signal="selected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="selected" from="." to="PlaceSelectArea/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="unselected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="unselected" from="." to="PlaceSelectArea/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="input_event" from="SelectArea" to="." method="_on_select_area_input_event"]
+[connection signal="input_event" from="PlaceSelectArea" to="." method="_on_place_select_area_input_event"]

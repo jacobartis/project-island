@@ -92,14 +92,6 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
 
-[node name="ColorRect" type="ColorRect" parent="Balloon/Panel"]
-layout_mode = 2
-offset_left = 30.0
-offset_top = 15.0
-offset_right = 1082.0
-offset_bottom = 149.0
-color = Color(0.741767, 0.430489, 0.850599, 1)
-
 [node name="Dialogue" type="MarginContainer" parent="Balloon/Panel"]
 layout_mode = 1
 anchors_preset = 15

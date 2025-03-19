@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3 uid="uid://hu4ooesjtds7"]
+
+[ext_resource type="Script" uid="uid://ixa0huafswqt" path="res://environments/buildings/bar_minigame/clean_glasses.gd" id="1_i5b7e"]
+[ext_resource type="ArrayMesh" uid="uid://bjb4lta7211e8" path="res://environments/models/buildings/decorations/tableCross.obj" id="2_4ot5m"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rkyfd"]
+size = Vector3(1.70068, 1, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5r2c7"]
+size = Vector3(1.69824, 0.0568848, 0.869385)
+
+[node name="CleanGlasses" type="Node3D" node_paths=PackedStringArray("cam_pos") groups=["bm_item", "clean_glasses"]]
+script = ExtResource("1_i5b7e")
+cam_pos = NodePath("Camera")
+
+[node name="SelectArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SelectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0529785, 0, 0)
+shape = SubResource("BoxShape3D_rkyfd")
+
+[node name="TableCross" type="MeshInstance3D" parent="."]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.816715, -0.638182, -0.533115)
+mesh = ExtResource("2_4ot5m")
+skeleton = NodePath("../..")
+
+[node name="Camera" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38906, 0.999688)
+
+[node name="GlassSpawns" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0577884, 0)
+
+[node name="GlassSpawn" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.720931, 0, 0)
+
+[node name="GlassSpawn2" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.481887, 0, -0.239361)
+
+[node name="GlassSpawn3" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.333639, 0, 0.187029)
+
+[node name="GlassSpawn4" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0945947, 0, -0.0523317)
+
+[node name="GlassSpawn9" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.108223, 0, -0.289584)
+
+[node name="GlassSpawn5" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.191284, -5.96046e-08, 0.224267)
+
+[node name="GlassSpawn6" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.430329, -5.96046e-08, -0.015094)
+
+[node name="GlassSpawn7" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.704892, -5.96046e-08, 0.225673)
+
+[node name="GlassSpawn8" type="Marker3D" parent="GlassSpawns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.695869, -5.96046e-08, -0.403062)
+
+[node name="Glasses" type="Node3D" parent="."]
+
+[node name="PlaceGlassArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0572811, 0.0315127)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlaceGlassArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.159182, 0)
+shape = SubResource("BoxShape3D_5r2c7")
+
+[connection signal="selected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="unselected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="input_event" from="SelectArea" to="." method="_on_select_area_input_event"]
+[connection signal="input_event" from="PlaceGlassArea" to="." method="_on_place_glass_area_input_event"]

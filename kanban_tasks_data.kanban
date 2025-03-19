@@ -52,14 +52,13 @@
 			"uuid": "cdc30063-638b-4816-91b5-43d3c128d759",
 			"title": "Todo",
 			"tasks": [
+				"b7eaffe3-a1de-4426-926f-a00299dea014",
 				"a4710d7d-07c6-4eb4-9a55-e1b9d77ce117",
 				"84c201fe-094f-4124-9e32-27df0f940a6a",
 				"741a47c1-f42e-442f-b88e-ee45206e8708",
 				"f1a784c0-7420-4617-9f34-8ccdbd66b494",
 				"125a5bbe-390e-4437-a665-690191b382c7",
-				"b7eaffe3-a1de-4426-926f-a00299dea014",
-				"bd41502f-999d-4944-ba7b-0805c803bad4",
-				"173555a1-2936-4d5b-94de-2403b7bb434f"
+				"dc256d3a-68d0-4449-844b-bee1cad8254c"
 			]
 		},
 		{
@@ -71,6 +70,8 @@
 			"uuid": "a8491082-e66a-46b4-802d-98f94f81fd19",
 			"title": "Done",
 			"tasks": [
+				"bd41502f-999d-4944-ba7b-0805c803bad4",
+				"173555a1-2936-4d5b-94de-2403b7bb434f",
 				"66101ff0-fca4-45a6-b81a-982c3b28c1c1",
 				"4dec619b-7197-457c-ad92-5dd79d604607",
 				"743a5a93-185e-4c5a-902d-2c54020adb3b",
@@ -382,14 +383,47 @@
 		{
 			"uuid": "b7eaffe3-a1de-4426-926f-a00299dea014",
 			"title": "Bartending",
-			"description": "You behind the bar, 3rd person on the bar.\nPeople walk in request drinks.\nClick on player to enter 1st person on the bar:\n- front screen w/ glasses, glass washer, draughts, people.\n- back screen w/ bottles, spirits, measures.",
+			"description": "- front screen w/ glasses, glass washer, draughts, people.\n- back screen w/ bottles, spirits, measures.",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
-			"steps": []
+			"steps": [
+				{
+					"details": "Measure Wastage",
+					"done": false
+				},
+				{
+					"details": "Propper Pouring Animations",
+					"done": false
+				},
+				{
+					"details": "People to serve",
+					"done": false
+				},
+				{
+					"details": "Money/Till",
+					"done": false
+				},
+				{
+					"details": "Glass stacking",
+					"done": false
+				},
+				{
+					"details": "Display is glass is held",
+					"done": false
+				},
+				{
+					"details": "Spirits and bottles",
+					"done": false
+				},
+				{
+					"details": "Coversations (3rd person cam clicking)",
+					"done": false
+				}
+			]
 		},
 		{
 			"uuid": "bd41502f-999d-4944-ba7b-0805c803bad4",
 			"title": "Player home",
-			"description": "Add player home area w/ moveable objects and items that perform actions.\nBed - ends the day\nWardrobe - change clothes.\n",
+			"description": "Add player home area w/ moveable objects and items that perform actions.\nBed - ends the day - Done\nWardrobe - change clothes.\n",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
 			"steps": []
 		},
@@ -425,6 +459,13 @@
 			"uuid": "173555a1-2936-4d5b-94de-2403b7bb434f",
 			"title": "Add uniform functions to items",
 			"description": "Add use and alt use to a base item script.",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "dc256d3a-68d0-4449-844b-bee1cad8254c",
+			"title": "Fix issue with first person cam",
+			"description": "Makes player invisible when not current.\nChange player invisibility to clipping.\nShow when player cant go first person.",
 			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
 			"steps": []
 		}
