@@ -80,7 +80,7 @@ WaterTexture = ExtResource("6_3qf2r")
 script = ExtResource("8_57d7k")
 Zones = [SubResource("Resource_hhivy")]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_smrik"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_n03lg"]
 render_priority = 0
 shader = ExtResource("3_yl5gr")
 shader_parameter/WATER_COL = Color(0.00854927, 0.205342, 0.5087, 1)
@@ -102,7 +102,7 @@ shader_parameter/foam_distortion_speed = 0.5
 shader_parameter/foam_distortion_amount = 0.1
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_xk8tw"]
-material = SubResource("ShaderMaterial_smrik")
+material = SubResource("ShaderMaterial_n03lg")
 size = Vector2(1000, 1000)
 subdivide_width = 100
 subdivide_depth = 100
@@ -250,6 +250,12 @@ albedo_color = Color(0.26768, 0.537375, 0.751903, 1)
 
 [node name="Green" parent="." instance=ExtResource("1_ri83c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -96.9574, 2.87185, 95.1051)
+
+[node name="ExitPoint" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.9881, 3, 96.5)
+script = ExtResource("21_ief57")
+id = -1
+metadata/_custom_type_script = "uid://qtep6gsamlqf"
 
 [node name="TerraBrush" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -75)
@@ -602,6 +608,8 @@ metadata/_custom_type_script = "uid://qtep6gsamlqf"
 
 [node name="RequirementSetter" type="Node" parent="LevelObjects/AlleyDoor"]
 script = ExtResource("28_m1ocf")
+quest_id = "SeedsRock"
+req_id = "Door"
 metadata/_custom_type_script = "uid://cvykvoiqudua4"
 
 [node name="QuestLockActive" type="Node" parent="LevelObjects/AlleyDoor"]

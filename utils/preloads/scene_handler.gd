@@ -1,7 +1,7 @@
 extends Node
 
 #Handles transitioning between scenes
-var packed_player:PackedScene = null
+var packed_player:PackedScene = preload("res://player/scenes/player.tscn")
 var packed_player_2D:PackedScene = preload("res://player/scenes/player_2d.tscn")
 
 var scene_name: String = ""
@@ -12,7 +12,8 @@ var default_scenes: Dictionary = {
 	"Bar":preload("res://environments/buildings/bar/bar.tscn"),
 	"FishingHut":preload("res://environments/buildings/fishing_hut/fishing_hut.tscn"),
 	"2d":preload("res://environments/2d/2d_test.tscn"),
-	"House":preload("res://environments/buildings/house/player_house.tscn")
+	"House":preload("res://environments/buildings/house/player_house.tscn"),
+	"BarMinigame":preload("res://environments/buildings/bar_minigame/bar_minigame.tscn"),
 }
 
 var scenes: Dictionary = {}
@@ -61,12 +62,13 @@ func get_scene(n:String):
 
 func store_player():
 	if get_tree().current_scene is Node2D: return
+	if not get_tree().get_first_node_in_group("player"): return
 	var player = get_tree().get_first_node_in_group("player")
 	packed_player = PackedScene.new()
 	packed_player.pack(player)
 
 #Helpful loading code from https://github.com/thelastflapjack/godot_open_star_fighter/tree/master
-func transition(scene_name:String,exit_id:int):
+func transition(scene_name:String,exit_id:int,add_player:bool=true):
 	store_player()
 	store_scene()
 	get_tree().current_scene.queue_free()
@@ -76,8 +78,13 @@ func transition(scene_name:String,exit_id:int):
 	#assert(err==OK,"Something bad happened")
 	await get_tree().create_timer(.2).timeout
 	await load_scene(scene_name)
+	
+	if not add_player: return
+	 
 	var exits = get_tree().get_nodes_in_group("ExitPoint")
 	var exit = null
+	if exits.is_empty():
+		return
 	if not exits.filter(func (x): return x.id == exit_id).is_empty():
 		exit = exits.filter(func (x): return x.id == exit_id)[0]
 	if not exit:
@@ -86,6 +93,8 @@ func transition(scene_name:String,exit_id:int):
 	if get_tree().get_first_node_in_group("player"):
 		get_tree().get_first_node_in_group("player").queue_free()
 	var player = packed_player.instantiate()
+	print(packed_player.can_instantiate())
+	print(packed_player)
 	if get_tree().current_scene is Node2D:
 		player = packed_player_2D.instantiate()
 	get_tree().current_scene.add_child(player)
