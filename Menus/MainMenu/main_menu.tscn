@@ -652,6 +652,8 @@ size = Vector2i(1065, 1024)
 [node name="TerraBrush" type="Node3D" parent="SubViewport/Node3D"]
 script = ExtResource("1_lkur8")
 DataPath = "res://Menus/MainMenu"
+Foliages = []
+Objects = []
 TerrainZones = SubResource("Resource_rm7yp")
 metadata/_custom_type_script = "uid://i5jcj7ukvoen"
 metadata/_edit_lock_ = false
@@ -664,7 +666,7 @@ skeleton = NodePath("")
 curve = SubResource("Curve3D_xsmfo")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="SubViewport/Node3D/Path3D"]
-transform = Transform3D(-0.826524, 0.21479, -0.51993, 0.140844, 0.973737, 0.178281, 0.544642, 0.0741477, -0.835125, 212.588, 32.7111, -50.716)
+transform = Transform3D(-0.826524, 0.21479, -0.51993, 0.140844, 0.973737, 0.178281, 0.544642, 0.0741477, -0.835125, 212.588, 32.7111, -50.7157)
 progress = 745.075
 script = ExtResource("6_e5cb7")
 speed = 50.0

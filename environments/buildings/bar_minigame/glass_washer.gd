@@ -1,6 +1,5 @@
 extends BarMinigameItem
 
-@onready var animation_player = $Machine/AnimationPlayer
 @onready var glasses = $Machine/GlassDraw/Glasses
 @onready var glass_spawns = $Machine/GlassDraw/GlassSpawns
 
@@ -21,7 +20,7 @@ func pickup_glass(glass):
 
 func start_wash():
 	$WashTime.start()
-	animation_player.play("close")
+	$AnimationPlayer.play("close")
 	open = false
 	washing = true
 
@@ -29,12 +28,12 @@ func finish_wash():
 	washing = false
 	for glass in glasses.get_children():
 		glass.dirty = false
-	animation_player.play("open")
+	%AnimationPlayer.play("open")
 	open = true
 
 func _on_animation_player_animation_finished(anim_name):
 	if not washing: return
-	animation_player.play("active")
+	%AnimationPlayer.play("active")
 
 func _on_wash_time_timeout():
 	finish_wash()
@@ -42,14 +41,14 @@ func _on_wash_time_timeout():
 func _on_unselected():
 	if washing: return
 	if not open: return
-	animation_player.stop()
-	animation_player.play("soft_close")
+	%AnimationPlayer.stop()
+	%AnimationPlayer.play("soft_close")
 	open = false
 
 func _on_selected():
 	if washing and not open: return
-	animation_player.stop()
-	animation_player.play("soft_open")
+	%AnimationPlayer.stop()
+	%AnimationPlayer.play("soft_open")
 	open = true
 
 func _on_select_area_input_event(camera, event, event_position, normal, shape_idx):
