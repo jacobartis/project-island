@@ -20,7 +20,6 @@ func _input(event):
 		handle_motion(event as InputEventMouseMotion)
 
 func _process(delta):
-	if bar_minigame.selected != self: return
 	if pouring_rate()==0: return
 	if not glass: return
 	glass.add_liquid(pouring_rate())

@@ -14,58 +14,6 @@ size = Vector3(0.9, 0.1, 0.9)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vcxwv"]
 size = Vector3(0.843994, 0.0568848, 0.869385)
 
-[sub_resource type="Animation" id="Animation_wxfd2"]
-resource_name = "close"
-length = 1.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FrontHinge:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.3, 0.966667),
-"transitions": PackedFloat32Array(5, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GlassDraw:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.733333),
-"transitions": PackedFloat32Array(5, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0.9), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.966667, 1.1, 1.4),
-"transitions": PackedFloat32Array(0.25, 2, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.311314, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:scale")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.963237, 0.966667, 1.1, 1.53333),
-"transitions": PackedFloat32Array(1, 1, 2, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1.2, 0.8), Vector3(1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_vcxwv"]
 length = 0.001
 tracks/0/type = "value"
@@ -157,6 +105,58 @@ tracks/2/keys = {
 "values": [Vector3(1, 1, 1), Vector3(1.05, 0.9, 1.05), Vector3(0.9, 1.2, 0.9), Vector3(1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_wxfd2"]
+resource_name = "close"
+length = 1.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.966667),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-1.5708, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlassDraw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.733333),
+"transitions": PackedFloat32Array(5, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0.9), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.966667, 1.1, 1.4),
+"transitions": PackedFloat32Array(0.25, 2, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-0.311314, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.963237, 0.966667, 1.1, 1.53333),
+"transitions": PackedFloat32Array(1, 1, 2, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(1, 1.2, 0.8), Vector3(1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_qb7k7"]
 resource_name = "open"
 length = 1.6
@@ -209,33 +209,6 @@ tracks/3/keys = {
 "values": [Vector3(1, 1, 1), Vector3(1, 1.2, 0.8), Vector3(1, 1, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_444nr"]
-resource_name = "soft_open"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FrontHinge:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.933333),
-"transitions": PackedFloat32Array(0.2, 5),
-"update": 0,
-"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("GlassDraw:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.233333, 0.766667),
-"transitions": PackedFloat32Array(0.2, 5),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.9)]
-}
-
 [sub_resource type="Animation" id="Animation_22rk7"]
 resource_name = "soft_close"
 tracks/0/type = "value"
@@ -261,6 +234,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(5, 0.2),
 "update": 0,
 "values": [Vector3(0, 0, 0.9), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_444nr"]
+resource_name = "soft_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FrontHinge:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(0.2, 5),
+"update": 0,
+"values": [Vector3(-1.5708, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GlassDraw:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333, 0.766667),
+"transitions": PackedFloat32Array(0.2, 5),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.9)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_aw7nl"]
@@ -375,13 +375,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.457275)
 shape = SubResource("BoxShape3D_wxfd2")
 
 [connection signal="selected" from="." to="." method="_on_selected"]
-[connection signal="selected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [true]]
 [connection signal="selected" from="." to="Machine/GlassDraw/PlaceGlassArea/CollisionShape3D" method="set_disabled" binds= [false]]
 [connection signal="selected" from="." to="Machine/StartButton/StartButton/CollisionShape3D" method="set_disabled" binds= [false]]
+[connection signal="selected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [true]]
 [connection signal="unselected" from="." to="." method="_on_unselected"]
-[connection signal="unselected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [false]]
 [connection signal="unselected" from="." to="Machine/GlassDraw/PlaceGlassArea/CollisionShape3D" method="set_disabled" binds= [true]]
 [connection signal="unselected" from="." to="Machine/StartButton/StartButton/CollisionShape3D" method="set_disabled" binds= [true]]
+[connection signal="unselected" from="." to="SelectArea/CollisionShape3D" method="set_disabled" binds= [false]]
 [connection signal="input_event" from="Machine/GlassDraw/PlaceGlassArea" to="." method="_on_place_glass_area_input_event"]
 [connection signal="animation_finished" from="Machine/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="input_event" from="Machine/StartButton/StartButton" to="." method="_on_start_button_input_event"]
