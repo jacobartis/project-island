@@ -9,7 +9,6 @@ signal  exit_first()
 @export var transition_speed: float = 1
 @export var third_person_dist: float = 5
 var third: bool = true
-var sens: float = 0.01
 var limit = deg_to_rad(75)
 
 func _ready():
@@ -40,9 +39,9 @@ func move_cam(event:InputEventMouseMotion):
 	if !event or not State.can_act(): return
 	var y = event.relative.y
 	var x = event.relative.x
-	rotation.x -= y*sens
+	rotation.x -= y*Options.sensitivity
 	rotation.x = clampf(rotation.x,-limit, limit)
-	rotation.y  -= x*sens
+	rotation.y  -= x*Options.sensitivity
 
 func set_third_person(val:bool):
 	third = val

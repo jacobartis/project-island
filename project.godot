@@ -31,6 +31,7 @@ SceneHandler="*res://utils/preloads/scene_handler.gd"
 SeedPouch="*res://utils/preloads/seed_pouch.gd"
 DayManager="*res://utils/preloads/day_manager.gd"
 ItemDict="*res://utils/preloads/item_dict.gd"
+Options="*res://utils/preloads/options.gd"
 
 [dialogue_manager]
 

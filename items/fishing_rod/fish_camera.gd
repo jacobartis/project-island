@@ -2,7 +2,7 @@ extends Node3D
 
 @onready var cam = $SpringArm3D/FishCamera
 @export var bobber:RigidBody3D
-var sens: float = 0.01
+
 var limit = deg_to_rad(75)
 
 func _physics_process(delta):
@@ -21,9 +21,9 @@ func move_cam(event:InputEventMouseMotion):
 	if !event or not State.can_act(): return
 	var y = event.relative.y
 	var x = event.relative.x
-	rotation.x -= y*sens
+	rotation.x -= y*Options.sensitivity
 	rotation.x = clampf(rotation.x,-limit, limit)
-	rotation.y  -= x*sens
+	rotation.y  -= x*Options.sensitivity
 
 
 func _on_fishing_rod_cast():
