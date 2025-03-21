@@ -4,9 +4,10 @@ extends Node
 var packed_player:PackedScene = preload("res://player/scenes/player.tscn")
 var packed_player_2D:PackedScene = preload("res://player/scenes/player_2d.tscn")
 
-var scene_name: String = ""
+var scene_name: String = "MainMenu"
 
 var default_scenes: Dictionary = {
+	"MainMenu":preload("res://Menus/MainMenu/main_menu.tscn"),
 	"Cove":preload("res://environments/beach/beach.tscn"),
 	"Alley":preload("res://environments/buildings/alley/alley.tscn"),
 	"Bar":preload("res://environments/buildings/bar/bar.tscn"),
@@ -49,6 +50,7 @@ func load_scene_file(file):
 		assert(false,"ResourceLoad Error: "+str(load_status))
 
 func store_scene():
+	if scene_name == "MainMenu": return
 	var scene = PackedScene.new()
 	scene.pack(get_tree().current_scene)
 	scenes[scene_name] = scene

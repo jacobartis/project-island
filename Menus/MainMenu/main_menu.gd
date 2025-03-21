@@ -3,7 +3,6 @@ extends Control
 func _on_start_pressed():
 	SceneHandler.transition("Cove",-1)
 
-
 func scene_menu_update():
 	for x in %SceneButtonHolder.get_children():
 		x.queue_free()
@@ -13,6 +12,7 @@ func scene_menu_update():
 		button.text = scene
 		button.pressed.connect(scene_button_pressed.bind(scene))
 		%SceneButtonHolder.add_child(button)
+
 
 func _on_load_scene_pressed():
 	$Buttons.hide()
@@ -31,19 +31,6 @@ func scene_button_pressed(scene):
 func _on_quit_pressed():
 	get_tree().quit()
 
-func _on_music_slider_value_changed(value):
-	Options.music_volume = value/100.0
-
-
-func _on_master_slider_value_changed(value):
-	Options.master_volume = value/100.0
-
-
-func _on_sfx_slider_value_changed(value):
-	Options.sfx_volume = value/100.0
-
-func _on_sensitivity_slider_value_changed(value):
-	Options.sensitivity = Options.MAX_SENSITIVITY*(value/100)
 
 func _input(event):
 	if not $AnimationPlayer.is_playing() or $AnimationPlayer.current_animation != "intro": return

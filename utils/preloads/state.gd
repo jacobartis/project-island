@@ -5,6 +5,7 @@ signal end_dialogue()
 
 var in_dialogue: bool = false
 var in_menu: bool = false
+var in_pause_menu: bool = false
 
 #Bad but single player so we good
 func get_player():
@@ -13,6 +14,14 @@ func get_player():
 func _ready():
 	DialogueManager.dialogue_started.connect(d_start)
 	DialogueManager.dialogue_ended.connect(d_end)
+
+func pause():
+	in_pause_menu = true
+	get_tree().paused = true
+
+func unpause():
+	in_pause_menu = false
+	get_tree().paused = false
 
 func d_start(_d):
 	in_dialogue = true

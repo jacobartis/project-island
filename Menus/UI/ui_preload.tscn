@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://by3tm6cq5rjb5"]
+[gd_scene load_steps=6 format=3 uid="uid://by3tm6cq5rjb5"]
 
 [ext_resource type="PackedScene" uid="uid://dyqhfqab8y1k3" path="res://Menus/UI/QuestLog/quest_log.tscn" id="1_0q8rp"]
 [ext_resource type="PackedScene" uid="uid://cqmj0bctttqg" path="res://Menus/UI/QuestLog/quest_popup.tscn" id="2_rg1kr"]
 [ext_resource type="PackedScene" uid="uid://h3dq6y7m3yx0" path="res://Menus/UI/Inventory/inventory_menu.tscn" id="3_rs1qp"]
 [ext_resource type="PackedScene" uid="uid://dn6ydjn4oqgbq" path="res://Menus/UI/farming/planter_menu.tscn" id="4_rg1kr"]
+[ext_resource type="PackedScene" uid="uid://dofa0jnydwq2g" path="res://Menus/UI/PauseMenu/pause_menu.tscn" id="5_rs1qp"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 
@@ -19,4 +20,7 @@ visible = false
 mouse_filter = 1
 
 [node name="PlanterMenu" parent="." instance=ExtResource("4_rg1kr")]
+visible = false
+
+[node name="PauseMenu" parent="." instance=ExtResource("5_rs1qp")]
 visible = false
