@@ -11,4 +11,4 @@ func _process(delta):
 	total += delta*speed
 	progress = total
 	$Camera3D.look_at(lookat.global_position)
-	%Lookat.progress_ratio = pingpong(total/1000,1)
+	%Lookat.progress_ratio = pingpong(total/500,1)

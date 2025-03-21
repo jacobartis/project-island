@@ -368,7 +368,7 @@ shader_parameter/WATER_COL = Color(0.00854927, 0.205342, 0.5087, 1)
 shader_parameter/WATER2_COL = Color(0.948115, 0.868779, 0.583123, 1)
 shader_parameter/FOAM_COL = Color(0.96891, 0.892931, 0.975747, 1)
 shader_parameter/distortion_speed = 0.5
-shader_parameter/tile = Vector2(1000, 1000)
+shader_parameter/tile = Vector2(50000, 50000)
 shader_parameter/wave_speed = 1.0
 shader_parameter/wave_amplitude = 1.0
 shader_parameter/wave_frequency = 1.5
@@ -382,9 +382,9 @@ shader_parameter/foam_smoothness = 0.03
 shader_parameter/foam_distortion_speed = 0.5
 shader_parameter/foam_distortion_amount = 0.1
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_o0cfa"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_lkur8"]
 material = SubResource("ShaderMaterial_lkur8")
-size = Vector2(1000, 1000)
+size = Vector2(20000, 20000)
 subdivide_width = 100
 subdivide_depth = 100
 
@@ -397,6 +397,8 @@ _data = {
 point_count = 9
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_lkur8"]
+sky_top_color = Color(0.405852, 0.358927, 0.852183, 1)
+sky_horizon_color = Color(0.957461, 0.527158, 0.141781, 1)
 
 [sub_resource type="Sky" id="Sky_o0cfa"]
 sky_material = SubResource("ProceduralSkyMaterial_lkur8")
@@ -404,6 +406,7 @@ sky_material = SubResource("ProceduralSkyMaterial_lkur8")
 [sub_resource type="Environment" id="Environment_c3tdx"]
 background_mode = 2
 sky = SubResource("Sky_o0cfa")
+ambient_light_source = 3
 
 [sub_resource type="Curve3D" id="Curve3D_lkur8"]
 _data = {
@@ -484,6 +487,13 @@ custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Load Scene
+"
+
+[node name="Options" type="Button" parent="Buttons"]
+custom_minimum_size = Vector2(200, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Options
 "
 
 [node name="Credits" type="Button" parent="Buttons"]
@@ -644,6 +654,139 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Close"
 
+[node name="Options" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.33
+anchor_top = 0.221
+anchor_right = 0.67
+anchor_bottom = 0.897
+offset_left = -0.160004
+offset_top = -0.208008
+offset_right = 0.159973
+offset_bottom = -0.255981
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.13
+offset_bottom = 0.0599937
+grow_horizontal = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_lkur8")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.148
+anchor_top = 0.155
+anchor_right = 0.852
+anchor_bottom = 0.785
+offset_left = -0.0159988
+offset_top = 0.110001
+offset_right = 0.0159912
+offset_bottom = 0.169983
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="OptionsContainer" type="VBoxContainer" parent="Options/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Controls" type="VBoxContainer" parent="Options/ScrollContainer/OptionsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/ScrollContainer/OptionsContainer/Controls"]
+layout_mode = 2
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="Sensitivity" type="HBoxContainer" parent="Options/ScrollContainer/OptionsContainer/Controls"]
+layout_mode = 2
+
+[node name="Sensitivity" type="Label" parent="Options/ScrollContainer/OptionsContainer/Controls/Sensitivity"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Sensitivity"
+horizontal_alignment = 1
+
+[node name="SensitivitySlider" type="HSlider" parent="Options/ScrollContainer/OptionsContainer/Controls/Sensitivity"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 200.0
+value = 100.0
+
+[node name="SoundOptions" type="VBoxContainer" parent="Options/ScrollContainer/OptionsContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Options/ScrollContainer/OptionsContainer/SoundOptions"]
+layout_mode = 2
+text = "Sound"
+horizontal_alignment = 1
+
+[node name="Master" type="HBoxContainer" parent="Options/ScrollContainer/OptionsContainer/SoundOptions"]
+layout_mode = 2
+
+[node name="Voume" type="Label" parent="Options/ScrollContainer/OptionsContainer/SoundOptions/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master Volume"
+horizontal_alignment = 1
+
+[node name="MasterSlider" type="HSlider" parent="Options/ScrollContainer/OptionsContainer/SoundOptions/Master"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="Music" type="HBoxContainer" parent="Options/ScrollContainer/OptionsContainer/SoundOptions"]
+layout_mode = 2
+
+[node name="Voume" type="Label" parent="Options/ScrollContainer/OptionsContainer/SoundOptions/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music Volume"
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="Options/ScrollContainer/OptionsContainer/SoundOptions/Music"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="SFX" type="HBoxContainer" parent="Options/ScrollContainer/OptionsContainer/SoundOptions"]
+layout_mode = 2
+
+[node name="Voume" type="Label" parent="Options/ScrollContainer/OptionsContainer/SoundOptions/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX Volume"
+horizontal_alignment = 1
+
+[node name="SFXSlider" type="HSlider" parent="Options/ScrollContainer/OptionsContainer/SoundOptions/SFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+value = 100.0
+
+[node name="OptionsClose" type="Button" parent="Options"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.112
+anchor_top = 0.842
+anchor_right = 0.888
+anchor_bottom = 0.963
+offset_left = 0.0959969
+offset_top = 0.203979
+offset_right = -0.0960388
+offset_bottom = 0.205963
+grow_horizontal = 2
+grow_vertical = 2
+text = "Close"
+
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1065, 1024)
 
@@ -659,21 +802,22 @@ metadata/_custom_type_script = "uid://i5jcj7ukvoen"
 metadata/_edit_lock_ = false
 
 [node name="Water" type="MeshInstance3D" parent="SubViewport/Node3D"]
-mesh = SubResource("PlaneMesh_o0cfa")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("PlaneMesh_lkur8")
 skeleton = NodePath("")
 
 [node name="Path3D" type="Path3D" parent="SubViewport/Node3D"]
 curve = SubResource("Curve3D_xsmfo")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="SubViewport/Node3D/Path3D"]
-transform = Transform3D(-0.826524, 0.21479, -0.51993, 0.140844, 0.973737, 0.178281, 0.544642, 0.0741477, -0.835125, 212.588, 32.7111, -50.7157)
-progress = 745.075
+transform = Transform3D(0.608649, -0.0193129, 0.792933, 4.12217e-06, 0.999603, 0.0243372, -0.793197, -0.0148143, 0.608447, -100.768, 67.8086, 107.184)
+progress = 30.9385
 script = ExtResource("6_e5cb7")
 speed = 50.0
 
 [node name="Camera3D" type="Camera3D" parent="SubViewport/Node3D/Path3D/PathFollow3D"]
-transform = Transform3D(-0.338034, 0.197223, -0.920236, -0.121964, 0.96037, 0.250626, 0.933197, 0.196956, -0.300583, 0, 0, 0)
-fov = 100.0
+transform = Transform3D(-0.0998767, 0.239383, -0.965773, -0.0242175, 0.969755, 0.242874, 0.994705, 0.0476461, -0.0910586, 0, 0, 0)
+fov = 90.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewport/Node3D"]
 environment = SubResource("Environment_c3tdx")
@@ -686,18 +830,27 @@ curve = SubResource("Curve3D_lkur8")
 
 [node name="Lookat" type="PathFollow3D" parent="SubViewport/Node3D/Path3D2"]
 unique_name_in_owner = true
-transform = Transform3D(-4.37113e-08, 0.999995, -4.3711e-08, 0, -4.37112e-08, -0.999992, -0.999997, -4.37112e-08, 1.91067e-15, 0, 19.3463, 0)
-progress = 19.3463
+transform = Transform3D(-4.37113e-08, 0.999995, -4.3711e-08, 0, -4.37112e-08, -0.999992, -0.999997, -4.37112e-08, 1.91067e-15, 0, 31.1813, 0)
+progress = 31.1814
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamMP3_lkur8")
 autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="Buttons/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="Buttons/LoadScene" to="." method="_on_load_scene_pressed"]
+[connection signal="pressed" from="Buttons/Options" to="Buttons" method="hide"]
+[connection signal="pressed" from="Buttons/Options" to="Options" method="show"]
 [connection signal="pressed" from="Buttons/Credits" to="Buttons" method="hide"]
 [connection signal="pressed" from="Buttons/Credits" to="Credits" method="show"]
 [connection signal="pressed" from="Buttons/Quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="SceneLoader/SceneLoaderClose" to="." method="_on_scene_loader_close_pressed"]
 [connection signal="pressed" from="Credits/CreditsClose" to="Buttons" method="show"]
 [connection signal="pressed" from="Credits/CreditsClose" to="Credits" method="hide"]
+[connection signal="value_changed" from="Options/ScrollContainer/OptionsContainer/Controls/Sensitivity/SensitivitySlider" to="." method="_on_sensitivity_slider_value_changed"]
+[connection signal="value_changed" from="Options/ScrollContainer/OptionsContainer/SoundOptions/Master/MasterSlider" to="." method="_on_master_slider_value_changed"]
+[connection signal="value_changed" from="Options/ScrollContainer/OptionsContainer/SoundOptions/Music/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Options/ScrollContainer/OptionsContainer/SoundOptions/SFX/SFXSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Options/OptionsClose" to="Buttons" method="show"]
+[connection signal="pressed" from="Options/OptionsClose" to="Options" method="hide"]
