@@ -44,3 +44,10 @@ func _on_sfx_slider_value_changed(value):
 
 func _on_sensitivity_slider_value_changed(value):
 	Options.sensitivity = Options.MAX_SENSITIVITY*(value/100)
+
+func _input(event):
+	if not $AnimationPlayer.is_playing() or $AnimationPlayer.current_animation != "intro": return
+	var button = event as InputEventKey
+	var click = event as InputEventMouseButton
+	if not button and not click: return
+	$AnimationPlayer.play("skip")

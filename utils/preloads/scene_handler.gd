@@ -14,6 +14,7 @@ var default_scenes: Dictionary = {
 	"2d":preload("res://environments/2d/2d_test.tscn"),
 	"House":preload("res://environments/buildings/house/player_house.tscn"),
 	"BarMinigame":preload("res://environments/buildings/bar_minigame/bar_minigame.tscn"),
+	"Town":preload("res://environments/town/town.tscn")
 }
 
 var scenes: Dictionary = {}

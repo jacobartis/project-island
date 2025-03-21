@@ -1,0 +1,14 @@
+[remap]
+
+importer="import_gif_to_animated_texture"
+type="AnimatedTexture"
+uid="uid://ctr27ucpexuc"
+path="res://.godot/imported/Wave.gif-00d5417896270ef33171d071140eea7d.tres"
+
+[deps]
+
+source_file="res://Menus/MainMenu/Wave.gif"
+dest_files=["res://.godot/imported/Wave.gif-00d5417896270ef33171d071140eea7d.tres"]
+
+[params]
+

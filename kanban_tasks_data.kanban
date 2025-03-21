@@ -45,7 +45,8 @@
 				"5057cc7d-ff5b-4afc-82df-78dae3d16616",
 				"4a06338b-6980-437a-bc2e-374368643829",
 				"6d6e246a-6ac8-43de-8a84-09caf8993bf4",
-				"24973aa2-bc68-4580-a624-742d7815e07d"
+				"24973aa2-bc68-4580-a624-742d7815e07d",
+				"bcbb68bc-c95f-44e7-8022-a449151512fd"
 			]
 		},
 		{
@@ -53,6 +54,9 @@
 			"title": "Todo",
 			"tasks": [
 				"b7eaffe3-a1de-4426-926f-a00299dea014",
+				"dc256d3a-68d0-4449-844b-bee1cad8254c",
+				"77ebe263-4a4d-4f37-9c50-6fa6cf4461d7",
+				"84c201fe-094f-4124-9e32-27df0f940a6a",
 				"741a47c1-f42e-442f-b88e-ee45206e8708",
 				"f1a784c0-7420-4617-9f34-8ccdbd66b494",
 				"125a5bbe-390e-4437-a665-690191b382c7",
@@ -63,10 +67,8 @@
 			"uuid": "a6d6735f-943b-4f62-854f-1dd796d5a882",
 			"title": "Working on",
 			"tasks": [
-				"dc256d3a-68d0-4449-844b-bee1cad8254c",
-				"77ebe263-4a4d-4f37-9c50-6fa6cf4461d7",
-				"84c201fe-094f-4124-9e32-27df0f940a6a",
-				"0ee89c9a-b072-4685-adff-a2508fac3583"
+				"0ee89c9a-b072-4685-adff-a2508fac3583",
+				"b4e5360e-4ddb-49b7-bcf8-456464a24904"
 			]
 		},
 		{
@@ -496,6 +498,20 @@
 			"title": "Create character mood board/design sheet",
 			"description": "Name\nType of goober\nWhat they do\nLikes / Dislikes\nOther stuff",
 			"category": "8e01d1f1-f2ad-4c80-a601-3597b029e60f",
+			"steps": []
+		},
+		{
+			"uuid": "b4e5360e-4ddb-49b7-bcf8-456464a24904",
+			"title": "Create  town environment",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
+			"steps": []
+		},
+		{
+			"uuid": "bcbb68bc-c95f-44e7-8022-a449151512fd",
+			"title": "Spooky Location",
+			"description": "",
+			"category": "060d6c8b-218a-4776-bdac-1899f1efaed9",
 			"steps": []
 		}
 	],

@@ -4,9 +4,9 @@ const MASTER_ABUS = 0
 const SFX_ABUS = 1
 const MUSIC_ABUS = 2
 
-const MAX_SENSITIVITY = .04
+const MAX_SENSITIVITY = .01
 
-var sensitivity:float = 0.04
+var sensitivity:float = 0.01
 var master_volume: float = 1: 
 	set(val):
 		master_volume = val

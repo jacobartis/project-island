@@ -1,0 +1,99 @@
+[gd_scene load_steps=22 format=3 uid="uid://ba6q2nlrn5qdm"]
+
+[ext_resource type="Script" uid="uid://i5jcj7ukvoen" path="res://addons/terrabrush/TerraBrush.cs" id="1_sajti"]
+[ext_resource type="Texture2D" uid="uid://c4e5oi1g668ms" path="res://environments/textures/grass 17 - 128x128.png" id="2_1y8vc"]
+[ext_resource type="Texture2D" uid="uid://djruffqwon5jl" path="res://environments/town/town/Heightmap_0_0.res" id="2_d64ys"]
+[ext_resource type="Script" uid="uid://d2qebwt0ednya" path="res://addons/terrabrush/Scripts/EditorResources/ZoneResource.cs" id="3_bnn18"]
+[ext_resource type="Script" uid="uid://c2l8t4xcdxwvu" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetResource.cs" id="3_nmeav"]
+[ext_resource type="Texture2D" uid="uid://v77twyrf8pva" path="res://environments/textures/road.png" id="4_7c4b0"]
+[ext_resource type="Script" uid="uid://043vjblb04jf" path="res://addons/terrabrush/Scripts/EditorResources/TextureSetsResource.cs" id="4_7yf5g"]
+[ext_resource type="Script" uid="uid://nt172hqpx1j5" path="res://addons/terrabrush/Scripts/EditorResources/ZonesResource.cs" id="4_r601b"]
+[ext_resource type="PackedScene" uid="uid://47y3qjxgnxm8" path="res://player/scenes/player.tscn" id="6_ggect"]
+[ext_resource type="Texture2D" uid="uid://dfkgnoiiubd4a" path="res://environments/town/town/Splatmap_0_0_0.res" id="7_d0dvm"]
+[ext_resource type="Texture2D" uid="uid://dg6we6kssoptm" path="res://environments/town/town/Water_0_0.res" id="9_d0dvm"]
+
+[sub_resource type="Resource" id="Resource_7c4b0"]
+script = ExtResource("3_nmeav")
+Name = "Grass"
+AlbedoTexture = ExtResource("2_1y8vc")
+TextureDetail = -1
+Triplanar = false
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[sub_resource type="Resource" id="Resource_nvqft"]
+script = ExtResource("3_nmeav")
+Name = "Road"
+AlbedoTexture = ExtResource("4_7c4b0")
+TextureDetail = -1
+Triplanar = false
+metadata/_custom_type_script = "uid://c2l8t4xcdxwvu"
+
+[sub_resource type="Resource" id="Resource_d0dvm"]
+script = ExtResource("4_7yf5g")
+TextureSets = [SubResource("Resource_7c4b0"), SubResource("Resource_nvqft")]
+metadata/_custom_type_script = "uid://043vjblb04jf"
+
+[sub_resource type="Resource" id="Resource_dg4ih"]
+script = ExtResource("3_bnn18")
+ZonePosition = Vector2i(0, 0)
+HeightMapTexture = ExtResource("2_d64ys")
+SplatmapsTexture = [ExtResource("7_d0dvm")]
+FoliagesTexture = []
+ObjectsTexture = []
+WaterTexture = ExtResource("9_d0dvm")
+
+[sub_resource type="Resource" id="Resource_auya0"]
+script = ExtResource("4_r601b")
+Zones = [SubResource("Resource_dg4ih")]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7yf5g"]
+albedo_texture = ExtResource("4_7c4b0")
+uv1_triplanar = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7c4b0"]
+size = Vector2(100, 8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7yf5g"]
+size = Vector3(20, 12, 15)
+
+[sub_resource type="BoxMesh" id="BoxMesh_7c4b0"]
+size = Vector3(10, 6, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_d0dvm"]
+size = Vector3(10, 20, 10)
+
+[node name="Town" type="Node3D"]
+
+[node name="TerraBrush" type="Node3D" parent="."]
+script = ExtResource("1_sajti")
+DataPath = "res://environments/town/town"
+TextureSets = SubResource("Resource_d0dvm")
+Foliages = []
+Objects = []
+TerrainZones = SubResource("Resource_auya0")
+metadata/_custom_type_script = "uid://i5jcj7ukvoen"
+metadata/_edit_lock_ = false
+
+[node name="Player" parent="." instance=ExtResource("6_ggect")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0366211, 0)
+material_override = SubResource("StandardMaterial3D_7yf5g")
+mesh = SubResource("PlaneMesh_7c4b0")
+
+[node name="Large" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22, 6.03662, -14)
+mesh = SubResource("BoxMesh_7yf5g")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33, 1, 0)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.29, 3, 10.0332)
+mesh = SubResource("BoxMesh_7c4b0")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.29, 10, 10.0332)
+mesh = SubResource("BoxMesh_d0dvm")
