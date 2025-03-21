@@ -112,3 +112,19 @@ layout_mode = 2
 size_flags_vertical = 2
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Drop" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.801
+anchor_top = 0.04
+anchor_right = 0.947
+anchor_bottom = 0.138
+offset_left = 0.343933
+offset_top = -0.120001
+offset_right = 0.367981
+offset_bottom = 0.0359955
+text = "Drop"
+
+[connection signal="mouse_entered" from="Drop" to="." method="_on_drop_mouse_entered"]
+[connection signal="mouse_exited" from="Drop" to="." method="_on_drop_mouse_exited"]

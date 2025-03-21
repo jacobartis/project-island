@@ -1,5 +1,6 @@
 extends Panel
 const INVENTORY_SLOT = preload("res://Menus/UI/Inventory/inventory_slot.tscn")
+const DROPPED_ITEM = preload("res://items/dropped_item/dropped_item.tscn")
 
 @onready var slot_container = $SlotContainer
 @export var shemp_counter:Label
@@ -9,6 +10,7 @@ var selected:int = -1
 var drag: bool = false
 var drag_time:float = 0
 var hovered: int = -1
+var hover_drop: bool = false
 
 var slots = {}
 
@@ -42,6 +44,13 @@ func _process(delta):
 		description.hide()
 		drag_time += delta
 	elif Input.is_action_just_released("use_primary") and drag:
+		if hover_drop:
+			var dropped = DROPPED_ITEM.instantiate()
+			dropped.item = Inventory.get_item(selected)
+			Inventory.remove_item(selected)
+			get_tree().current_scene.add_child(dropped)
+			dropped.owner = get_tree().current_scene
+			dropped.global_position = get_tree().get_first_node_in_group("player").global_position
 		if drag_time>=.2 and hovered in slots:
 			description.show_item(slots[selected])
 			if Inventory.can_place_item(Inventory.get_item(selected),hovered):
@@ -91,3 +100,9 @@ func slot_unhovered(pos:int):
 	if drag and pos == hovered:
 		hovered = -1
 	description.hide_item(slots[pos])
+
+func _on_drop_mouse_entered():
+	hover_drop = true
+
+func _on_drop_mouse_exited():
+	hover_drop = false
