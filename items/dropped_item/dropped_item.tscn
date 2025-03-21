@@ -1,0 +1,55 @@
+[gd_scene load_steps=7 format=3 uid="uid://tewdt8okff51"]
+
+[ext_resource type="Script" uid="uid://cf86t85yemr3" path="res://items/dropped_item/dropped_item.gd" id="1_gumy1"]
+[ext_resource type="ArrayMesh" uid="uid://0wos06xnhxnw" path="res://environments/models/buildings/decorations/box-small.obj" id="2_y52ob"]
+[ext_resource type="Script" uid="uid://onyg7lf3hcvc" path="res://utils/scripts/interactable.gd" id="3_58u03"]
+[ext_resource type="Material" uid="uid://cpq441uyqkg54" path="res://utils/resources/highlight_material.tres" id="4_y52ob"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_uv6aa"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y52ob"]
+size = Vector3(0.5, 0.5, 0.5)
+
+[node name="DroppedItem" type="RigidBody3D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_gumy1")
+
+[node name="Box-small" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_y52ob")
+
+[node name="Interactable" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.249592, 0)
+script = ExtResource("3_58u03")
+metadata/_custom_type_script = "uid://onyg7lf3hcvc"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("BoxShape3D_uv6aa")
+
+[node name="Highlight" type="Node3D" parent="."]
+
+[node name="Box-small" type="MeshInstance3D" parent="Highlight"]
+material_overlay = ExtResource("4_y52ob")
+mesh = ExtResource("2_y52ob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("BoxShape3D_y52ob")
+
+[node name="Node" type="Node" parent="."]
+
+[node name="TextHolder" type="Node3D" parent="Node"]
+unique_name_in_owner = true
+
+[node name="Text" type="Label3D" parent="Node/TextHolder"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+
+[connection signal="hide_highlight" from="Interactable" to="Highlight" method="hide"]
+[connection signal="hide_highlight" from="Interactable" to="Node/TextHolder/Text" method="hide"]
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="show_highlight" from="Interactable" to="." method="_on_interactable_show_highlight"]
+[connection signal="show_highlight" from="Interactable" to="Highlight" method="show"]
+[connection signal="show_highlight" from="Interactable" to="Node/TextHolder/Text" method="show"]
